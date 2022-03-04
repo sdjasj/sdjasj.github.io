@@ -559,11 +559,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1>树与图</h1>
-<p>考的是怎么从题目条件抽象出图(建图)</p>
-<h2 id="树与图存储">树与图存储</h2>
-<h4 id="邻接表（前向星）">邻接表（前向星）</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 对于每个点k，开一个单链表，存储k所有可以走到的点。h[k]存储这个单链表的头结点，e[k]存储箭头指向的点,we[k]存储该边权值</span><br><span class="line">int h[N], e[N], ne[N],we[N] idx;</span><br><span class="line"></span><br><span class="line">// 添加一条边a-&gt;b z为权值</span><br><span class="line">void add(int a, int b, int z)</span><br><span class="line">&#123;</span><br><span class="line">    we[idx] = z, e[idx] = b, ne[idx] = h[a], h[a] = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 初始化</span><br><span class="line">idx = 0;</span><br><span class="line">memset(h, -1, sizeof h);</span><br></pre></td></tr></table></figure>
+        <h1 id="树与图"><a href="#树与图" class="headerlink" title="树与图"></a>树与图</h1><p>考的是怎么从题目条件抽象出图(建图)</p>
+<h2 id="树与图存储"><a href="#树与图存储" class="headerlink" title="树与图存储"></a>树与图存储</h2><h4 id="邻接表（前向星）"><a href="#邻接表（前向星）" class="headerlink" title="邻接表（前向星）"></a>邻接表（前向星）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 对于每个点k，开一个单链表，存储k所有可以走到的点。h[k]存储这个单链表的头结点，e[k]存储箭头指向的点,we[k]存储该边权值</span><br><span class="line">int h[N], e[N], ne[N],we[N] idx;</span><br><span class="line"></span><br><span class="line">// 添加一条边a-&gt;b z为权值</span><br><span class="line">void add(int a, int b, int z)</span><br><span class="line">&#123;</span><br><span class="line">    we[idx] = z, e[idx] = b, ne[idx] = h[a], h[a] = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 初始化</span><br><span class="line">idx = 0;</span><br><span class="line">memset(h, -1, sizeof h);</span><br></pre></td></tr></table></figure>
 <p>对于每个顶点，添加与其相连的边时按照头插法添加,</p>
       
     </div>
