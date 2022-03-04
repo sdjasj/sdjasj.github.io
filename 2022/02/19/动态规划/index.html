@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>动态规划 | sdjasj的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="完全背包问题 每种物品无限个   状态转移   以前一直对完全背包的状态转移方程**f[i][j]&#x3D;max(f[i-1][j],f[i][j-v[i]]+w[i])里面的f[i][j-v[i]]+w[i]**似懂非懂，今天看到一个比较好的解释 1.已知完全背包还有状态转移方程 f[i][j]&#x3D;max(f[i-1][j],f[i-1][j-v[i]]+w[i],f[i-1][j-2*v[i]]+2*">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划">
+<meta property="og:url" content="https://sdjasj.github.io/2022/02/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.html">
+<meta property="og:site_name" content="sdjasj的博客">
+<meta property="og:description" content="完全背包问题 每种物品无限个   状态转移   以前一直对完全背包的状态转移方程**f[i][j]&#x3D;max(f[i-1][j],f[i][j-v[i]]+w[i])里面的f[i][j-v[i]]+w[i]**似懂非懂，今天看到一个比较好的解释 1.已知完全背包还有状态转移方程 f[i][j]&#x3D;max(f[i-1][j],f[i-1][j-v[i]]+w[i],f[i-1][j-2*v[i]]+2*">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.acwing.com/media/article/image/2020/03/23/27426_73d9c53a6c-2.png">
+<meta property="og:image" content="https://cdn.acwing.com/media/article/image/2020/03/24/27426_56d0691c6d-2.png">
+<meta property="article:published_time" content="2022-02-19T12:32:02.000Z">
+<meta property="article:modified_time" content="2022-02-27T11:29:16.370Z">
+<meta property="article:author" content="sdjasj">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="动态规划">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.acwing.com/media/article/image/2020/03/23/27426_73d9c53a6c-2.png">
+  
+    <link rel="alternative" href="/atom.xml" title="sdjasj的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/ycy.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">sdjasj</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sdjasj" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="https://mail.qq.com/" title="mail">mail</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=399367218&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13.33px;">数据结构</a> <a href="/tags/%E6%95%B0%E8%AE%BA/" style="font-size: 10px;">数论</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" style="font-size: 10px;">计算机组成</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://mail.google.com/">MyGmail is sdjasjBUAA@gmail.com</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">学习算法中~~~</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/ycy.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sdjasj" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="https://mail.qq.com/" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-动态规划" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/02/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="article-date">
+  	<time datetime="2022-02-19T12:32:02.000Z" itemprop="datePublished">2022-02-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      动态规划
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="完全背包问题">完全背包问题</h2>
+<p>每种物品无限个</p>
+<ul>
+<li>
+<h4 id="状态转移">状态转移</h4>
+</li>
+</ul>
+<p>以前一直对完全背包的状态转移方程**<code>f[i][j]=max(f[i-1][j],f[i][j-v[i]]+w[i])</code><strong>里面的</strong><code>f[i][j-v[i]]+w[i]</code>**似懂非懂，今天看到一个比较好的解释</p>
+<p>1.已知完全背包还有状态转移方程</p>
+<p><code>f[i][j]=max(f[i-1][j],f[i-1][j-v[i]]+w[i],f[i-1][j-2*v[i]]+2*w[i],...,f[i-1][j-k*v[i]]+k*w[i])  (j-k*v[i]&gt;=0)</code></p>
+<p>2.故可得<code>f[i][j-v[i]] = max(f[i-1][j-v[i]],f[i-1][j-2*v[i]]+*w[i],...,f[i-1][j-k*v[i]]+(k-1)*w[i])</code></p>
+<p>3.第二步的式子左右加上w[i]，右边带入一式即可得**<code>f[i][j]=max(f[i-1][j],f[i][j-v[i]]+w[i])</code>**</p>
+<ul>
+<li>
+<h4 id="排列型背包和组合型背包">排列型背包和组合型背包</h4>
+<ul>
+<li>排列型背包外层循环价值，内层循环物品</li>
+<li>组合型背包外层循环物品，内层循环价值</li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+<h2 id="多重背包">多重背包</h2>
+<p>有 N 种物品和一个容量是 V 的背包。</p>
+<p>第 i 种物品最多有 si 件，每件体积是 vi，价值是 wi。</p>
+<p>求解将哪些物品装入背包，可使物品体积总和不超过背包容量，且价值总和最大。</p>
+<h4 id="直接拆分法">直接拆分法</h4>
+<p>当成01背包做，效率低</p>
+<h4 id="二进制拆分法">二进制拆分法</h4>
+<p>将每种物品按二进制1,2,4,…,2^k^	,s-2^k+1^+1拆分成log(si)个，降低时间复杂度</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">k=1</span><br><span class="line">while (k &lt;= s)&#123;</span><br><span class="line">	cnt ++ ;</span><br><span class="line">	v[cnt] = a * k;</span><br><span class="line">    w[cnt] = b * k;</span><br><span class="line">    s -= k;</span><br><span class="line">    k *= 2;</span><br><span class="line">&#125;</span><br><span class="line">if (s &gt; 0)&#123;</span><br><span class="line">	cnt ++ ;</span><br><span class="line">    v[cnt] = a * s;</span><br><span class="line">    w[cnt] = b * s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="分组背包">分组背包</h2>
+<p>有 N 组物品和一个容量是 V 的背包。</p>
+<p>每组物品有若干个，同一组内的物品最多只能选一个。<br>
+每件物品的体积是 vij，价值是 wij，其中 i是组号，j是组内编号。</p>
+<p>求解将哪些物品装入背包，可使物品总体积不超过背包容量，且总价值最大。</p>
+<h4 id="做法">做法</h4>
+<p>直接三重循环，最内层循环更新第i组每个物品对应的 最优解</p>
+<h2 id="状态压缩DP">状态压缩DP</h2>
+<p>以二进制数来表示状态</p>
+<h2 id="树形DP">树形DP</h2>
+<p>第一维通常是节点编号，多数时候用递归实现树形DP，对于每个节点x，先<strong>递归</strong>在它的每个子节点上进行DP，回溯时从子节点向节点x进行状态转移</p>
+<h2 id="数位DP">数位DP</h2>
+<h5 id="例题-计数问题">例题:计数问题</h5>
+<p>给定两个整数 a 和 b，求 a 和 b 之间的所有数字中0~9的出现次数。</p>
+<p>例如，a=1024，b=1032，则 a 和 b 之间共有9个数如下：</p>
+<p>1024 1025 1026 1027 1028 1029 1030 1031 1032</p>
+<p>其中‘0’出现10次，‘1’出现10次，‘2’出现7次，‘3’出现3次等等…</p>
+<h5 id="思路">思路</h5>
+<blockquote>
+<p>把整个数拆成每一位，从最高位向最低位看。设当前这一位为x，则当前位分成[0,x)和x两种情况。第一种情况直接处理，剩下的就是当前位为x的情况，继续看后面的数位，重复这个操作。直到最后一位时，剩下的就是原数，判断是否符合条件即可。</p>
+</blockquote>
+<h5 id="技巧">技巧</h5>
+<p>再求区间[a,b]中满足性质的数时，可以转化为求[1,b]的答案减[1,a - 1]的答案</p>
+<h2 id="计数DP">计数DP</h2>
+<p>不重不漏，避免子问题重叠，通常要预处理</p>
+<h2 id="闫氏DP分析法">闫氏DP分析法</h2>
+<p>from:<a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/406072/">https://www.acwing.com/file_system/file/content/whole/index/content/406072/</a></p>
+<p><img src="https://cdn.acwing.com/media/article/image/2020/03/23/27426_73d9c53a6c-2.png" alt="2png"></p>
+<h4 id="dp问题的下标">dp问题的下标</h4>
+<ol>
+<li>若状态转移方程中有f[i - 1]这种状态, 下标(状态转移那部分代码)尽量从1开始</li>
+<li>否则就最好从0开始</li>
+</ol>
+<h4 id="dp问题的时间复杂度">dp问题的时间复杂度</h4>
+<p>状态数量(n^几个约束维度) * 转移状态的时间复杂(状态转移代码的时间复杂度)</p>
+<h4 id="dp的集合划分依据-寻找最后一个不同操作">dp的集合划分依据 -&gt; 寻找最后一个不同操作</h4>
+<p>eg. 加不加这个背包, 数字三角形最后一步是由左边还是右边走过来的呀(根据操作的不同来对集合进行划分)</p>
+<p>使得划分之后的小集合可以<strong>递推求出当前集合, 且最小集合已知</strong></p>
+<p><img src="https://cdn.acwing.com/media/article/image/2020/03/24/27426_56d0691c6d-2.png" alt="2.png"></p>
+<h3 id="记忆化搜索">记忆化搜索</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, Integer&gt; memo = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br></pre></td></tr></table></figure>
+<p>java拿Map来存比较方便且省空间</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/02/21/%E7%AE%97%E6%B3%95%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          算法数学基础知识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/02/19/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">二分算法</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 sdjasj
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
