@@ -227,186 +227,6 @@
 </tbody>
 </table>
 </div>
-<h3 id="SR"><a href="#SR" class="headerlink" title="SR"></a>SR</h3><p><img src="/2022/03/05/OS%E9%A2%84%E4%B9%A0/image-20220303213254529.png" alt="image-20220303213254529"></p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>标记位</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CU3 CU2</td>
-<td>位（31：30）分别控制“协同处理器”3和2的可用性。在R30xx系列中，如果软件希望使用BrCond（3：2）输入引脚进行轮询，或加快异常解码的速度，则可以启用这些功能。</td>
-</tr>
-<tr>
-<td>CU1</td>
-<td>“协同处理器1可用”：1使用FPA，0禁用。当值为0时，所有FPA指令都会导致异常，即使是对内核。即使有可用的FPA，关闭FPA也是有用的；如果打算使用BrCond（1）pin作为轮询输入，它也可以在不包含FPA的设备中启用。</td>
-</tr>
-<tr>
-<td>CU0</td>
-<td>“协同处理器0可用”：设置1为能够在用户模式下使用一些名义上的特权指令（这很少这样做）。编码为“协处理器0”类型的CPU控制指令在内核模式下始终可用，无论此位的设置如何。</td>
-</tr>
-<tr>
-<td>RE</td>
-<td>“在用户模式下反转环境”。MIPS处理器可以在重置时配置“环境性”(字节排序约定，在各种CPU的用户手册和本手册后面讨论)。RE位允许使用一个字节排序约定运行的二进制文件在约定相反的系统中运行，假设操作系统软件提供了必要的支持。当RE处于活动状态时，用户特权软件运行就像CPU配置了相反的环境一样。然而，实现跨宇宙运行也需要大量的软件工作，而且在嵌入式系统中应该不是必要的。</td>
-</tr>
-<tr>
-<td>BEV</td>
-<td>“引导异常向量”：当BEV==1时，CPU使用ROM(kseg1)空间异常入口点（在后面的章节中描述）。在正在运行的系统中，BEV通常被设置为零；这将重新定位异常向量。对RAM地址，加速访问并允许使用“用户提供的”异常服务例程。</td>
-</tr>
-<tr>
-<td>TS</td>
-<td>“TLB关闭”：在实现完整的R3000AMMU的设备中，如果一个程序地址同时匹配两个TLB条目，则TS将被设置。在某些实现中，在这种状态下的长时间操作可能会导致内部争用和损坏芯片。TLB关机是终端，只能通过硬件重置来清除。在不包括TLB的基本家族成员中，此位通过重置来设置；软件可以依赖此功能来确定是否存在TLB支持硬件。</td>
-</tr>
-<tr>
-<td>PE</td>
-<td>如果发生了缓存奇偶校验错误，请进行设置。这种情况不会产生异常，而这实际上只对诊断有用。MIPS体系结构具有缓存诊断功能，因为CPU的早期版本使用了外部缓存，这提供了一种验证特定系统的时间安排的方法。对于这些实现，缓存奇偶校验错误位是一个必要的设计调试工具。对于具有片上缓存的cpu，很少需要这一特性；只有R3071和R3081对片上缓存实现奇偶校验。</td>
-</tr>
-<tr>
-<td>CM</td>
-<td>显示使用隔离的Dcache执行的最后一次加载操作的结果（见缓存管理章节所述）。如果缓存确实包含寻址内存位置的数据（即：即使缓存没有被隔离，负载也会在缓存中命中），则设置CM</td>
-</tr>
-<tr>
-<td>PZ</td>
-<td>设置时，缓存奇偶校验位被写为零，不检查。这在需要外部缓存ram的旧R3000A系统中很有用，但与R30xx家族没有什么关系。</td>
-</tr>
-<tr>
-<td>SwC,IsC</td>
-<td>“交换缓存“”和“”隔离（数据）缓存“”。用于缓存管理和诊断的缓存模式位；它们的使用将在后面的缓存管理章节中有详细介绍。简单地说：<br>IsC设置1：使所有加载和存储只访问数据缓存，而不访问内存；在这种模式下，部分字存储会使缓存条目无效。注意，当设置此位时，即使在总线上也看不到未缓存的数据访问；此外，此位不会通过重置进行初始化。引导软件必须确保在依赖外部数据引用之前正确地初始化这个位。<br>SwCset1：反转I-缓存和D-缓存的角色，以便软件可以访问并使I-缓存条目无效。</td>
-</tr>
-<tr>
-<td>IM</td>
-<td>“中断掩码”：一个8位字段，定义在激活时哪个中断源可以导致异常。其中6个中断源是外部引脚(一个可以被FPA使用，尽管它生活在同一芯片上，但在逻辑上是外部的)；另外两个是原因寄存器中的软件可写的中断位。CPU不提供中断优先级：硬件处理所有中断位都相同。这将在处理异常的章节中进行更详细的描述。</td>
-</tr>
-<tr>
-<td>KUc,IEc</td>
-<td>两个基本的CPU保护位。<br>当使用内核权限运行时，KUc设置为1，用户模式设置为0。在内核模式下，软件可以获取整个程序地址空间，并使用特权（“协同处理器0”）指令。用户模式限制软件的程序地址在0x0000 0000 和0x7FFFFFFF之间，并且可以拒绝运行特权指令的权限；尝试违反规则会导致异常。<br>IEc被设置为0，以防止CPU采取任何中断，并通过1来启用。</td>
-</tr>
-<tr>
-<td>KUp, IEp</td>
-<td>“KU previous, IE previous”<br>在异常下，硬件取KUc和IEc的值并保存在这里；同时将KUc、IEc的值更改为[1,0]（内核模式，禁用中断）。指令rfe可用于将KUp、IEp复制回KUc、IEc。</td>
-</tr>
-<tr>
-<td>KUo, IEo</td>
-<td>‘‘KU old, IE old’’<br>在一个异常下，KUp，IEp位被保存在这里。实际上，6个KU/IE位被作为一个3深、2位宽的堆栈操作，它在一个异常上推送并被rfe弹出。这提供了从异常处理例程中早期发生的异常中干净恢复的机会，因此第一个异常尚未保存SR。可以做到这一点的情况是有限的，而且它可能只在允许用户TLB重新填充代码变得更短方面真正有用，如内存管理一章所述。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="Cause-Register"><a href="#Cause-Register" class="headerlink" title="Cause Register"></a>Cause Register</h3><p><img src="/2022/03/05/OS%E9%A2%84%E4%B9%A0/image-20220303215119767.png" alt="image-20220303215119767"></p>
-<p>Cause寄存器中的字段”显示了原因寄存器中的字段，通过查阅这些字段来确定所发生的异常的类型，并将用于决定要调用哪个异常例程。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>标记位</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>BD</td>
-<td>“分支延迟”：如果设置，此位表示EPC不指向实际的“异常”指令，而是指向它之前的分支指令。当异常重启点是位于分支后面的“延迟槽”中的指令时，EPC必须指向分支指令；重新执行该分支是无害的，但是如果CPU从异常返回到分支延迟指令本身，该分支将不会被接受，异常将破坏中断的程序。软件可能对这一位敏感的唯一时间是，如果它必须分析“违规”指令(如果BD==1，那么该指令是在EPC+4)。如果需要模拟该指令（例如，没有硬件FPA的设备中的浮点指令；或放置在分支延迟槽中的断点），则会发生这种情况。</td>
-</tr>
-<tr>
-<td>CE</td>
-<td>“协处理器错误“”：如果因为“协处理器”格式指令对应的“协处理器”在SR中的CUx位没有启用而发生异常，则此字段具有该指令的协处理器号</td>
-</tr>
-<tr>
-<td>IP</td>
-<td>“中断待定”：显示当前断言的中断（但可能被“屏蔽”，无法实际发出异常信号）。这些位遵循六个硬件级别的CPU输入。位9和位8是可读/可写的，并包含最后一次写入它们的值。然而，当被适当的IM位和SR中的全局中断启用标志IEc启用时，激活的8位中的任何一个都会导致中断。IP与其他原因寄存器字段有细微的不同；它并不指示异常发生时发生了什么，而是显示现在发生了什么。</td>
-</tr>
-<tr>
-<td>ExcCode</td>
-<td>一种5位代码，它指示发生了什么类型的异常</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>ExcCode Value</th>
-<th>Mnemonic （助记符）</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>Int</td>
-<td>Interrupt</td>
-</tr>
-<tr>
-<td>1</td>
-<td>Mod</td>
-<td>‘TLB modifification’’ <br>（“TLB修改”）</td>
-</tr>
-<tr>
-<td>2</td>
-<td>TLBL</td>
-<td>TLB load</td>
-</tr>
-<tr>
-<td>3</td>
-<td>TLBS</td>
-<td>TLB store</td>
-</tr>
-<tr>
-<td>4</td>
-<td>AdEL</td>
-<td>地址错误（在加载或存储时）。在用户模式下尝试访问kuseg外部，或者试图在一个不对齐的地址上读取一个单词或半单词</td>
-</tr>
-<tr>
-<td>5</td>
-<td>AdES</td>
-<td>地址错误（在读取或存储时）。在用户模式下尝试访问kuseg外部，或者试图在一个不对齐的地址上读取一个单词或半单词</td>
-</tr>
-<tr>
-<td>6</td>
-<td>IBE</td>
-<td>总线错误（指令获取）。外部硬件发出了某种错误的信号。适当的异常处理是依赖于系统的。R30xx系列CPU不能在存储时发生总线错误。R30xx系列CPU在存储时不能接受总线错误。写入缓冲器会使这种异常 “不精确”。</td>
-</tr>
-<tr>
-<td>7</td>
-<td>DBE</td>
-<td>总线错误（数据加载）。外部硬件发出了某种错误的信号。适当的异常处理是依赖于系统的。R30xx系列CPU不能在存储时发生总线错误。R30xx系列CPU在存储时不能接受总线错误。写入缓冲器会使这种异常 “不精确”。</td>
-</tr>
-<tr>
-<td>8</td>
-<td>Syscall</td>
-<td>由系统切换指令无条件生成的</td>
-</tr>
-<tr>
-<td>9</td>
-<td>Bp</td>
-<td>Breakpoint - a break instruction. <br>中断指令</td>
-</tr>
-<tr>
-<td>10</td>
-<td>RI</td>
-<td>reserved instruction<br>保留指令</td>
-</tr>
-<tr>
-<td>11</td>
-<td>CpU</td>
-<td>Co-Processor unusable<br>协处理器无法使用</td>
-</tr>
-<tr>
-<td>12</td>
-<td>Ov</td>
-<td>算术溢出’’。请注意，”无符号 “版本的指令（例如addu）从来不会引起这种异常。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="EPC-Register"><a href="#EPC-Register" class="headerlink" title="EPC Register"></a>EPC Register</h3><p>这是一个32位的寄存器，包含这个异常的返回点的32位地址。的32位地址。导致（或遭受）异常的指令在EPC，除非BD在Cause中被设置，在这种情况下EPC指向前一条(分支)指令。</p>
-<h3 id="BadVaddr-Register"><a href="#BadVaddr-Register" class="headerlink" title="BadVaddr Register"></a>BadVaddr Register</h3><p>一个32位的寄存器，包含了导致异常的地址；在任何与MMU相关的异常中，当用户程序试图访问kuseg以外的地址时，或者当一个地址被错误地对齐了所引用的数据量时，都会被设置。在任何其他异常情况下，这个寄存器都是未定义的。特别要注意的是 它在总线错误后不会被设置。</p>
-
       
     </div>
     
@@ -422,6 +242,10 @@
       
       <div class="clearfix"></div>
     </div>
+      
+        <p class="article-more-link">
+          <a  href="/2022/03/05/OS%E9%A2%84%E4%B9%A0/#more">点我查看更多 >></a>
+        </p>
       
     
   </div>
@@ -466,49 +290,6 @@
       
         <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
 <h2 id="makefile的规则"><a href="#makefile的规则" class="headerlink" title="makefile的规则"></a>makefile的规则</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">target ... : prerequisites ...</span><br><span class="line">    command</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-<ul>
-<li>例子</li>
-</ul>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">edit : main.o kbd.o command.o display.o \</span><br><span class="line">        insert.o search.o files.o utils.o</span><br><span class="line">    cc -o edit main.o kbd.o command.o display.o \</span><br><span class="line">        insert.o search.o files.o utils.o</span><br><span class="line"></span><br><span class="line">main.o : main.c defs.h</span><br><span class="line">    cc -c main.c</span><br><span class="line">kbd.o : kbd.c defs.h command.h</span><br><span class="line">    cc -c kbd.c</span><br><span class="line">command.o : command.c defs.h command.h</span><br><span class="line">    cc -c command.c</span><br><span class="line">display.o : display.c defs.h buffer.h</span><br><span class="line">    cc -c display.c</span><br><span class="line">insert.o : insert.c defs.h buffer.h</span><br><span class="line">    cc -c insert.c</span><br><span class="line">search.o : search.c defs.h buffer.h</span><br><span class="line">    cc -c search.c</span><br><span class="line">files.o : files.c defs.h buffer.h command.h</span><br><span class="line">    cc -c files.c</span><br><span class="line">utils.o : utils.c defs.h</span><br><span class="line">    cc -c utils.c</span><br><span class="line">clean :</span><br><span class="line">    rm edit main.o kbd.o command.o display.o \</span><br><span class="line">        insert.o search.o files.o utils.o</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>command前以tab开头</p>
-</li>
-<li><p>target</p>
-<ul>
-<li>可以是一个object file（目标文件），也可以是一个执行文件，还可以是一个标签（label）。</li>
-</ul>
-</li>
-<li><p>prerequisites</p>
-<ul>
-<li>生成该target所依赖的文件和/或target</li>
-</ul>
-</li>
-<li><p>command</p>
-<ul>
-<li>该target要执行的命令（任意的shell命令）</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>target这一个或多个的目标文件依赖于prerequisites中的文件，其生成规则定义在command中</p>
-<p>prerequisites中如果有一个以上的文件比target文件要新的话，command所定义的命令就会被执行</p>
-</blockquote>
-<ul>
-<li>利用”\\”换行</li>
-</ul>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">objects = main.o kbd.o command.o display.o \</span><br><span class="line">    insert.o search.o files.o utils.o</span><br><span class="line"></span><br><span class="line">edit : <span class="variable">$(objects)</span></span><br><span class="line">    cc -o edit <span class="variable">$(objects)</span></span><br></pre></td></tr></table></figure>
-<h3 id="清空目标文件的规则"><a href="#清空目标文件的规则" class="headerlink" title="清空目标文件的规则"></a>清空目标文件的规则</h3><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : clean</span><br><span class="line">clean :</span><br><span class="line">    -rm edit <span class="variable">$(objects)</span></span><br></pre></td></tr></table></figure>
-<p><code>.PHONY</code> 表示 <code>clean</code> 是一个“伪目标”。而在 <code>rm</code> 命令前面加了一个小减号的意思就是，也许某些文件出现问题，但不要管，继续做后面的事</p>
-<h2 id="书写规则"><a href="#书写规则" class="headerlink" title="书写规则"></a>书写规则</h2><p>Makefile中只应该有一个最终目标，其它的目标都是被这个目标所连带出来的,第一条规则中的目标将被确立为最终的目标，如果第一条规则中的目标有很多个，那么，第一个目标会成为最终的目标。make所完成的也就是这个目标</p>
-<h2 id="伪目标"><a href="#伪目标" class="headerlink" title="伪目标"></a>伪目标</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : clean</span><br><span class="line">clean :</span><br><span class="line">    rm *.o temp</span><br></pre></td></tr></table></figure>
-<h2 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h2><p>当依赖目标新于目标时，也就是当规则的目标需要被更新时，make会一条一条的执行其后的命令。需要注意的是，如果要让上一条命令的结果应用在下一条命令时，应该使用分号分隔这两条命令</p>
-<blockquote>
-<p>因为每行命令在一个单独的shell中执行。这些Shell之间没有继承关系，两行命令在两个不同的进程执行</p>
-</blockquote>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">var-kept:</span></span><br><span class="line">    <span class="keyword">export</span> foo=bar; echo <span class="string">&quot;foo=[$$foo]&quot;</span></span><br></pre></td></tr></table></figure>
-<p>或者加上”\\”</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">var-kept:</span></span><br><span class="line">    <span class="keyword">export</span> foo=bar; \</span><br><span class="line">    echo <span class="string">&quot;foo=[$$foo]&quot;</span></span><br></pre></td></tr></table></figure>
-
       
     </div>
     
@@ -524,6 +305,10 @@
       
       <div class="clearfix"></div>
     </div>
+      
+        <p class="article-more-link">
+          <a  href="/2022/03/05/Makefile%E5%AD%A6%E4%B9%A0/#more">点我查看更多 >></a>
+        </p>
       
     
   </div>
@@ -571,31 +356,6 @@
 <ul>
 <li>gcc -E 指令只会将预处理操作的结果输出到屏幕上，并不会自动保存到某个文件。因此该指令往往会和 -o 选项连用，将结果导入到指令的文件中</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-S（大写）	编译指定的源文件，但是不进行汇编。</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>gcc 指令添加 -S（注意是大写）选项，即可令 GCC 编译器仅将指定文件加工至编译阶段，并生成对应的汇编代码文件</p>
-</li>
-<li><p>经过执行 gcc -S 指令，其生成了一个名为 demo.s 的文件，这就是经过编译的汇编代码文件。也就是说默认情况下，编译操作会自行新建一个文件名和指定文件相同、后缀名为 .s 的文件，并将编译的结果保存在该文件中。</p>
-</li>
-<li><p>如果需要的话，我们还可以为 gcc -S 指令添加 -o 选项，令 GCC 编译器将编译结果保存在我们指定的文件中</p>
-</li>
-<li><p>gcc -S 指令可以操作预处理后的 .i 文件，也可以操作源代码文件</p>
-<ul>
-<li><pre><code>gcc -S demo.i -o test.i
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* 如果操作对象为 .i 文件，则 GCC 编译器只需编译此文件；</span><br><span class="line"></span><br><span class="line">* 如果操作对象为 .c 或者 .cpp 源代码文件，则 GCC 编译器会对其进行预处理和编译这 2 步操作。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
--c    编译、汇编指定的源文件，但是不进行链接。
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">需要强调的一点是，和 gcc -S 类似，gcc -c 选项并非只能用于加工 .s 文件。事实上，-c 选项只是令 GCC 编译器将指定文件加工至汇编阶段，但不执行链接操作。这也就意味着：</span><br><span class="line"></span><br><span class="line">- 如果指定文件为源程序文件（例如 demo.c），则 gcc -c 指令会对 demo.c 文件执行预处理、编译以及汇编这 3 步操作；</span><br><span class="line">- 如果指定文件为刚刚经过预处理后的文件（例如 demo.i），则 gcc -c 指令对 demo.i 文件执行编译和汇编这 2 步操作；</span><br><span class="line">- 如果指定文件为刚刚经过编译后的文件（例如 demo.s），则 gcc -c 指令只对 demo.s 文件执行汇编这 1 步操作</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-gcc a.c #进行上述三个操作并连接，生成可执行文件a.out
-gcc a.c b.c c.c -o test.out#一起编译连接三个文件，生成一个可执行文件
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
--o    指定生成文件的文件名。
-##example
-gcc -E demo.c -o demo.i
-</code></pre></li>
-</ul>
-</li>
-</ul>
-
       
     </div>
     
@@ -611,6 +371,10 @@ gcc -E demo.c -o demo.i
       
       <div class="clearfix"></div>
     </div>
+      
+        <p class="article-more-link">
+          <a  href="/2022/03/05/gcc%E5%AD%A6%E4%B9%A0/#more">点我查看更多 >></a>
+        </p>
       
     
   </div>
