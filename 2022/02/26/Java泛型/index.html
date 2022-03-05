@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="sdjasj的博客">
 <meta property="og:description" content="泛型  如果Foo是 Bar的一个子类型（子类或者子接口），而 G是具有泛型声明的类或接口，G&lt;Foo&gt;并不是G&lt;Bar&gt;的子类型 数组和泛型有所不同，假设Foo是Bar 的一个子类型（子类或者子接口），那么Foo[]依然是 Bar[]的子类型;但 G&lt;Foo&gt;不是 G&lt;Bar&gt;的子类型。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://sdjasj.github.io/2022/02/26/Java%E6%B3%9B%E5%9E%8B/D:%5C%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD%5C09221852-b0d764f4340946baa1a063da5a0d993e.png">
-<meta property="og:image" content="https://sdjasj.github.io/2022/02/26/Java%E6%B3%9B%E5%9E%8B/C:%5CUsers%5CDELL%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220226202701317.png">
+<meta property="og:image" content="https://sdjasj.github.io/2022/02/26/Java%E6%B3%9B%E5%9E%8B/09221852-b0d764f4340946baa1a063da5a0d993e.png">
+<meta property="og:image" content="https://sdjasj.github.io/2022/02/26/Java%E6%B3%9B%E5%9E%8B/image-20220226202701317.png">
 <meta property="article:published_time" content="2022-02-26T12:46:27.000Z">
-<meta property="article:modified_time" content="2022-02-26T12:47:08.239Z">
+<meta property="article:modified_time" content="2022-03-05T01:23:30.055Z">
 <meta property="article:author" content="sdjasj">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://sdjasj.github.io/2022/02/26/Java%E6%B3%9B%E5%9E%8B/D:%5C%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD%5C09221852-b0d764f4340946baa1a063da5a0d993e.png">
+<meta name="twitter:image" content="https://sdjasj.github.io/2022/02/26/Java%E6%B3%9B%E5%9E%8B/09221852-b0d764f4340946baa1a063da5a0d993e.png">
   
     <link rel="alternative" href="/atom.xml" title="sdjasj的博客" type="application/atom+xml">
   
@@ -224,7 +224,7 @@
 <p>当创建了带泛型声明的接口、父类之后，可以为该接口创建实现类，或从该父类派生子类，需要指出的是，当使用这些接口、父类时不能再包含类型形参</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">B</span>&lt;<span class="title">T</span>&gt; //错误</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">B</span>&lt;<span class="title">String</span>&gt; //正确</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">B</span> //警告，会把<span class="title">T</span>默认当初<span class="title">Object</span>类</span></span><br></pre></td></tr></table></figure>
 <h2 id="类型通配符">类型通配符</h2>
-<h3 id="简介-2">简介</h3>
+<h3 id="简介">简介</h3>
 <p>类型通配符一般是使用 ? 代替具体的类型参数。例如 List&lt;?&gt; 在逻辑上是List&lt;String&gt;、List&lt;Integer&gt;</p>
 <p>等所有 <strong>List&lt;具体类型实参&gt;</strong> 的父类。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericTest</span> </span>&#123;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; name = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        List&lt;Integer&gt; age = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        List&lt;Number&gt; number = <span class="keyword">new</span> ArrayList&lt;Number&gt;();</span><br><span class="line">        </span><br><span class="line">        name.add(<span class="string">&quot;icon&quot;</span>);</span><br><span class="line">        age.add(<span class="number">18</span>);</span><br><span class="line">        number.add(<span class="number">314</span>);</span><br><span class="line"> </span><br><span class="line">        getData(name);</span><br><span class="line">        getData(age);</span><br><span class="line">        getData(number);</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getData</span><span class="params">(List&lt;?&gt; data)</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;data :&quot;</span> + data.get(<span class="number">0</span>));</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -243,9 +243,9 @@
 <h3 id="设定类型形参上限">设定类型形参上限</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//定义类时定义了一个形参T</span><br><span class="line">//使用A类时为T形参传入的实际参数只能是Number或Number的子类</span><br><span class="line">public class A&lt;T extends Number&gt; &#123;</span><br><span class="line">    //在类里T可以作为参数类型使用</span><br><span class="line">    T a;</span><br><span class="line">    public T add(T a, T b) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="泛型方法">泛型方法</h3>
-<p><img src="/2022/02/26/Java%E6%B3%9B%E5%9E%8B/D:%5C%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD%5C09221852-b0d764f4340946baa1a063da5a0d993e.png" alt="09221852-b0d764f4340946baa1a063da5a0d993e"></p>
+<p><img src="/2022/02/26/Java%E6%B3%9B%E5%9E%8B/09221852-b0d764f4340946baa1a063da5a0d993e.png" alt="09221852-b0d764f4340946baa1a063da5a0d993e"></p>
 <p>泛型方法也可以设定上限</p>
-<p><img src="/2022/02/26/Java%E6%B3%9B%E5%9E%8B/C:%5CUsers%5CDELL%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220226202701317.png" alt="image-20220226202701317"></p>
+<p><img src="/2022/02/26/Java%E6%B3%9B%E5%9E%8B/image-20220226202701317.png" alt="image-20220226202701317"></p>
 
       
     </div>
