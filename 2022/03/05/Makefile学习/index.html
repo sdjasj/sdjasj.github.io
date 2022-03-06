@@ -9,15 +9,15 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用1make makefile的规则1234target ... : prerequisites ...    command    ...    ...">
+  <meta name="description" content="使用 1make makefile的规则 1234target ... : prerequisites ...    command    ...    ...">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Makefile学习">
 <meta property="og:url" content="https://sdjasj.github.io/2022/03/05/Makefile%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="sdjasj的博客">
-<meta property="og:description" content="使用1make makefile的规则1234target ... : prerequisites ...    command    ...    ...">
+<meta property="og:description" content="使用 1make makefile的规则 1234target ... : prerequisites ...    command    ...    ...">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-05T02:14:50.000Z">
-<meta property="article:modified_time" content="2022-03-05T23:56:48.572Z">
+<meta property="article:modified_time" content="2022-03-06T03:51:45.919Z">
 <meta property="article:author" content="sdjasj">
 <meta property="article:tag" content="Makefile">
 <meta name="twitter:card" content="summary">
@@ -223,27 +223,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
-<h2 id="makefile的规则"><a href="#makefile的规则" class="headerlink" title="makefile的规则"></a>makefile的规则</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">target ... : prerequisites ...</span><br><span class="line">    command</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+        <h2 id="使用">使用</h2>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+<h2 id="makefile的规则">makefile的规则</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">target ... : prerequisites ...</span><br><span class="line">    command</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <ul>
 <li>例子</li>
 </ul>
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">edit : main.o kbd.o command.o display.o \</span><br><span class="line">        insert.o search.o files.o utils.o</span><br><span class="line">    cc -o edit main.o kbd.o command.o display.o \</span><br><span class="line">        insert.o search.o files.o utils.o</span><br><span class="line"></span><br><span class="line">main.o : main.c defs.h</span><br><span class="line">    cc -c main.c</span><br><span class="line">kbd.o : kbd.c defs.h command.h</span><br><span class="line">    cc -c kbd.c</span><br><span class="line">command.o : command.c defs.h command.h</span><br><span class="line">    cc -c command.c</span><br><span class="line">display.o : display.c defs.h buffer.h</span><br><span class="line">    cc -c display.c</span><br><span class="line">insert.o : insert.c defs.h buffer.h</span><br><span class="line">    cc -c insert.c</span><br><span class="line">search.o : search.c defs.h buffer.h</span><br><span class="line">    cc -c search.c</span><br><span class="line">files.o : files.c defs.h buffer.h command.h</span><br><span class="line">    cc -c files.c</span><br><span class="line">utils.o : utils.c defs.h</span><br><span class="line">    cc -c utils.c</span><br><span class="line">clean :</span><br><span class="line">    rm edit main.o kbd.o command.o display.o \</span><br><span class="line">        insert.o search.o files.o utils.o</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>command前以tab开头</p>
+<li>
+<p>command前以tab开头</p>
 </li>
-<li><p>target</p>
+<li>
+<p>target</p>
 <ul>
 <li>可以是一个object file（目标文件），也可以是一个执行文件，还可以是一个标签（label）。</li>
 </ul>
 </li>
-<li><p>prerequisites</p>
+<li>
+<p>prerequisites</p>
 <ul>
 <li>生成该target所依赖的文件和/或target</li>
 </ul>
 </li>
-<li><p>command</p>
+<li>
+<p>command</p>
 <ul>
 <li>该target要执行的命令（任意的shell命令）</li>
 </ul>
@@ -254,36 +260,56 @@
 <p>prerequisites中如果有一个以上的文件比target文件要新的话，command所定义的命令就会被执行</p>
 </blockquote>
 <ul>
-<li>利用”\\”换行</li>
+<li>利用&quot;\&quot;换行</li>
 </ul>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">objects = main.o kbd.o command.o display.o \</span><br><span class="line">    insert.o search.o files.o utils.o</span><br><span class="line"></span><br><span class="line">edit : <span class="variable">$(objects)</span></span><br><span class="line">    cc -o edit <span class="variable">$(objects)</span></span><br></pre></td></tr></table></figure>
+<h3 id="变量">变量</h3>
+<h5 id="定义">定义</h5>
+<p>1.“=”(前面定义的变量可以使用后面定义的变量，不推荐)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">foo = $(bar)</span><br><span class="line">bar = $(ugh)</span><br><span class="line">ugh = Huh?</span><br></pre></td></tr></table></figure>
+<p>2.“:=&quot;(前面定义的变量无法使用后面定义的变量，推荐)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x := foo</span><br><span class="line">y := $(x) bar</span><br><span class="line">x := later</span><br></pre></td></tr></table></figure>
+<p>3.“?=”(其含义是，如果左边变量没有被定义过，那么变量的值就是右值，如果左边变量先前被定义过，那么这条语句将什么也不做)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FOO ?= bar</span><br></pre></td></tr></table></figure>
+<h5 id="追加变量值">追加变量值</h5>
+<p>可以使用 <code>+=</code> 操作符给变量追加值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">objects := main.o foo.o bar.o utils.o</span><br><span class="line">objects += another.o</span><br><span class="line">##$(objects) 值变成：“main.o foo.o bar.o utils.o another.o”</span><br></pre></td></tr></table></figure>
+<h5 id="例子">例子</h5>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">objects = main.o kbd.o command.o display.o \</span><br><span class="line">    insert.o search.o files.o utils.o</span><br><span class="line"></span><br><span class="line">edit : <span class="variable">$(objects)</span></span><br><span class="line">    cc -o edit <span class="variable">$(objects)</span></span><br></pre></td></tr></table></figure>
 <p>1.Makefile中的变量其实就是C/C++中的宏</p>
 <p>2.变量在声明时需要给予初值，而在使用时，需要给在变量名前加上 <code>$</code> 符号，但最好用小括号 <code>()</code> 或是大括号 <code>&#123;&#125;</code> 把变量给包括起来。如果要使用真实的 <code>$</code> 字符，那么需要用 <code>$$</code> 来表示。</p>
-<h3 id="清空目标文件的规则"><a href="#清空目标文件的规则" class="headerlink" title="清空目标文件的规则"></a>清空目标文件的规则</h3><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : clean</span><br><span class="line">clean :</span><br><span class="line">    -rm edit <span class="variable">$(objects)</span></span><br></pre></td></tr></table></figure>
+<h3 id="清空目标文件的规则">清空目标文件的规则</h3>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : clean</span><br><span class="line">clean :</span><br><span class="line">    -rm edit <span class="variable">$(objects)</span></span><br></pre></td></tr></table></figure>
 <p><code>.PHONY</code> 表示 <code>clean</code> 是一个“伪目标”。而在 <code>rm</code> 命令前面加了一个小减号的意思就是，也许某些文件出现问题，但不要管，继续做后面的事</p>
-<h2 id="书写规则"><a href="#书写规则" class="headerlink" title="书写规则"></a>书写规则</h2><p>Makefile中只应该有一个最终目标，其它的目标都是被这个目标所连带出来的,第一条规则中的目标将被确立为最终的目标，如果第一条规则中的目标有很多个，那么，第一个目标会成为最终的目标。make所完成的也就是这个目标</p>
-<h2 id="伪目标"><a href="#伪目标" class="headerlink" title="伪目标"></a>伪目标</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : clean</span><br><span class="line">clean :</span><br><span class="line">    rm *.o temp</span><br></pre></td></tr></table></figure>
+<h2 id="书写规则">书写规则</h2>
+<p>Makefile中只应该有一个最终目标，其它的目标都是被这个目标所连带出来的,第一条规则中的目标将被确立为最终的目标，如果第一条规则中的目标有很多个，那么，第一个目标会成为最终的目标。make所完成的也就是这个目标</p>
+<h2 id="伪目标">伪目标</h2>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : clean</span><br><span class="line">clean :</span><br><span class="line">    rm *.o temp</span><br></pre></td></tr></table></figure>
 <p><strong>当遇到目标体clean时,make先查看其是否有依赖体(prerequisites),因为clean没有依赖体,所以make认为目标体是最新的而不执行任何操作.为了编译这个目标体,必须输入make clean.</strong></p>
-<h2 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h2><p>当依赖目标新于目标时，也就是当规则的目标需要被更新时，make会一条一条的执行其后的命令。需要注意的是，如果要让上一条命令的结果应用在下一条命令时，应该使用分号分隔这两条命令</p>
+<h2 id="命令执行">命令执行</h2>
+<p>当依赖目标新于目标时，也就是当规则的目标需要被更新时，make会一条一条的执行其后的命令。需要注意的是，如果要让上一条命令的结果应用在下一条命令时，应该使用分号分隔这两条命令</p>
 <blockquote>
 <p>因为每行命令在一个单独的shell中执行。这些Shell之间没有继承关系，两行命令在两个不同的进程执行</p>
 </blockquote>
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">var-kept:</span></span><br><span class="line">    <span class="keyword">export</span> foo=bar; echo <span class="string">&quot;foo=[$$foo]&quot;</span></span><br></pre></td></tr></table></figure>
-<p>或者加上”\\”</p>
+<p>或者加上&quot;\&quot;</p>
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">var-kept:</span></span><br><span class="line">    <span class="keyword">export</span> foo=bar; \</span><br><span class="line">    echo <span class="string">&quot;foo=[$$foo]&quot;</span></span><br></pre></td></tr></table></figure>
-<h2 id="通配符使用"><a href="#通配符使用" class="headerlink" title="通配符使用"></a>通配符使用</h2><p>make支持三个通配符： <code>*</code> ， <code>?</code> 和 <code>~</code></p>
+<h2 id="通配符使用">通配符使用</h2>
+<p>make支持三个通配符： <code>*</code> ， <code>?</code> 和 <code>~</code></p>
 <ul>
-<li>”/“是根目录，”~“是家目录。Linux存储是以挂载的方式，相当于是树状的，源头就是”/“，也就是根目录。而每个用户都有”家“目录，也就是用户的个人目录，比如root用户的”家“目录就是/root,普通用户a的家目录就是/home/a<ul>
+<li>”/“是根目录，”~“是家目录。Linux存储是以挂载的方式，相当于是树状的，源头就是”/“，也就是根目录。而每个用户都有”家“目录，也就是用户的个人目录，比如root用户的”家“目录就是/root,普通用户a的家目录就是/home/a
+<ul>
 <li><code>~hchen/test</code> 则表示用户hchen的宿主目录下的test 目录</li>
 </ul>
 </li>
-<li>* 匹配任意长度的任意字符，可以是0个<ul>
+<li>* 匹配任意长度的任意字符，可以是0个
+<ul>
 <li><code>*.c</code> 表示所有后缀为c的文件</li>
 </ul>
 </li>
 <li>? 匹配任意单个字符，必须是1个</li>
 </ul>
-<h4 id="变量中通配符展开"><a href="#变量中通配符展开" class="headerlink" title="变量中通配符展开"></a>变量中通配符展开</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">objects := $(wildcard *.o) #objects的值是所有 .o 的文件名的集合</span><br><span class="line">objects = *.o #object只是*.o</span><br></pre></td></tr></table></figure>
+<h4 id="变量中通配符展开">变量中通配符展开</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">objects := $(wildcard *.o) #objects的值是所有 .o 的文件名的集合</span><br><span class="line">objects = *.o #object只是*.o</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -378,5 +404,20 @@ MathJax.Hub.Queue(function() {
 
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
