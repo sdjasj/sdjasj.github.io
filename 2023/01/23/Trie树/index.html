@@ -6,7 +6,7 @@
     <meta name="keywords" content="Hexo Theme Redefine">
     <meta name="description" content="qwq不妨多看看吧">
     <meta name="author" content="The Redefine Team">
-    <link rel="canonical" href="https://sdjasj.github.io/2022/02/18/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0/" />
+    <link rel="canonical" href="https://sdjasj.github.io/2023/01/23/Trie%E6%A0%91/" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
     <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
@@ -14,7 +14,7 @@
     
     <title>
         
-            Java正则表达式学习 |
+            Trie树 |
         
         Theme Redefine
     </title>
@@ -190,7 +190,7 @@
     <div class="post-page-container">
         <div class="article-content-container">
             <div class="article-title">
-                <span class="title-hover-animation"><h1 style="font-size:3rem; font-weight: bold; margin: 10px 0;">Java正则表达式学习</h1></span>
+                <span class="title-hover-animation"><h1 style="font-size:3rem; font-weight: bold; margin: 10px 0;">Trie树</h1></span>
             </div>
 
             
@@ -209,8 +209,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2022-02-18 09:20:42</span>
-        <span class="mobile">2022-02-18 09:20</span>
+        <span class="pc">2023-01-23 21:43:12</span>
+        <span class="mobile">2023-01-23 21:43</span>
     </span>
     
     
@@ -219,11 +219,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Java/">Java</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>&nbsp;
+                        <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
                     </li>
                 
             </ul>
@@ -233,12 +229,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-file-word"></i>&nbsp;<span>854 Words</span>
+            <i class="fa-regular fa-file-word"></i>&nbsp;<span>461 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>3 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 Mins</span>
         </span>
     
     
@@ -254,131 +250,33 @@
             
 
             <div class="article-content markdown-body">
-                <h2 id="正则表达式基础">正则表达式基础</h2>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216145536306.png" alt="image-20220216145536306"></p>
+                <h3 id="基本思想">基本思想</h3>
+<p>高效地存储和查找字符串集合的数据结构，存储的字母或者数字种类不能太多</p>
 <span id="more"></span>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216145548834.png" alt="image-20220216145548834"></p>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216145610336.png" alt="image-20220216145610336"></p>
-<blockquote>
-<p><strong>注意：java中正则表达式里&quot;\“本身需要转义，因此要匹配”?“需要表达式”\\?“而不是”\?&quot;</strong></p>
-<p>在其他语言中，<strong>\</strong> 表示：<strong>我想要在正则表达式中插入一个普通的（字面上的）反斜杠，请不要给它任何特殊的意义。</strong></p>
-<p>在 Java 中，<strong>\</strong> 表示：<strong>我要插入一个正则表达式的反斜线，所以其后的字符具有特殊的意义。</strong></p>
-</blockquote>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216145915431.png" alt="image-20220216145915431"></p>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216150018227.png" alt="image-20220216150018227"></p>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216150637142.png" alt="image-20220216150637142"></p>
-<h3 id="捕获组">捕获组</h3>
-<h4 id="简介">简介</h4>
-<ul>
-<li>
-<p>捕获组是把多个字符当一个单独单元进行处理的方法，它通过对括号内的字符分组来创建</p>
-</li>
-<li>
-<p>例如，正则表达式 (dog) 创建了单一分组，组里包含&quot;d&quot;，“o”，和&quot;g&quot;。</p>
-</li>
-<li>
-<p>捕获组是通过从左至右计算其开括号来编号。例如，在表达式（（A）（B（C））），有四个这样的组：</p>
-<ul>
-<li>((A)(B©))</li>
-</ul>
-<ul>
-<li>
-<p>(A)</p>
-</li>
-<li>
-<p>(B©)</p>
-</li>
-<li>
-<p>©</p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>((A)|(B)|©)匹配A,B,C其中一个</li>
-</ul>
-<h4 id="命名捕获组">命名捕获组</h4>
-<ul>
-<li>格式</li>
-</ul>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?&lt;name&gt;.....)</span><br></pre></td></tr></table></figure></div>
-<p>若Matcher对象匹配成功，使用Matcher对象的group(“name”)方法即可返回该捕获组内容</p>
-<ul>
-<li>例子</li>
-</ul>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String dataRe = <span class="string">&quot;(?&lt;date&gt;(?&lt;year&gt;\\d&#123;1,4&#125;)/(?&lt;month&gt;\\d&#123;1,2&#125;)/(?&lt;day&gt;\\d&#123;1,2&#125;))&quot;</span>;</span><br><span class="line">Pattern p = Pattern.compile(dataRe);</span><br><span class="line">Matcher m = p.matcher(<span class="string">&quot;2022/2/18&quot;</span>);</span><br><span class="line">m.find();</span><br><span class="line">System.out.println(m.group(<span class="string">&quot;year&quot;</span>)); <span class="comment">//输出2022</span></span><br></pre></td></tr></table></figure></div>
-<h3 id="数量匹配符匹配模式">数量匹配符匹配模式</h3>
-<ul>
-<li>贪婪模式(Greedy):遇到满足的一直匹配，直到无法匹配</li>
-<li>勉强模式(Reluctant):以?结尾，匹配最少字符</li>
-</ul>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216152228868.png" alt="image-20220216152228868"></p>
-<h2 id="String类里的正则表达式方法">String类里的正则表达式方法</h2>
-<blockquote>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216144425795.png" alt="image-20220216144425795"></p>
-</blockquote>
-<h2 id="regex库">regex库</h2>
-<p>Pattern 对象是正则表达式编译后在内存中的表示形式，因此，正则表达式字符串必须先被编译为Pattern 对象，然后再利用该Pattern 对象创建对应的 Matcher 对象。执行匹配所涉及的状态保留在 Matcher 对象中，多个 Matcher 对象可共享同一个Pattern 对象。</p>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//模式串</span></span><br><span class="line">String pattern = <span class="string">&quot;waitToCompile&quot;</span></span><br><span class="line"><span class="comment">//待匹配对象</span></span><br><span class="line">String line = <span class="string">&quot;WaitToMatch&quot;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">// 创建 Pattern 对象</span></span><br><span class="line">Pattern r = Pattern.compile(pattern);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 现在创建 matcher 对象</span></span><br><span class="line">Matcher m = r.matcher(line);</span><br></pre></td></tr></table></figure></div>
-<h3 id="Matcher常用方法">Matcher常用方法</h3>
-<table>
-<thead>
-<tr>
-<th>Modifier and Type</th>
-<th>Method and Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>int</code></td>
-<td><code>end()</code>返回最后一个字符匹配后的偏移量。</td>
-</tr>
-<tr>
-<td><code>int</code></td>
-<td><code>end(int group)</code>返回在上次匹配操作期间由给定组捕获的子序列的最后一个字符之后的偏移量。</td>
-</tr>
-<tr>
-<td><code>int</code></td>
-<td><code>end(String name)</code>返回给定捕获子序列的最后一个字符之后的偏移量 <a class="link" target="_blank" rel="noopener" href="https://www.matools.com/file/manual/jdk_api_1.8_google/java/util/regex/Pattern.html#groupname">named-capturing group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>以前的匹配操作期间。</td>
-</tr>
-<tr>
-<td><code>boolean</code></td>
-<td><code>find()</code>尝试找到匹配模式的输入序列的下一个子序列。</td>
-</tr>
-<tr>
-<td><code>boolean</code></td>
-<td><code>find(int start)</code>重新设置该匹配器，然后尝试从指定的索引开始找到匹配模式的输入序列的下一个子序列。</td>
-</tr>
-<tr>
-<td><code>String</code></td>
-<td><code>group()</code>返回与上一个匹配匹配的输入子序列。</td>
-</tr>
-<tr>
-<td><code>String</code></td>
-<td><code>group(int group)</code>返回在上一次匹配操作期间由给定组捕获的输入子序列。</td>
-</tr>
-<tr>
-<td><code>String</code></td>
-<td><code>group(String name)</code>返回给定捕获的输入子序列 <a class="link" target="_blank" rel="noopener" href="https://www.matools.com/file/manual/jdk_api_1.8_google/java/util/regex/Pattern.html#groupname">named-capturing group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>以前的匹配操作期间。</td>
-</tr>
-<tr>
-<td><code>int</code></td>
-<td><code>groupCount()</code>返回此匹配器模式中捕获组的数量。</td>
-</tr>
-<tr>
-<td><code>boolean</code></td>
-<td><code>hitEnd()</code>如果在匹配器执行的最后一次匹配操作中输入的结尾被搜索引擎命中，则返回true。</td>
-</tr>
-<tr>
-<td><code>boolean</code></td>
-<td><code>lookingAt()</code>尝试将输入序列从区域开头开始与模式相匹配。</td>
-</tr>
-<tr>
-<td><code>boolean</code></td>
-<td><code>matches()</code>尝试将整个区域与模式进行匹配。</td>
-</tr>
-</tbody>
-</table>
+<p>存储ABD AC ABE可以表示为</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph TD;</span><br><span class="line">    A--&gt;B;</span><br><span class="line">    A--&gt;C;</span><br><span class="line">    B--&gt;D;</span><br><span class="line">    B--&gt;E;</span><br></pre></td></tr></table></figure></div>
+<p>在单词结尾打标记，如上面的D E C，以便知道树根到当前节点是不是一个单词</p>
+<h3 id="模板">模板</h3>
+<h4 id="Trie字符串统计">Trie字符串统计</h4>
+<p>维护一个字符串集合，支持两种操作：</p>
+<ol>
+<li><code>I x</code> 向集合中插入一个字符串 x；</li>
+<li><code>Q x</code> 询问一个字符串在集合中出现了多少次。</li>
+</ol>
+<p>共有 N个操作，所有输入的字符串总长度不超过 105，字符串仅包含小写英文字母。</p>
+<h4 id="输入格式">输入格式</h4>
+<p>第一行包含整数 N，表示操作数。</p>
+<p>接下来 N 行，每行包含一个操作指令，指令为 <code>I x</code> 或 <code>Q x</code> 中的一种。</p>
+<h4 id="输出格式">输出格式</h4>
+<p>对于每个询问指令 <code>Q x</code>，都要输出一个整数作为结果，表示 x 在集合中出现的次数。</p>
+<p>每个结果占一行。</p>
+<h4 id="数据范围">数据范围</h4>
+<p>1≤N≤2∗1041≤N≤2∗104</p>
+<h4 id="输入样例：">输入样例：</h4>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">I abc</span><br><span class="line">Q abc</span><br><span class="line">Q ab</span><br><span class="line">I ab</span><br><span class="line">Q ab</span><br></pre></td></tr></table></figure></div>
+<h4 id="输出样例：">输出样例：</h4>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">0</span><br><span class="line">1</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> trie[N][<span class="number">26</span>], cnt[N], idx;</span><br><span class="line"><span class="keyword">char</span> ss[N];</span><br><span class="line"><span class="keyword">char</span> op[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span> s[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; s[i]; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> t = s[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (!trie[p][t]) &#123;</span><br><span class="line">            trie[p][t] = ++idx;</span><br><span class="line">        &#125;</span><br><span class="line">        p = trie[p][t];</span><br><span class="line">    &#125;</span><br><span class="line">    cnt[p]++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">char</span> s[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; s[i]; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> t = s[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (!trie[p][t]) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        p = trie[p][t];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt[p];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%s%s&quot;</span>, op, ss);</span><br><span class="line">        <span class="keyword">if</span> (op[<span class="number">0</span>] == <span class="string">&#x27;I&#x27;</span>) &#123;</span><br><span class="line">            <span class="built_in">insert</span>(ss);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            cout &lt;&lt; <span class="built_in">query</span>(ss) &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 
             </div>
 
@@ -386,11 +284,11 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：Java正则表达式学习</li>
+        <li>Post title：Trie树</li>
         <li>Post author：The Redefine Team</li>
-        <li>Create time：2022-02-18 09:20:42</li>
+        <li>Create time：2023-01-23 21:43:12</li>
         <li>
-            Post link：https://redefine.ohevan.com/2022/02/18/Java正则表达式学习/
+            Post link：https://redefine.ohevan.com/2023/01/23/Trie树/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -405,11 +303,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/Java/">#Java</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">#正则表达式</a>&nbsp;
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -421,13 +315,13 @@
                         <div class="article-prev">
                             <a class="prev"
                             rel="prev"
-                            href="/2022/02/18/Linux%E9%A2%84%E4%B9%A0/"
+                            href="/2023/01/23/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"
                             >
                                 <span class="left arrow-icon flex-center">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </span>
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Linux预习</span>
+                                    <span class="post-nav-title-item">树状数组</span>
                                     <span class="post-nav-item">Prev posts</span>
                                 </span>
                             </a>
@@ -437,10 +331,10 @@
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2022/02/14/Git%E5%AD%A6%E4%B9%A0/"
+                            href="/2023/01/23/LCA/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Git学习</span>
+                                    <span class="post-nav-title-item">LCA</span>
                                     <span class="post-nav-item">Next posts</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -460,8 +354,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">Java正则表达式学习</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80"><span class="nav-text">正则表达式基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%95%E8%8E%B7%E7%BB%84"><span class="nav-text">捕获组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E6%8D%95%E8%8E%B7%E7%BB%84"><span class="nav-text">命名捕获组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E9%87%8F%E5%8C%B9%E9%85%8D%E7%AC%A6%E5%8C%B9%E9%85%8D%E6%A8%A1%E5%BC%8F"><span class="nav-text">数量匹配符匹配模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String%E7%B1%BB%E9%87%8C%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%96%B9%E6%B3%95"><span class="nav-text">String类里的正则表达式方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#regex%E5%BA%93"><span class="nav-text">regex库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Matcher%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-text">Matcher常用方法</span></a></li></ol></li></ol>
+        <div class="page-title">Trie树</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-text">模板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Trie%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%9F%E8%AE%A1"><span class="nav-text">Trie字符串统计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-text">输出样例：</span></a></li></ol></li></ol>
 
     </div>
 </div>
