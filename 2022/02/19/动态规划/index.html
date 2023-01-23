@@ -100,7 +100,7 @@
                                         
                                             <i class="fa-regular fa-house"></i>
                                         
-                                        HOME
+                                        首页
                                     
                                 </a>
                                 <!-- Submenu -->
@@ -116,7 +116,7 @@
                                         
                                             <i class="fa-regular fa-archive"></i>
                                         
-                                        ARCHIVES
+                                        归档
                                     
                                 </a>
                                 <!-- Submenu -->
@@ -148,7 +148,7 @@
                                 
                                     <i class="fa-regular fa-house"></i>
                                 
-                                HOME
+                                首页
                             
                         </a>
                     </li>
@@ -163,7 +163,7 @@
                                 
                                     <i class="fa-regular fa-archive"></i>
                                 
-                                ARCHIVES
+                                归档
                             
                         </a>
                     </li>
@@ -233,12 +233,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-file-word"></i>&nbsp;<span>1.1k Words</span>
+            <i class="fa-regular fa-file-word"></i>&nbsp;<span>2k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>4 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>8 分钟</span>
         </span>
     
     
@@ -292,12 +292,30 @@
 <p>求解将哪些物品装入背包，可使物品总体积不超过背包容量，且总价值最大。</p>
 <h4 id="做法">做法</h4>
 <p>直接三重循环，最内层循环更新第i组每个物品对应的 最优解</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++ )&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= m; j++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= j; k++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (f[i<span class="number">-1</span>][j-k] + v[i][k] &gt; f[i][j]) &#123;</span><br><span class="line">				f[i][j] =  f[i<span class="number">-1</span>][j-k] + v[i][k];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="背包问题输出方案">背包问题输出方案</h2>
+<p>本质是最短路问题</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1007</span>, V = <span class="number">1007</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> f[N][V];</span><br><span class="line"><span class="keyword">int</span> way[N];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> v[N];</span><br><span class="line"><span class="keyword">int</span> w[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, m;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; v[i] &gt;&gt; w[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">		<span class="keyword">int</span> vi = v[i], wi = w[i];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= m; j++) &#123;</span><br><span class="line">			f[i][j] = f[i+<span class="number">1</span>][j];</span><br><span class="line">			<span class="keyword">if</span> (j &gt;= vi) &#123;</span><br><span class="line">				f[i][j] = max(f[i][j], f[i+<span class="number">1</span>][j- vi] + wi);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j = m; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> vi = v[i], wi = w[i];</span><br><span class="line">		<span class="keyword">if</span> ( (j &gt;= vi &amp;&amp; f[i][j] == f[i+<span class="number">1</span>][j-vi] + wi)) &#123;</span><br><span class="line">			way[i] = <span class="number">1</span>;</span><br><span class="line">			j -= vi;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (way[i]) &#123;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="区间DP">区间DP</h2>
+<p><strong>方法:</strong></p>
+<p><strong>1.循环</strong></p>
+<p>外层枚举区间长度,内层枚举左端点位置，对[l,r]区间内的序列进行dp</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">1</span>; len &lt;= n; len++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>; l + len <span class="number">-1</span> &lt;= n; l ++) &#123;</span><br><span class="line">        <span class="keyword">int</span> r = l + len - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = l;k &lt; r; k++) &#123;</span><br><span class="line">            f[l][r] = max(f[l][r], f[l][k] + f[k+<span class="number">1</span>][r] + w[l][r]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><strong>2.记忆化搜索</strong></p>
+<p><strong>模型:</strong></p>
+<p><strong>1.环形问题</strong></p>
+<p>将环变成链，即在原本的链之后再拼接上一条链，对新的链进行dp</p>
+<h2 id="状态机DP">状态机DP</h2>
+<p>dp数组多加一维表示当前的状态，有点类似状态压缩dp，每次dp进行状态之间的转移(根据前一次的状态)</p>
 <h2 id="状态压缩DP">状态压缩DP</h2>
-<p>以二进制数来表示状态</p>
+<p><strong>棋盘类状压DP</strong>:用01二进制表示状态，先预处理合法的状态(减少时间复杂度)，再根据合法状态的合法转移进行dp</p>
 <h2 id="树形DP">树形DP</h2>
 <p>第一维通常是节点编号，多数时候用递归实现树形DP，对于每个节点x，先<strong>递归</strong>在它的每个子节点上进行DP，回溯时从子节点向节点x进行状态转移</p>
 <h2 id="数位DP">数位DP</h2>
-<h5 id="例题-计数问题">例题:计数问题</h5>
+<h3 id="技巧">技巧</h3>
+<p>1.[x,y]转化为[1,y] - [1,x-1]</p>
+<p>2.用树的思想，考虑每一位的情况**(注意树的最右边的情况需要特判一下)**</p>
+<h4 id="例题-计数问题">例题:计数问题</h4>
 <p>给定两个整数 a 和 b，求 a 和 b 之间的所有数字中0~9的出现次数。</p>
 <p>例如，a=1024，b=1032，则 a 和 b 之间共有9个数如下：</p>
 <p>1024 1025 1026 1027 1028 1029 1030 1031 1032</p>
@@ -306,8 +324,25 @@
 <blockquote>
 <p>把整个数拆成每一位，从最高位向最低位看。设当前这一位为x，则当前位分成[0,x)和x两种情况。第一种情况直接处理，剩下的就是当前位为x的情况，继续看后面的数位，重复这个操作。直到最后一位时，剩下的就是原数，判断是否符合条件即可。</p>
 </blockquote>
-<h5 id="技巧">技巧</h5>
+<h5 id="技巧-2">技巧</h5>
 <p>再求区间[a,b]中满足性质的数时，可以转化为求[1,b]的答案减[1,a - 1]的答案</p>
+<h4 id="例题-数字游戏">例题:数字游戏</h4>
+<p>由于科协里最近真的很流行数字游戏。</p>
+<p>某人又命名了一种取模数，这种数字必须满足各位数字之和 mod N 为 0。</p>
+<p>现在大家又要玩游戏了，指定一个整数闭区间 [a.b]，问这个区间内有多少个取模数。</p>
+<p><strong>输入格式</strong><br>
+输入包含多组测试数据，每组数据占一行。</p>
+<p>每组数据包含三个整数 a,b,N。</p>
+<p><strong>输出格式</strong><br>
+对于每个测试数据输出一行结果，表示区间内各位数字和 mod N 为 0 的数的个数。</p>
+<p><strong>数据范围</strong><br>
+1≤a,b≤231−1,<br>
+1≤N&lt;100<br>
+<strong>输入样例：</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 19 9</span><br></pre></td></tr></table></figure></div>
+<p><strong>输出样例：</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> f[N][<span class="number">11</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">9</span>; i++) f[<span class="number">1</span>][i] = <span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= N; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= <span class="number">9</span>; j++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k = j; k &lt;= <span class="number">9</span>; k++) &#123;</span><br><span class="line">				f[i][j] += f[i<span class="number">-1</span>][k];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="comment">//组合数初始化</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dp</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	vector&lt;<span class="keyword">int</span>&gt; nums;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(n) &#123;</span><br><span class="line">		nums.<span class="built_in">push_back</span>(n % <span class="number">10</span>);</span><br><span class="line">		n /= <span class="number">10</span>;</span><br><span class="line">	&#125; <span class="comment">//枚举数字的每一位</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>; <span class="comment">//答案</span></span><br><span class="line">	<span class="keyword">int</span> last = <span class="number">0</span>; <span class="comment">//保存上一位，根据上一位来判断当前位的行为</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = nums.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = nums[i];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = last; j &lt; x; j++) ans += f[i + <span class="number">1</span>][j];</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (last &gt; x) <span class="keyword">break</span>;</span><br><span class="line">		last = x;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (i == <span class="number">0</span>) ans += <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">init</span>();</span><br><span class="line">	<span class="keyword">int</span> a, b;</span><br><span class="line">	<span class="keyword">while</span> (cin &gt;&gt; a &gt;&gt; b) &#123;</span><br><span class="line">		cout &lt;&lt; <span class="built_in">dp</span>(b) - <span class="built_in">dp</span>(a - <span class="number">1</span>) &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <h2 id="计数DP">计数DP</h2>
 <p>不重不漏，避免子问题重叠，通常要预处理</p>
 <h2 id="闫氏DP分析法">闫氏DP分析法</h2>
@@ -334,14 +369,14 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：动态规划</li>
-        <li>Post author：The Redefine Team</li>
-        <li>Create time：2022-02-19 20:32:02</li>
+        <li>本文标题：动态规划</li>
+        <li>本文作者：The Redefine Team</li>
+        <li>创建时间：2022-02-19 20:32:02</li>
         <li>
-            Post link：https://redefine.ohevan.com/2022/02/19/动态规划/
+            本文链接：https://redefine.ohevan.com/2022/02/19/动态规划/
         </li>
         <li>
-            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
         </li>
     </ul>
 </div>
@@ -376,7 +411,7 @@
                                 </span>
                                 <span class="title flex-center">
                                     <span class="post-nav-title-item">算法数学基础知识</span>
-                                    <span class="post-nav-item">Prev posts</span>
+                                    <span class="post-nav-item">上一篇</span>
                                 </span>
                             </a>
                         </div>
@@ -389,7 +424,7 @@
                             >
                                 <span class="title flex-center">
                                     <span class="post-nav-title-item">二分算法</span>
-                                    <span class="post-nav-item">Next posts</span>
+                                    <span class="post-nav-item">下一篇</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
                                     <i class="fa-solid fa-chevron-right"></i>
@@ -407,9 +442,9 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <div class="toc-title">On this page</div>
+        <div class="toc-title">此页目录</div>
         <div class="page-title">动态规划</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-text">完全背包问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB"><span class="nav-text">状态转移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E5%9E%8B%E8%83%8C%E5%8C%85%E5%92%8C%E7%BB%84%E5%90%88%E5%9E%8B%E8%83%8C%E5%8C%85"><span class="nav-text">排列型背包和组合型背包</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85"><span class="nav-text">多重背包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E6%8B%86%E5%88%86%E6%B3%95"><span class="nav-text">直接拆分法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%8B%86%E5%88%86%E6%B3%95"><span class="nav-text">二进制拆分法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85"><span class="nav-text">分组背包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%9A%E6%B3%95"><span class="nav-text">做法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9DP"><span class="nav-text">状态压缩DP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E5%BD%A2DP"><span class="nav-text">树形DP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E4%BD%8DDP"><span class="nav-text">数位DP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98"><span class="nav-text">例题:计数问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%80%E5%B7%A7"><span class="nav-text">技巧</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E6%95%B0DP"><span class="nav-text">计数DP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AB%E6%B0%8FDP%E5%88%86%E6%9E%90%E6%B3%95"><span class="nav-text">闫氏DP分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dp%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%8B%E6%A0%87"><span class="nav-text">dp问题的下标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dp%E9%97%AE%E9%A2%98%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">dp问题的时间复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dp%E7%9A%84%E9%9B%86%E5%90%88%E5%88%92%E5%88%86%E4%BE%9D%E6%8D%AE-%E5%AF%BB%E6%89%BE%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C"><span class="nav-text">dp的集合划分依据 -&gt; 寻找最后一个不同操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2"><span class="nav-text">记忆化搜索</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-text">完全背包问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB"><span class="nav-text">状态转移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E5%9E%8B%E8%83%8C%E5%8C%85%E5%92%8C%E7%BB%84%E5%90%88%E5%9E%8B%E8%83%8C%E5%8C%85"><span class="nav-text">排列型背包和组合型背包</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85"><span class="nav-text">多重背包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E6%8B%86%E5%88%86%E6%B3%95"><span class="nav-text">直接拆分法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%8B%86%E5%88%86%E6%B3%95"><span class="nav-text">二进制拆分法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85"><span class="nav-text">分组背包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%9A%E6%B3%95"><span class="nav-text">做法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E8%BE%93%E5%87%BA%E6%96%B9%E6%A1%88"><span class="nav-text">背包问题输出方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E9%97%B4DP"><span class="nav-text">区间DP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E6%9C%BADP"><span class="nav-text">状态机DP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9DP"><span class="nav-text">状态压缩DP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E5%BD%A2DP"><span class="nav-text">树形DP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E4%BD%8DDP"><span class="nav-text">数位DP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E5%B7%A7"><span class="nav-text">技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98"><span class="nav-text">例题:计数问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%80%E5%B7%A7-2"><span class="nav-text">技巧</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-%E6%95%B0%E5%AD%97%E6%B8%B8%E6%88%8F"><span class="nav-text">例题:数字游戏</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E6%95%B0DP"><span class="nav-text">计数DP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AB%E6%B0%8FDP%E5%88%86%E6%9E%90%E6%B3%95"><span class="nav-text">闫氏DP分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dp%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%8B%E6%A0%87"><span class="nav-text">dp问题的下标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dp%E9%97%AE%E9%A2%98%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">dp问题的时间复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dp%E7%9A%84%E9%9B%86%E5%90%88%E5%88%92%E5%88%86%E4%BE%9D%E6%8D%AE-%E5%AF%BB%E6%89%BE%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C"><span class="nav-text">dp的集合划分依据 -&gt; 寻找最后一个不同操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2"><span class="nav-text">记忆化搜索</span></a></li></ol></li></ol>
 
     </div>
 </div>
@@ -436,25 +471,25 @@
               <span>2022</span>
               -
             
-            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">The Redefine Team. All Rights Reserved.</a>
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">The Redefine Team. 版权所有.</a>
         </div>
         
             <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
-                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
                     </span>
                 
                 
                     <span id="busuanzi_container_site_pv">
-                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
                     </span>
                 
             </div>
         
         <div class="theme-info info-item">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v1.0.0</a>
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v1.0.0</a>
         </div>
         
         
@@ -476,7 +511,7 @@
         </div>
         
             <div>
-                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
             </div>
         
         
