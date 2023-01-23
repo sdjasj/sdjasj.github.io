@@ -254,13 +254,13 @@
 <p>C 或者 C++ 程序从源代码生成可执行程序的过程，需经历 4 个过程，分别是预处理、编译、汇编和链接</p>
 <h3 id="参数">参数</h3>
 <h4 id="gcc-E">gcc -E</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-E（大写）	预处理指定的源文件，不进行编译。</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-E（大写）	预处理指定的源文件，不进行编译。</span><br></pre></td></tr></table></figure></div>
 <ul>
 <li>gcc -E 指令只会将预处理操作的结果输出到屏幕上，并不会自动保存到某个文件。因此该指令往往会和 -o 选项连用，将结果导入到指令的文件中</li>
 </ul>
 <span id="more"></span>
 <h4 id="gcc-S">gcc -S</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-S（大写）	编译指定的源文件，但是不进行汇编。</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-S（大写）	编译指定的源文件，但是不进行汇编。</span><br></pre></td></tr></table></figure></div>
 <ul>
 <li>
 <p>gcc 指令添加 -S（注意是大写）选项，即可令 GCC 编译器仅将指定文件加工至编译阶段，并生成对应的汇编代码文件</p>
@@ -276,17 +276,17 @@
 <ul>
 <li>
 <pre><code>gcc -S demo.i -o test.i
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​				如果操作对象为 .i 文件，则 GCC 编译器只需编译此文件；</span><br><span class="line"></span><br><span class="line">​				如果操作对象为 .c 或者 .cpp 源代码文件，则 GCC 编译器会对其进行预处理和编译这 2 步操作。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### gcc -c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​				如果操作对象为 .i 文件，则 GCC 编译器只需编译此文件；</span><br><span class="line"></span><br><span class="line">​				如果操作对象为 .c 或者 .cpp 源代码文件，则 GCC 编译器会对其进行预处理和编译这 2 步操作。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### gcc -c</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 </code></pre>
 </li>
 </ul>
 </li>
 </ul>
 <p>-c	编译、汇编指定的源文件，但是不进行链接。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">需要强调的一点是，和 gcc -S 类似，gcc -c 选项并非只能用于加工 .s 文件。事实上，-c 选项只是令 GCC 编译器将指定文件加工至汇编阶段，但不执行链接操作。这也就意味着：</span><br><span class="line"></span><br><span class="line">- 如果指定文件为源程序文件（例如 demo.c），则 gcc -c 指令会对 demo.c 文件执行预处理、编译以及汇编这 3 步操作；</span><br><span class="line">- 如果指定文件为刚刚经过预处理后的文件（例如 demo.i），则 gcc -c 指令对 demo.i 文件执行编译和汇编这 2 步操作；</span><br><span class="line">- 如果指定文件为刚刚经过编译后的文件（例如 demo.s），则 gcc -c 指令只对 demo.s 文件执行汇编这 1 步操作</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">需要强调的一点是，和 gcc -S 类似，gcc -c 选项并非只能用于加工 .s 文件。事实上，-c 选项只是令 GCC 编译器将指定文件加工至汇编阶段，但不执行链接操作。这也就意味着：</span><br><span class="line"></span><br><span class="line">- 如果指定文件为源程序文件（例如 demo.c），则 gcc -c 指令会对 demo.c 文件执行预处理、编译以及汇编这 3 步操作；</span><br><span class="line">- 如果指定文件为刚刚经过预处理后的文件（例如 demo.i），则 gcc -c 指令对 demo.i 文件执行编译和汇编这 2 步操作；</span><br><span class="line">- 如果指定文件为刚刚经过编译后的文件（例如 demo.s），则 gcc -c 指令只对 demo.s 文件执行汇编这 1 步操作</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 <p>gcc a.c #进行上述三个操作并连接，生成可执行文件a.out<br>
 gcc a.c b.c c.c -o test.out#一起编译连接三个文件，生成一个可执行文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### gcc -o</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### gcc -o</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 <p>-o	指定生成文件的文件名。<br>
 ##example<br>
 gcc -E demo.c -o demo.i</p>

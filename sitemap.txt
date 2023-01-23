@@ -1,5 +1,4 @@
 https://sdjasj.github.io/categories/index.html
-https://sdjasj.github.io/tags/index.html
 https://sdjasj.github.io/2022/02/10/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%84%E4%B9%A0/
 https://sdjasj.github.io/2022/03/06/Shell%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
 https://sdjasj.github.io/2022/02/18/Linux%E9%A2%84%E4%B9%A0/

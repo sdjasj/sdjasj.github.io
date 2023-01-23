@@ -284,7 +284,7 @@
 <p>当成01背包做，效率低</p>
 <h4 id="二进制拆分法">二进制拆分法</h4>
 <p>将每种物品按二进制1,2,4,…,2^k^	,s-2^k+1^+1拆分成log(si)个，降低时间复杂度</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">k=1</span><br><span class="line">while (k &lt;= s)&#123;</span><br><span class="line">	cnt ++ ;</span><br><span class="line">	v[cnt] = a * k;</span><br><span class="line">    w[cnt] = b * k;</span><br><span class="line">    s -= k;</span><br><span class="line">    k *= 2;</span><br><span class="line">&#125;</span><br><span class="line">if (s &gt; 0)&#123;</span><br><span class="line">	cnt ++ ;</span><br><span class="line">    v[cnt] = a * s;</span><br><span class="line">    w[cnt] = b * s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">k=1</span><br><span class="line">while (k &lt;= s)&#123;</span><br><span class="line">	cnt ++ ;</span><br><span class="line">	v[cnt] = a * k;</span><br><span class="line">    w[cnt] = b * k;</span><br><span class="line">    s -= k;</span><br><span class="line">    k *= 2;</span><br><span class="line">&#125;</span><br><span class="line">if (s &gt; 0)&#123;</span><br><span class="line">	cnt ++ ;</span><br><span class="line">    v[cnt] = a * s;</span><br><span class="line">    w[cnt] = b * s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <h2 id="分组背包">分组背包</h2>
 <p>有 N 组物品和一个容量是 V 的背包。</p>
 <p>每组物品有若干个，同一组内的物品最多只能选一个。<br>
@@ -311,8 +311,8 @@
 <h2 id="计数DP">计数DP</h2>
 <p>不重不漏，避免子问题重叠，通常要预处理</p>
 <h2 id="闫氏DP分析法">闫氏DP分析法</h2>
-<p>from:<a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/406072/">https://www.acwing.com/file_system/file/content/whole/index/content/406072/</a></p>
-<p><img src="https://cdn.acwing.com/media/article/image/2020/03/23/27426_73d9c53a6c-2.png" alt="2png"></p>
+<p>from:<a class="link" target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/406072/">https://www.acwing.com/file_system/file/content/whole/index/content/406072/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img lazyload src="/images/loading.svg" data-src="https://cdn.acwing.com/media/article/image/2020/03/23/27426_73d9c53a6c-2.png" alt="2png"></p>
 <h4 id="dp问题的下标">dp问题的下标</h4>
 <ol>
 <li>若状态转移方程中有f[i - 1]这种状态, 下标(状态转移那部分代码)尽量从1开始</li>
@@ -323,9 +323,9 @@
 <h4 id="dp的集合划分依据-寻找最后一个不同操作">dp的集合划分依据 -&gt; 寻找最后一个不同操作</h4>
 <p>eg. 加不加这个背包, 数字三角形最后一步是由左边还是右边走过来的呀(根据操作的不同来对集合进行划分)</p>
 <p>使得划分之后的小集合可以<strong>递推求出当前集合, 且最小集合已知</strong></p>
-<p><img src="https://cdn.acwing.com/media/article/image/2020/03/24/27426_56d0691c6d-2.png" alt="2.png"></p>
+<p><img lazyload src="/images/loading.svg" data-src="https://cdn.acwing.com/media/article/image/2020/03/24/27426_56d0691c6d-2.png" alt="2.png"></p>
 <h3 id="记忆化搜索">记忆化搜索</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, Integer&gt; memo = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br></pre></td></tr></table></figure>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, Integer&gt; memo = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br></pre></td></tr></table></figure></div>
 <p>java拿Map来存比较方便且省空间</p>
 
             </div>
