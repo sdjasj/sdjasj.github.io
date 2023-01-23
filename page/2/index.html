@@ -98,7 +98,7 @@
                                         
                                             <i class="fa-regular fa-house"></i>
                                         
-                                        HOME
+                                        首页
                                     
                                 </a>
                                 <!-- Submenu -->
@@ -114,7 +114,7 @@
                                         
                                             <i class="fa-regular fa-archive"></i>
                                         
-                                        ARCHIVES
+                                        归档
                                     
                                 </a>
                                 <!-- Submenu -->
@@ -146,7 +146,7 @@
                                 
                                     <i class="fa-regular fa-house"></i>
                                 
-                                HOME
+                                首页
                             
                         </a>
                     </li>
@@ -161,7 +161,7 @@
                                 
                                     <i class="fa-regular fa-archive"></i>
                                 
-                                ARCHIVES
+                                归档
                             
                         </a>
                     </li>
@@ -186,6 +186,251 @@
                 
                     <div class="home-content-container fade-in-down-animation">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/02/21/%E7%AE%97%E6%B3%95%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                        算法数学基础知识
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h1>其他</h1>
+<p><a class="link" target="_blank" rel="noopener" href="https://oi-wiki.org/math/balanced-ternary/">平衡三进制 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>:mark一下，放砝码问题，梦回计组pre</p>
+<h1>数论</h1>
+<h2 id="质数">质数</h2>
+<h4 id="定义">定义</h4>
+<p>在<strong>大于1</strong>的整数中，只包含1和本身这两个约数，就被称为质数，或者叫素数</p>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Feb 21 2022 22:26:05 GMT+0800">
+                
+                    2022/02/21
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E6%95%B0%E8%AE%BA/">数论</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2022/02/21/%E7%AE%97%E6%B3%95%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">阅读全文<span class="seo-reader-text">算法数学基础知识</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/02/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        动态规划
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h2 id="完全背包问题">完全背包问题</h2>
+<p>每种物品无限个</p>
+<ul>
+<li>
+<h4 id="状态转移">状态转移</h4>
+</li>
+</ul>
+<p>以前一直对完全背包的状态转移方程**<code>f[i][j]=max(f[i-1][j],f[i][j-v[i]]+w[i])</code><strong>里面的</strong><code>f[i][j-v[i]]+w[i]</code>**似懂非懂，今天看到一个比较好的解释</p>
+<p>1.已知完全背包还有状态转移方程</p>
+<p><code>f[i][j]=max(f[i-1][j],f[i-1][j-v[i]]+w[i],f[i-1][j-2*v[i]]+2*w[i],...,f[i-1][j-k*v[i]]+k*w[i])  (j-k*v[i]&gt;=0)</code></p>
+<p>2.故可得<code>f[i][j-v[i]] = max(f[i-1][j-v[i]],f[i-1][j-2*v[i]]+*w[i],...,f[i-1][j-k*v[i]]+(k-1)*w[i])</code></p>
+<p>3.第二步的式子左右加上w[i]，右边带入一式即可得**<code>f[i][j]=max(f[i-1][j],f[i][j-v[i]]+w[i])</code>**</p>
+<ul>
+<li>
+<h4 id="排列型背包和组合型背包">排列型背包和组合型背包</h4>
+<ul>
+<li>排列型背包外层循环价值，内层循环物品</li>
+<li>组合型背包外层循环物品，内层循环价值</li>
+</ul>
+</li>
+</ul>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Feb 19 2022 20:32:02 GMT+0800">
+                
+                    2022/02/19
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2022/02/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">阅读全文<span class="seo-reader-text">动态规划</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/02/19/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/">
+                        二分算法
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h1>二分法</h1>
+<h2 id="整数二分">整数二分</h2>
+<h3 id="本质">本质</h3>
+<ul>
+<li>二分法的本质不是单调性而是二段性，一段满足性质，一段不满足性质。两个模板分别在满足性质的区间里寻找最左边的答案(一)和最右边的答案(二)</li>
+<li>有单调性一定可以二分，能二分不一定要有单调性</li>
+<li>每次二分要保证mid处于答案的区间内</li>
+<li>二分模板在有解的情况用，无解下二分的输出根据题目确定</li>
+</ul>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Feb 19 2022 20:31:43 GMT+0800">
+                
+                    2022/02/19
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2022/02/19/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/">阅读全文<span class="seo-reader-text">二分算法</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/02/19/%E6%A0%91%E4%B8%8E%E5%9B%BE%E7%AE%97%E6%B3%95/">
+                        树与图算法
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h1>树与图</h1>
+<p>考的是怎么从题目条件抽象出图(建图)</p>
+<h2 id="树与图存储">树与图存储</h2>
+<h4 id="邻接表（前向星）">邻接表（前向星）</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 对于每个点k，开一个单链表，存储k所有可以走到的点。h[k]存储这个单链表的头结点，e[k]存储箭头指向的点,we[k]存储该边权值</span><br><span class="line">int h[N], e[N], ne[N],we[N] idx;</span><br><span class="line"></span><br><span class="line">// 添加一条边a-&gt;b z为权值</span><br><span class="line">void add(int a, int b, int z)</span><br><span class="line">&#123;</span><br><span class="line">    we[idx] = z, e[idx] = b, ne[idx] = h[a], h[a] = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 初始化</span><br><span class="line">idx = 0;</span><br><span class="line">memset(h, -1, sizeof h);</span><br></pre></td></tr></table></figure>
+<p>对于每个顶点，添加与其相连的边时按照头插法添加,</p>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Feb 19 2022 20:31:35 GMT+0800">
+                
+                    2022/02/19
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2022/02/19/%E6%A0%91%E4%B8%8E%E5%9B%BE%E7%AE%97%E6%B3%95/">阅读全文<span class="seo-reader-text">树与图算法</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
         
             <li class="home-article-item">
 
@@ -234,7 +479,7 @@
         
     </div>
 
-    <a href="/2022/02/19/%E5%8F%8C%E6%8C%87%E9%92%88%E4%B8%8E%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">Read more<span class="seo-reader-text">双指针与滑动窗口</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/19/%E5%8F%8C%E6%8C%87%E9%92%88%E4%B8%8E%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">阅读全文<span class="seo-reader-text">双指针与滑动窗口</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -286,7 +531,7 @@
         
     </div>
 
-    <a href="/2022/02/19/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/">Read more<span class="seo-reader-text">前缀和与差分</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/19/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/">阅读全文<span class="seo-reader-text">前缀和与差分</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -345,7 +590,7 @@
         
     </div>
 
-    <a href="/2022/02/18/Linux%E9%A2%84%E4%B9%A0/">Read more<span class="seo-reader-text">Linux预习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/18/Linux%E9%A2%84%E4%B9%A0/">阅读全文<span class="seo-reader-text">Linux预习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -399,7 +644,7 @@
         
     </div>
 
-    <a href="/2022/02/18/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0/">Read more<span class="seo-reader-text">Java正则表达式学习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/18/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0/">阅读全文<span class="seo-reader-text">Java正则表达式学习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -451,7 +696,7 @@
         
     </div>
 
-    <a href="/2022/02/14/Git%E5%AD%A6%E4%B9%A0/">Read more<span class="seo-reader-text">Git学习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/14/Git%E5%AD%A6%E4%B9%A0/">阅读全文<span class="seo-reader-text">Git学习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -509,241 +754,7 @@
         
     </div>
 
-    <a href="/2022/02/10/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%84%E4%B9%A0/">Read more<span class="seo-reader-text">JAVA多线程预习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/02/08/Java%E9%A2%84%E4%B9%A0/">
-                        Java预习
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        <h2 id="一、零碎知识点">一、零碎知识点</h2>
-<ul>
-<li>
-<h5 id="Java中字符串-判断两个字符串地址是否相等，-equals-判断字符串是否相等">Java中字符串&quot;==&quot;判断两个字符串地址是否相等，.equals()判断字符串是否相等</h5>
-</li>
-</ul>
-<ul>
-<li>
-<h5 id="final关键字只是表示对象引用不会再指向另一个不同的对象，但当前的对象可以更改">final关键字只是表示对象引用不会再指向另一个不同的对象，但当前的对象可以更改</h5>
-</li>
-<li>
-<h5 id="静态方法是不在对象上执行的方法">静态方法是不在对象上执行的方法</h5>
-</li>
-<li>
-<h5 id="数组作为参数是引用传递-可以在方法中修改传递过来的数组">数组作为参数是引用传递,可以在方法中修改传递过来的数组</h5>
-</li>
-<li>
-<h5 id="main-方法是被-JVM-调用的">main 方法是被 JVM 调用的</h5>
-</li>
-</ul>
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Feb 08 2022 20:50:31 GMT+0800">
-                
-                    2022/02/08
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Java/">Java</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2022/02/08/Java%E9%A2%84%E4%B9%A0/">Read more<span class="seo-reader-text">Java预习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/02/07/2021%E7%A7%8B%E8%AE%A1%E7%BB%84%E7%90%86%E8%AE%BA%E5%A4%8D%E4%B9%A0/">
-                        2021秋计组理论复习
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        <h4 id="CPI（Clock-cycle-Per-Instruction）表示每条计算机指令执行所需的时钟周期">CPI（Clock cycle Per Instruction）表示每条计算机指令执行所需的时钟周期</h4>
-<h1>Cache</h1>
-<h3 id="主存地址结构：TIO">主存地址结构：TIO</h3>
-<p>CPU发出的主存地址  Tag(剩余位数) Index(位数由cache块数决定) Offset(位数由块大小决定)</p>
-<h3 id="直接映射cache的容量">直接映射cache的容量</h3>
-<p>❑ 一个cache块不仅包含数据，还包含tag、valid等</p>
-<p>❑ 数据位：8× $2^O$  位</p>
-<p>❑ Tag位：主存地址位数–Index位数–Offset位数<br>
-❑ Valid位：1位，指示cache块是否包含有效数据<br>
-❑ Cache总容量 = cache块数×(数据位 + Tag位数 + Valid位数)<br>
-= $2^{Index}$  ×(8×$2^{Offset}$  +Tag+1)位</p>
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Feb 07 2022 17:37:49 GMT+0800">
-                
-                    2022/02/07
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">计算机组成</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2022/02/07/2021%E7%A7%8B%E8%AE%A1%E7%BB%84%E7%90%86%E8%AE%BA%E5%A4%8D%E4%B9%A0/">Read more<span class="seo-reader-text">2021秋计组理论复习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/02/04/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E6%9D%BF/">
-                        java数据结构模板
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        <h3 id="变长数组">变长数组</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">List&lt;E&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(<span class="keyword">int</span> index, Collection&lt;? extends E&gt; c)</span></span></span><br><span class="line"><span class="function">E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">indexOf</span><span class="params">(Object o)</span><span class="comment">//返回list集合中第一次出现o对象的索引位置，如果list集合中没有o对象，那么就返回-1</span></span></span><br><span class="line"><span class="function">E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span></span></span><br><span class="line"><span class="function">E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span></span></span><br><span class="line"><span class="function">List&lt;E&gt; <span class="title">subList</span><span class="params">(<span class="keyword">int</span> fromIndex, <span class="keyword">int</span> toIndex)</span><span class="comment">//返回从索引fromIndex到toIndex的元素集合，包左不包右</span></span></span><br></pre></td></tr></table></figure>
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Feb 04 2022 21:56:43 GMT+0800">
-                
-                    2022/02/04
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/Java/">Java</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2022/02/04/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E6%9D%BF/">Read more<span class="seo-reader-text">java数据结构模板</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/02/03/BUAA%E9%AB%98%E5%B7%A520%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%80%83%E9%A2%98%E5%9B%9E%E5%BF%86%E7%89%88/">
-                        BUAA高工20级数据结构考题回忆版
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        <h1>判断(2分一题)</h1>
-<p>1.N个结点的树分有N-1条边</p>
-<p>2.Python向下兼容性很好</p>
-<p>3.兄弟伙伴算法分配内存速度很快</p>
-<p>4.冒泡排序不稳定，快速排序稳定</p>
-<p>5.一个字符串字母出现次数全不相同，字母的哈夫曼编码唯一</p>
-<p>6.树的后序遍历和转化成二叉树的中序遍历结果相同</p>
-<p>(只记得6道了，但其他应该很简单，秒选那种，所以没啥印象)</p>
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Thu Feb 03 2022 21:24:35 GMT+0800">
-                
-                    2022/02/03
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2022/02/03/BUAA%E9%AB%98%E5%B7%A520%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%80%83%E9%A2%98%E5%9B%9E%E5%BF%86%E7%89%88/">Read more<span class="seo-reader-text">BUAA高工20级数据结构考题回忆版</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/10/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%84%E4%B9%A0/">阅读全文<span class="seo-reader-text">JAVA多线程预习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -755,9 +766,13 @@
     
         <a class="prev btn"
            href="/"
-        >Prev</a>
+        >上一页</a>
     
 
+    
+        <a class="next btn"
+           href="/page/3/"
+        >下一页</a>
     
 </div>
 
@@ -782,25 +797,25 @@
               <span>2022</span>
               -
             
-            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">The Redefine Team. All Rights Reserved.</a>
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">The Redefine Team. 版权所有.</a>
         </div>
         
             <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
-                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
                     </span>
                 
                 
                     <span id="busuanzi_container_site_pv">
-                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
                     </span>
                 
             </div>
         
         <div class="theme-info info-item">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v1.0.0</a>
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v1.0.0</a>
         </div>
         
         
@@ -822,7 +837,7 @@
         </div>
         
             <div>
-                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
             </div>
         
         

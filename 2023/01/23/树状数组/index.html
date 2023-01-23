@@ -6,7 +6,7 @@
     <meta name="keywords" content="Hexo Theme Redefine">
     <meta name="description" content="qwq不妨多看看吧">
     <meta name="author" content="The Redefine Team">
-    <link rel="canonical" href="https://sdjasj.github.io/2022/02/18/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0/" />
+    <link rel="canonical" href="https://sdjasj.github.io/2023/01/23/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
     <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
@@ -14,7 +14,7 @@
     
     <title>
         
-            Java正则表达式学习 |
+            树状数组 |
         
         Theme Redefine
     </title>
@@ -190,7 +190,7 @@
     <div class="post-page-container">
         <div class="article-content-container">
             <div class="article-title">
-                <span class="title-hover-animation"><h1 style="font-size:3rem; font-weight: bold; margin: 10px 0;">Java正则表达式学习</h1></span>
+                <span class="title-hover-animation"><h1 style="font-size:3rem; font-weight: bold; margin: 10px 0;">树状数组</h1></span>
             </div>
 
             
@@ -209,8 +209,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2022-02-18 09:20:42</span>
-        <span class="mobile">2022-02-18 09:20</span>
+        <span class="pc">2023-01-23 21:44:56</span>
+        <span class="mobile">2023-01-23 21:44</span>
     </span>
     
     
@@ -219,11 +219,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Java/">Java</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>&nbsp;
+                        <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
                     </li>
                 
             </ul>
@@ -233,12 +229,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-file-word"></i>&nbsp;<span>854 字</span>
+            <i class="fa-regular fa-file-word"></i>&nbsp;<span>468 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>3 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 分钟</span>
         </span>
     
     
@@ -254,131 +250,29 @@
             
 
             <div class="article-content markdown-body">
-                <h2 id="正则表达式基础">正则表达式基础</h2>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216145536306.png" alt="image-20220216145536306"></p>
+                <h1>树状数组</h1>
+<p>树状数组能处理的是下标为1~n的数组</p>
+<p>考虑使用的情况：求前缀和、修改区间中的某个数，时间复杂度均为logn</p>
+<h2 id="基本思想-2">基本思想</h2>
+<p>将x分解为二进制x = 2<sup>i1</sup> + 2<sup>i2</sup>+…+2<sup>im</sup> (i1 &gt; … &gt; im)</p>
+<p>则可以将[1,x]的区间划分为[1, 2<sup>i1</sup>],[2<sup>i1</sup>+1,2<sup>i1</sup>+2<sup>i2</sup>],[2<sup>i1</sup>+2<sup>i2</sup>+1, 2<sup>i1</sup>+2<sup>i2</sup>+2<sup>i3</sup>] …,[2<sup>i1</sup>+2<sup>i2</sup>+…+2<sup>im-1</sup> +1,2<sup>i1</sup>+2<sup>i2</sup>+…+2<sup>im</sup>  ]这些区间</p>
+<p>c[x]保存序列a区间[x-lowbit(x) + 1, x]中所有数的和</p>
+<p>C[i] = A[i - 2<sup>k</sup>+1] + A[i - 2<sup>k</sup>+2] + … + A[i];   //k为i的二进制中从最低位到高位连续零的长度</p>
+<p><strong>该结构满足以下性质：</strong></p>
+<p><strong>（1）每个内部节点c[x]保存以他为根的子树中所有叶节点的和</strong></p>
+<p><strong>（2）每个内部节点c[x]的子节点数等于lowbit(x)的大小</strong></p>
+<p><strong>（3）除数根外，每个内部节点c[x]的父节点是c[x+lowbit(x)]</strong></p>
+<p><strong>（4）树的深度为O(logN)</strong></p>
 <span id="more"></span>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216145548834.png" alt="image-20220216145548834"></p>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216145610336.png" alt="image-20220216145610336"></p>
-<blockquote>
-<p><strong>注意：java中正则表达式里&quot;\“本身需要转义，因此要匹配”?“需要表达式”\\?“而不是”\?&quot;</strong></p>
-<p>在其他语言中，<strong>\</strong> 表示：<strong>我想要在正则表达式中插入一个普通的（字面上的）反斜杠，请不要给它任何特殊的意义。</strong></p>
-<p>在 Java 中，<strong>\</strong> 表示：<strong>我要插入一个正则表达式的反斜线，所以其后的字符具有特殊的意义。</strong></p>
-</blockquote>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216145915431.png" alt="image-20220216145915431"></p>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216150018227.png" alt="image-20220216150018227"></p>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216150637142.png" alt="image-20220216150637142"></p>
-<h3 id="捕获组">捕获组</h3>
-<h4 id="简介">简介</h4>
-<ul>
-<li>
-<p>捕获组是把多个字符当一个单独单元进行处理的方法，它通过对括号内的字符分组来创建</p>
-</li>
-<li>
-<p>例如，正则表达式 (dog) 创建了单一分组，组里包含&quot;d&quot;，“o”，和&quot;g&quot;。</p>
-</li>
-<li>
-<p>捕获组是通过从左至右计算其开括号来编号。例如，在表达式（（A）（B（C））），有四个这样的组：</p>
-<ul>
-<li>((A)(B©))</li>
-</ul>
-<ul>
-<li>
-<p>(A)</p>
-</li>
-<li>
-<p>(B©)</p>
-</li>
-<li>
-<p>©</p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>((A)|(B)|©)匹配A,B,C其中一个</li>
-</ul>
-<h4 id="命名捕获组">命名捕获组</h4>
-<ul>
-<li>格式</li>
-</ul>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?&lt;name&gt;.....)</span><br></pre></td></tr></table></figure></div>
-<p>若Matcher对象匹配成功，使用Matcher对象的group(“name”)方法即可返回该捕获组内容</p>
-<ul>
-<li>例子</li>
-</ul>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String dataRe = <span class="string">&quot;(?&lt;date&gt;(?&lt;year&gt;\\d&#123;1,4&#125;)/(?&lt;month&gt;\\d&#123;1,2&#125;)/(?&lt;day&gt;\\d&#123;1,2&#125;))&quot;</span>;</span><br><span class="line">Pattern p = Pattern.compile(dataRe);</span><br><span class="line">Matcher m = p.matcher(<span class="string">&quot;2022/2/18&quot;</span>);</span><br><span class="line">m.find();</span><br><span class="line">System.out.println(m.group(<span class="string">&quot;year&quot;</span>)); <span class="comment">//输出2022</span></span><br></pre></td></tr></table></figure></div>
-<h3 id="数量匹配符匹配模式">数量匹配符匹配模式</h3>
-<ul>
-<li>贪婪模式(Greedy):遇到满足的一直匹配，直到无法匹配</li>
-<li>勉强模式(Reluctant):以?结尾，匹配最少字符</li>
-</ul>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216152228868.png" alt="image-20220216152228868"></p>
-<h2 id="String类里的正则表达式方法">String类里的正则表达式方法</h2>
-<blockquote>
-<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%5Cimage-20220216144425795.png" alt="image-20220216144425795"></p>
-</blockquote>
-<h2 id="regex库">regex库</h2>
-<p>Pattern 对象是正则表达式编译后在内存中的表示形式，因此，正则表达式字符串必须先被编译为Pattern 对象，然后再利用该Pattern 对象创建对应的 Matcher 对象。执行匹配所涉及的状态保留在 Matcher 对象中，多个 Matcher 对象可共享同一个Pattern 对象。</p>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//模式串</span></span><br><span class="line">String pattern = <span class="string">&quot;waitToCompile&quot;</span></span><br><span class="line"><span class="comment">//待匹配对象</span></span><br><span class="line">String line = <span class="string">&quot;WaitToMatch&quot;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">// 创建 Pattern 对象</span></span><br><span class="line">Pattern r = Pattern.compile(pattern);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 现在创建 matcher 对象</span></span><br><span class="line">Matcher m = r.matcher(line);</span><br></pre></td></tr></table></figure></div>
-<h3 id="Matcher常用方法">Matcher常用方法</h3>
-<table>
-<thead>
-<tr>
-<th>Modifier and Type</th>
-<th>Method and Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>int</code></td>
-<td><code>end()</code>返回最后一个字符匹配后的偏移量。</td>
-</tr>
-<tr>
-<td><code>int</code></td>
-<td><code>end(int group)</code>返回在上次匹配操作期间由给定组捕获的子序列的最后一个字符之后的偏移量。</td>
-</tr>
-<tr>
-<td><code>int</code></td>
-<td><code>end(String name)</code>返回给定捕获子序列的最后一个字符之后的偏移量 <a class="link" target="_blank" rel="noopener" href="https://www.matools.com/file/manual/jdk_api_1.8_google/java/util/regex/Pattern.html#groupname">named-capturing group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>以前的匹配操作期间。</td>
-</tr>
-<tr>
-<td><code>boolean</code></td>
-<td><code>find()</code>尝试找到匹配模式的输入序列的下一个子序列。</td>
-</tr>
-<tr>
-<td><code>boolean</code></td>
-<td><code>find(int start)</code>重新设置该匹配器，然后尝试从指定的索引开始找到匹配模式的输入序列的下一个子序列。</td>
-</tr>
-<tr>
-<td><code>String</code></td>
-<td><code>group()</code>返回与上一个匹配匹配的输入子序列。</td>
-</tr>
-<tr>
-<td><code>String</code></td>
-<td><code>group(int group)</code>返回在上一次匹配操作期间由给定组捕获的输入子序列。</td>
-</tr>
-<tr>
-<td><code>String</code></td>
-<td><code>group(String name)</code>返回给定捕获的输入子序列 <a class="link" target="_blank" rel="noopener" href="https://www.matools.com/file/manual/jdk_api_1.8_google/java/util/regex/Pattern.html#groupname">named-capturing group <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>以前的匹配操作期间。</td>
-</tr>
-<tr>
-<td><code>int</code></td>
-<td><code>groupCount()</code>返回此匹配器模式中捕获组的数量。</td>
-</tr>
-<tr>
-<td><code>boolean</code></td>
-<td><code>hitEnd()</code>如果在匹配器执行的最后一次匹配操作中输入的结尾被搜索引擎命中，则返回true。</td>
-</tr>
-<tr>
-<td><code>boolean</code></td>
-<td><code>lookingAt()</code>尝试将输入序列从区域开头开始与模式相匹配。</td>
-</tr>
-<tr>
-<td><code>boolean</code></td>
-<td><code>matches()</code>尝试将整个区域与模式进行匹配。</td>
-</tr>
-</tbody>
-</table>
+<h2 id="操作">操作</h2>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int lowbit(int x)&#123;</span><br><span class="line">	return x&amp; -x;</span><br><span class="line">&#125; //求x二进制下的最小的2次幂</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = x; i &lt;= n; i += lowbit(i)) t[i] += c;</span><br><span class="line">&#125;<span class="comment">//a[x] += c</span></span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = x; i &gt; <span class="number">0</span>; i -= lowbit(i)) ans += t[i];</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125; <span class="comment">//[1,x]的和</span></span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) add(i, a[i]);</span><br></pre></td></tr></table></figure></div>
+<h2 id="应用">应用</h2>
+<p>1.区间加减数，查询单点，可先差分再树状数组</p>
+<p>2.区间加减数，查询区间，树状数组维护差分数组b[i]及i*b[i]，[1,x]的前缀和课用ask1(x) * (x + 1) - ask2(x)得出</p>
+<p>3.找到区间[l,r]还存在的第k小的数，删除区间[1,x]中的某个数，可使原数组a[i] = 1，树状数组维护a[i]，删除x点的数使用add(x, -1)，查询[l,r]第k小的数利用ask(mid) - ask(l) &gt;= k二分</p>
 
             </div>
 
@@ -386,11 +280,11 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>本文标题：Java正则表达式学习</li>
+        <li>本文标题：树状数组</li>
         <li>本文作者：The Redefine Team</li>
-        <li>创建时间：2022-02-18 09:20:42</li>
+        <li>创建时间：2023-01-23 21:44:56</li>
         <li>
-            本文链接：https://redefine.ohevan.com/2022/02/18/Java正则表达式学习/
+            本文链接：https://redefine.ohevan.com/2023/01/23/树状数组/
         </li>
         <li>
             版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -405,11 +299,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/Java/">#Java</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">#正则表达式</a>&nbsp;
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -421,13 +311,13 @@
                         <div class="article-prev">
                             <a class="prev"
                             rel="prev"
-                            href="/2022/02/18/Linux%E9%A2%84%E4%B9%A0/"
+                            href="/2023/01/23/%E6%9D%82%E9%A1%B9%E7%AE%97%E6%B3%95/"
                             >
                                 <span class="left arrow-icon flex-center">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </span>
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Linux预习</span>
+                                    <span class="post-nav-title-item">杂项算法</span>
                                     <span class="post-nav-item">上一篇</span>
                                 </span>
                             </a>
@@ -437,10 +327,10 @@
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2022/02/14/Git%E5%AD%A6%E4%B9%A0/"
+                            href="/2023/01/23/Trie%E6%A0%91/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Git学习</span>
+                                    <span class="post-nav-title-item">Trie树</span>
                                     <span class="post-nav-item">下一篇</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -460,8 +350,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">Java正则表达式学习</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80"><span class="nav-text">正则表达式基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%95%E8%8E%B7%E7%BB%84"><span class="nav-text">捕获组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E6%8D%95%E8%8E%B7%E7%BB%84"><span class="nav-text">命名捕获组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E9%87%8F%E5%8C%B9%E9%85%8D%E7%AC%A6%E5%8C%B9%E9%85%8D%E6%A8%A1%E5%BC%8F"><span class="nav-text">数量匹配符匹配模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String%E7%B1%BB%E9%87%8C%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%96%B9%E6%B3%95"><span class="nav-text">String类里的正则表达式方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#regex%E5%BA%93"><span class="nav-text">regex库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Matcher%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-text">Matcher常用方法</span></a></li></ol></li></ol>
+        <div class="page-title">树状数组</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">树状数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3-2"><span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-text">操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-text">应用</span></a></li></ol></li></ol>
 
     </div>
 </div>
