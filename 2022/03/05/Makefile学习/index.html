@@ -423,43 +423,30 @@
 
         
             
-    <div id="gitalk-container"></div>
-    <script data-pjax
-            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+ 
+    <div id="waline"></div>
+    <script data-pjax 
+        src="//evan.beee.top/js/waline.js"></script>
     <script data-pjax>
-
-        function loadGitalk() {
-            let __gitalk__pathname = decodeURI(location.pathname);
-            const __gitalk__pathnameLength = __gitalk__pathname.length;
-            const __gitalk__pathnameMaxLength = 50;
-            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
-                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
-            }
-
-            try {
-                Gitalk && new Gitalk({
-                    clientID: 'd448a53b63d4099f928d',
-                    clientSecret: 'fd5599a266156e6b870ad2cbe1faf1f4ab430d7e',
-                    repo: 'blog-comment',
-                    owner: 'sdjasj',
-                    admin: ['sdjasj'],
-                    id: __gitalk__pathname,
-                    language: 'zh-Hans'
-                }).render('gitalk-container');
-
-            } catch (e) {
-                window.Gitalk = null;
-            }
+        function loadWaline() {
+            Waline.init({
+                el: '#waline',
+                serverURL: 'https://redefine-comment-2qw1cedk0-sdjasj.vercel.app/',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+            });
         }
 
         if ('true') {
-            const loadGitalkTimeout = setTimeout(() => {
-                loadGitalk();
-                clearTimeout(loadGitalkTimeout);
+            const loadWalineTimeout = setTimeout(() => {
+                loadWaline();
+                clearTimeout(loadWalineTimeout);
             }, 1000);
         } else {
-            window.addEventListener('DOMContentLoaded', loadGitalk);
+            window.addEventListener('DOMContentLoaded', loadWaline);
         }
+        
     </script>
 
 
