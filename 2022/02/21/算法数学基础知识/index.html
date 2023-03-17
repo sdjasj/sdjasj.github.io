@@ -29,7 +29,7 @@
     <script id="hexo-configurations">
     let REDEFINE = window.REDEFINE || {};
     REDEFINE.hexo_config = {"hostname":"sdjasj.github.io","root":"/","language":"zh-Hans","path":"search.xml"};
-    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/avatar_1628993426.png","favicon":"/images/[lab.magiconch.com][One-Last-Image]-1665884138372.jpg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"Theme Redefine"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"1.0.0","friend_links":{"columns":2}};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/avatar_1628993426.png","favicon":"/images/[lab.magiconch.com][One-Last-Image]-1665884138372.jpg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"Theme Redefine"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"9.3.1","friend_links":{"columns":2}};
     REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
     
@@ -100,7 +100,7 @@
                                         
                                             <i class="fa-regular fa-house"></i>
                                         
-                                        HOME
+                                        首页
                                     
                                 </a>
                                 <!-- Submenu -->
@@ -116,7 +116,7 @@
                                         
                                             <i class="fa-regular fa-archive"></i>
                                         
-                                        ARCHIVES
+                                        归档
                                     
                                 </a>
                                 <!-- Submenu -->
@@ -154,7 +154,7 @@
                                 
                                     <i class="fa-regular fa-house"></i>
                                 
-                                HOME
+                                首页
                             
                         </a>
                     </li>
@@ -169,7 +169,7 @@
                                 
                                     <i class="fa-regular fa-archive"></i>
                                 
-                                ARCHIVES
+                                归档
                             
                         </a>
                     </li>
@@ -239,12 +239,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-file-word"></i>&nbsp;<span>3.5k Words</span>
+            <i class="fa-regular fa-file-word"></i>&nbsp;<span>3.5k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>15 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>15 分钟</span>
         </span>
     
     
@@ -321,7 +321,7 @@
 <p>其内容是：设a,b是不全为零的整数，则存在整数x,y , 使得ax+by = gcd(a,b) .</p>
 <p>令$d=\gcd(a,b)$对更一般的方程$ax +by=c$，它有解当且仅当$d|c$，可以先求出$ax +by=d$的一组特解$x_0,y_0$，再同时乘上$\frac{c}{d}$，得到$ax +by=c$的特解$(c/d)x_0,(c/d)y_0$，方程$ax +by=c$​的通解集合可以表示为</p>
 <script type="math/tex; mode=display">
-x=\frac{d}{c}x_0+k\frac{b}{d},y=\frac{d}{c}y_0-k\frac{a}{d}\quad(k \in \Z)</script><p><strong>裴蜀定理可以扩展到多个整数</strong>，设$a_1, a_2,….a_n$是$n$个整数，$d=\gcd(a_1, a_2,….a_n)$，则存在整数$x_1,x_2,…,x_n$使得$a_1<em>x_1+a_2</em>x_2+…+a_n*x_n=d$</p>
+x=\frac{c}{d}x_0+k\frac{b}{d},y=\frac{c}{d}y_0-k\frac{a}{d}\quad(k \in \Z)</script><p><strong>裴蜀定理可以扩展到多个整数</strong>，设$a_1, a_2,….a_n$是$n$个整数，$d=\gcd(a_1, a_2,….a_n)$，则存在整数$x_1,x_2,…,x_n$使得$a_1<em>x_1+a_2</em>x_2+…+a_n*x_n=d$</p>
 <h3 id="扩展欧几里得算法"><a href="#扩展欧几里得算法" class="headerlink" title="扩展欧几里得算法"></a>扩展欧几里得算法</h3><div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 求x, y，使得ax + by = gcd(a, b)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (b == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x = <span class="number">1</span>; y = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> d = <span class="built_in">exgcd</span>(b, a % b, x, y);</span><br><span class="line">    <span class="keyword">int</span> t = x;</span><br><span class="line">    x = y;</span><br><span class="line">    y = t - (a / b) * y;</span><br><span class="line">    <span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <h3 id="线性同余方程"><a href="#线性同余方程" class="headerlink" title="线性同余方程"></a>线性同余方程</h3><h4 id="特解"><a href="#特解" class="headerlink" title="特解"></a>特解</h4><p>给定整数$a,b,m$,求一个整数$x$满足$a*x \equiv b \pmod{m}$，或者无解。因为未知数的指数为1，所以称为一次同余方程，也称为线性同余方程。</p>
 <p>$a<em>x \equiv b \pmod{m}$等价于$a</em>x-b$是$m$的倍数，设为$-y$倍。于是方程可以改写为$a<em>x+m</em>y = b$，根据裴蜀定理可以知道方程有解当且仅当$\gcd(a,m)|b$，采用扩展欧几里得算法得出$a<em>x_0+b</em>y_0=\gcd(a,m)$的一组解$x_0,y_0$，然后$x = x_0 * b/\gcd(a,m)$，就是原线性同余方程的一组解</p>
@@ -387,14 +387,14 @@ x=k'_1*m_1+a_1+k*\frac{m_1*m_2}{d}</script><p>即两个方程可以合并为一�
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：算法数学基础知识</li>
-        <li>Post author：sdjasj</li>
-        <li>Create time：2022-02-21 22:26:05</li>
+        <li>本文标题：算法数学基础知识</li>
+        <li>本文作者：sdjasj</li>
+        <li>创建时间：2022-02-21 22:26:05</li>
         <li>
-            Post link：https://redefine.ohevan.com/2022/02/21/算法数学基础知识/
+            本文链接：https://redefine.ohevan.com/2022/02/21/算法数学基础知识/
         </li>
         <li>
-            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
         </li>
     </ul>
 </div>
@@ -429,7 +429,7 @@ x=k'_1*m_1+a_1+k*\frac{m_1*m_2}{d}</script><p>即两个方程可以合并为一�
                                 </span>
                                 <span class="title flex-center">
                                     <span class="post-nav-title-item">Java泛型</span>
-                                    <span class="post-nav-item">Prev posts</span>
+                                    <span class="post-nav-item">上一篇</span>
                                 </span>
                             </a>
                         </div>
@@ -442,7 +442,7 @@ x=k'_1*m_1+a_1+k*\frac{m_1*m_2}{d}</script><p>即两个方程可以合并为一�
                             >
                                 <span class="title flex-center">
                                     <span class="post-nav-title-item">动态规划</span>
-                                    <span class="post-nav-item">Next posts</span>
+                                    <span class="post-nav-item">下一篇</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
                                     <i class="fa-solid fa-chevron-right"></i>
@@ -458,7 +458,7 @@ x=k'_1*m_1+a_1+k*\frac{m_1*m_2}{d}</script><p>即两个方程可以合并为一�
                     <div class="comments-container">
     <div id="comment-anchor"></div>
     <div class="comment-area-title">
-        <i class="fa-solid fa-comments">&nbsp;Comments</i>
+        <i class="fa-solid fa-comments">&nbsp;评论</i>
     </div>
     
 
@@ -504,7 +504,7 @@ x=k'_1*m_1+a_1+k*\frac{m_1*m_2}{d}</script><p>即两个方程可以合并为一�
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <div class="toc-title">On this page</div>
+        <div class="toc-title">此页目录</div>
         <div class="page-title">算法数学基础知识</div>
         <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E8%AE%BA"><span class="nav-text">数论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A8%E6%95%B0"><span class="nav-text">质数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%95%E9%99%A4%E6%B3%95%E5%88%A4%E5%AE%9A%E8%B4%A8%E6%95%B0"><span class="nav-text">试除法判定质数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%95%E9%99%A4%E6%B3%95%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0"><span class="nav-text">试除法分解质因数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%B4%E7%B4%A0%E7%AD%9B%E6%B3%95%E6%B1%82%E7%B4%A0%E6%95%B0"><span class="nav-text">朴素筛法求素数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%AD%9B%E6%B3%95%E6%B1%82%E7%B4%A0%E6%95%B0"><span class="nav-text">线性筛法求素数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%A6%E6%95%B0"><span class="nav-text">约数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%95%E9%99%A4%E6%B3%95%E6%B1%82%E6%89%80%E6%9C%89%E7%BA%A6%E6%95%B0"><span class="nav-text">试除法求所有约数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0%E5%92%8C%E7%BA%A6%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="nav-text">约数个数和约数之和</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95"><span class="nav-text">欧几里得算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E6%80%A7%E8%B4%A8"><span class="nav-text">最大公约数性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0"><span class="nav-text">最小公倍数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0"><span class="nav-text">欧拉函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%9B%E6%B3%95%E6%B1%82%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0-%E6%B1%822-N%E4%B8%AD%E6%AF%8F%E4%B8%AA%E6%95%B0%E7%9A%84%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0"><span class="nav-text">筛法求欧拉函数(求2~N中每个数的欧拉函数)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86%E4%B8%8E%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86"><span class="nav-text">费马小定理与欧拉定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E4%BD%99"><span class="nav-text">同余</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%A7%E8%B4%A8"><span class="nav-text">性质</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%B9%82"><span class="nav-text">快速幂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0"><span class="nav-text">卡特兰数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83"><span class="nav-text">乘法逆元</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%84%8F%E4%B9%89-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%80%86%E5%85%83%EF%BC%9F"><span class="nav-text">意义(为什么需要逆元？)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86"><span class="nav-text">裴蜀定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95"><span class="nav-text">扩展欧几里得算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B"><span class="nav-text">线性同余方程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E8%A7%A3"><span class="nav-text">特解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%A7%A3"><span class="nav-text">通解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86-CRT"><span class="nav-text">中国剩余定理(CRT)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A9%E5%B1%95CRT"><span class="nav-text">扩展CRT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%9A%E5%BC%88%E8%AE%BA"><span class="nav-text">博弈论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NIM%E6%B8%B8%E6%88%8F"><span class="nav-text">NIM游戏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AC%E5%B9%B3%E7%BB%84%E5%90%88%E6%B8%B8%E6%88%8FICG"><span class="nav-text">公平组合游戏ICG</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E5%90%91%E5%9B%BE%E6%B8%B8%E6%88%8F"><span class="nav-text">有向图游戏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mex%E8%BF%90%E7%AE%97"><span class="nav-text">Mex运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SG%E5%87%BD%E6%95%B0"><span class="nav-text">SG函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E5%90%91%E5%9B%BE%E6%B8%B8%E6%88%8F%E7%9A%84%E5%92%8C"><span class="nav-text">有向图游戏的和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%86"><span class="nav-text">定理</span></a></li></ol></li></ol></li></ol></li></ol>
 
@@ -533,25 +533,25 @@ x=k'_1*m_1+a_1+k*\frac{m_1*m_2}{d}</script><p>即两个方程可以合并为一�
               <span>2022</span>
               -
             
-            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">sdjasj. All Rights Reserved.</a>
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">sdjasj. 版权所有.</a>
         </div>
         
             <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
-                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
                     </span>
                 
                 
                     <span id="busuanzi_container_site_pv">
-                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
                     </span>
                 
             </div>
         
         <div class="theme-info info-item">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v1.0.0</a>
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v9.3.1</a>
         </div>
         
         
@@ -573,7 +573,7 @@ x=k'_1*m_1+a_1+k*\frac{m_1*m_2}{d}</script><p>即两个方程可以合并为一�
         </div>
         
             <div>
-                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
             </div>
         
         
@@ -667,7 +667,7 @@ x=k'_1*m_1+a_1+k*\frac{m_1*m_2}{d}</script><p>即两个方程可以合并为一�
                 <input autocomplete="off"
                        autocorrect="off"
                        autocapitalize="off"
-                       placeholder="Search..."
+                       placeholder="搜索..."
                        spellcheck="false"
                        type="search"
                        class="search-input"
