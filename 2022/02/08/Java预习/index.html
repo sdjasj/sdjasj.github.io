@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java预习 | sdjasj的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、零碎知识点   Java中字符串&quot;&#x3D;&#x3D;&quot;判断两个字符串地址是否相等，.equals()判断字符串是否相等     final关键字只是表示对象引用不会再指向另一个不同的对象，但当前的对象可以更改   静态方法是不在对象上执行的方法   数组作为参数是引用传递,可以在方法中修改传递过来的数组   main 方法是被 JVM 调用的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java预习">
+<meta property="og:url" content="https://sdjasj.github.io/2022/02/08/Java%E9%A2%84%E4%B9%A0/index.html">
+<meta property="og:site_name" content="sdjasj的博客">
+<meta property="og:description" content="一、零碎知识点   Java中字符串&quot;&#x3D;&#x3D;&quot;判断两个字符串地址是否相等，.equals()判断字符串是否相等     final关键字只是表示对象引用不会再指向另一个不同的对象，但当前的对象可以更改   静态方法是不在对象上执行的方法   数组作为参数是引用传递,可以在方法中修改传递过来的数组   main 方法是被 JVM 调用的">
+<meta property="og:locale">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200914213258544.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3loOTkxMzE0,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="e:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E9%A2%84%E4%B9%A0%5C3.png">
+<meta property="og:image" content="e:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E9%A2%84%E4%B9%A0%5C2.png">
+<meta property="og:image" content="e:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E9%A2%84%E4%B9%A0%5C1.png">
+<meta property="article:published_time" content="2022-02-08T12:50:31.000Z">
+<meta property="article:modified_time" content="2022-07-18T01:29:38.996Z">
+<meta property="article:author" content="sdjasj">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200914213258544.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3loOTkxMzE0,size_16,color_FFFFFF,t_70#pic_center">
+  
+    <link rel="alternative" href="/atom.xml" title="sdjasj的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("tPeUS2UzXfG7W4YNN37RXM0b-gzGzoHsz", "hQg7JGn4SbUxhmbEiIgh0U3u");</script>
+
+<script src="/js/Counter.js"></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/ycy.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">sdjasj</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sdjasj" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="https://mail.qq.com/" title="mail">mail</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=399367218&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a> <a href="/tags/Shell/" style="font-size: 12.5px;">Shell</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/gcc/" style="font-size: 10px;">gcc</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%95%B0%E8%AE%BA/" style="font-size: 10px;">数论</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" style="font-size: 10px;">计算机组成</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://mail.google.com/">MyGmail is sdjasjBUAA@gmail.com</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://banana889.github.io/">Banana889</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">学习算法中~~~</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/ycy.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sdjasj" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="https://mail.qq.com/" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Java预习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/02/08/Java%E9%A2%84%E4%B9%A0/" class="article-date">
+  	<time datetime="2022-02-08T12:50:31.000Z" itemprop="datePublished">2022-02-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java预习
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+	</div>
+
+        
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2022/02/08/Java%E9%A2%84%E4%B9%A0/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="Java预习">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、零碎知识点">一、零碎知识点</h2>
+<ul>
+<li>
+<h5 id="Java中字符串-判断两个字符串地址是否相等，-equals-判断字符串是否相等">Java中字符串&quot;==&quot;判断两个字符串地址是否相等，.equals()判断字符串是否相等</h5>
+</li>
+</ul>
+<ul>
+<li>
+<h5 id="final关键字只是表示对象引用不会再指向另一个不同的对象，但当前的对象可以更改">final关键字只是表示对象引用不会再指向另一个不同的对象，但当前的对象可以更改</h5>
+</li>
+<li>
+<h5 id="静态方法是不在对象上执行的方法">静态方法是不在对象上执行的方法</h5>
+</li>
+<li>
+<h5 id="数组作为参数是引用传递-可以在方法中修改传递过来的数组">数组作为参数是引用传递,可以在方法中修改传递过来的数组</h5>
+</li>
+<li>
+<h5 id="main-方法是被-JVM-调用的">main 方法是被 JVM 调用的</h5>
+</li>
+</ul>
+<span id="more"></span>
+<ul>
+<li>
+<h5 id="方法重载-一个类的两个方法拥有相同的名字，但是有不同的参数列表-重载的方法必须拥有不同的参数列表。你不能仅仅依据修饰符或者返回类型的不同来重载方法。">方法重载:一个类的两个方法拥有相同的名字，但是有不同的参数列表(重载的方法必须拥有不同的参数列表。你不能仅仅依据修饰符或者返回类型的不同来重载方法。)</h5>
+</li>
+<li>
+<h5 id="不管你与否自定义构造方法，所有的类都有构造方法，因为Java自动提供了一个默认构造方法，它把所有成员初始化为0">不管你与否自定义构造方法，所有的类都有构造方法，因为Java自动提供了一个默认构造方法，它把所有成员初始化为0</h5>
+</li>
+<li>
+<h5 id="JVM常量池保证相同的字符串直接量只有一个，不会产生多个副本，s1-“ab”-s2-“a”-“b”-s2直接引用常量池中的-ab-，s1与s2指向同一个对象">JVM常量池保证相同的字符串直接量只有一个，不会产生多个副本，s1 = “ab”, s2 = “a” + “b”,s2直接引用常量池中的&quot;ab&quot;，s1与s2指向同一个对象</h5>
+</li>
+<li>
+<p>Objects类的克隆是浅克隆，对象实例变量只复制了引用</p>
+</li>
+</ul>
+<p><img lazyload src="/images/loading.svg" data-src="https://img-blog.csdnimg.cn/20200914213258544.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3loOTkxMzE0,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<h2 id="二、方法修饰符">二、方法修饰符</h2>
+<ol>
+<li>public（公共控制符），包外包内都可以调用该方法。</li>
+<li>protected（保护访问控制符）指定该方法可以被它的类和子类进行访问。具体细节可参考：<a class="link" target="_blank" rel="noopener" href="http://blog.csdn.net/dawn_after_dark/article/details/74453915">http://blog.csdn.net/dawn_after_dark/article/details/74453915 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>default（默认权限），指定该方法只对同包可见，对不同包（含不同包的子类）不可见。</li>
+<li>private（私有控制符）指定此方法只能有自己类等方法访问，其他的类不能访问（包括子类），非常严格的控制。</li>
+<li>final，指定方法已完备，不能再进行继承扩充。</li>
+<li>static，指定不需要实例化就可以激活的一个方法，即在内存中只有一份，通过类名即可调用。</li>
+<li>synchronize，同步修饰符，在多个线程中，该修饰符用于在运行前，对它所属的方法加锁，以防止其他线程的访问，运行结束后解锁。</li>
+<li>native，本地修饰符。指定此方法的方法体是用其他语言在程序外部编写的。</li>
+<li>abstract，抽象方法是一种没有任何实现的方法，该方法的的具体实现由子类提供。抽象方法不能被声明成 final 和 static。任何继承抽象类的子类必须实现父类的所有抽象方法，除非该子类也是抽象类。如果一个类包含若干个抽象方法，那么该类必须声明为抽象类。抽象类可以不包含抽象方法。 抽象方法的声明以分号结尾，例如：<code>public abstract sample();</code> 。</li>
+</ol>
+<h2 id="三、变量修饰符">三、变量修饰符</h2>
+<h3 id="1、成员变量修饰符">1、成员变量修饰符</h3>
+<ol>
+<li>public（公共访问控制符），指定该变量为公共的，它可以被任何对象的方法访问。</li>
+<li>protected（保护访问控制符）指定该变量可以别被自己的类和子类访问。在子类中可以覆盖此变量。</li>
+<li>default(默认权限），指定该变量只对同包可见，对不同包（含不同包的子类）不可见。</li>
+<li>private（私有访问控制符）指定该变量只允许自己的类的方法访问，其他任何类（包括子类）中的方法均不能访问。</li>
+<li>final，最终修饰符，指定此变量的值不能变。</li>
+<li>static（静态修饰符）指定变量被所有对象共享，即所有实例都可以使用该变量。变量属于这个类。</li>
+<li>transient（过度修饰符）指定该变量是系统保留，暂无特别作用的临时性变量。不持久化。</li>
+<li>volatile（易失修饰符）指定该变量可以同时被几个线程控制和修改，保证两个不同的线程总是看到某个成员变量的同一个值。</li>
+</ol>
+<blockquote>
+<p>final 和 static 经常一起使用来创建常量。</p>
+</blockquote>
+<h3 id="2、局部变量修饰符">2、局部变量修饰符</h3>
+<p>只能使用 final 修饰局部变量<br>
+（1）为什么不能赋予权限修饰符？<br>
+因为局部变量的生命周期为一个方法的调用期间，所以没必要为其设置权限访问字段，既然你都能访问到这个方法，所以就没必要再为其方法内变量赋予访问权限，因为该变量在方法调用期间已经被加载进了虚拟机栈，换句话说就是肯定能被当前线程访问到，所以设置没意义。<br>
+（2）为什么不能用static修饰<br>
+我们都知道静态变量在方法之前先加载的，所以如果在方法内设置静态变量，可想而知，方法都没加载，你能加载成功方法内的静态变量？</p>
+<h5 id="java一个包可以有无数个public类，但一个文件只能有一个public类">java一个包可以有无数个public类，但一个文件只能有一个public类</h5>
+<h5 id="继承链中对象方法的调用的优先级：this-show-O-、super-show-O-、this-show-super-O-、super-show-super-O-。（父类引用指向子类对象）">继承链中对象方法的调用的优先级：this.show(O)、super.show(O)、this.show((super)O)、super.show((super)O)。（父类引用指向子类对象）</h5>
+<h2 id="五、多态">五、多态</h2>
+<ul>
+<li>编译时结果和运行时结果不一样（父类引用指向子类对象，只能使用父类中的方法(被子类重写的调用子类)）</li>
+<li>向上转型与向下转型</li>
+</ul>
+<h2 id="六、java中遍历集合的三种方式">六、java中遍历集合的三种方式</h2>
+<p>集合遍历操作的三种方式</p>
+<ol>
+<li>Iterator迭代器方式</li>
+<li>增强for循环</li>
+<li>普通for循环</li>
+</ol>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ArrayList list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        list.add(<span class="number">123</span>);</span><br><span class="line">        list.add(<span class="string">&quot;AAAA&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;bb&quot;</span>);</span><br><span class="line">        list.add(<span class="keyword">new</span> String(<span class="string">&quot;JavaEE&quot;</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> Date());</span><br><span class="line">        list.add(<span class="keyword">false</span>);</span><br><span class="line">        <span class="comment">// 遍历</span></span><br><span class="line">        <span class="comment">//1.Iterator迭代器方式</span></span><br><span class="line">        Iterator iterator = list.iterator();</span><br><span class="line">        <span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">            System.out.println(iterator.next());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.增强for循环</span></span><br><span class="line">        <span class="keyword">for</span>(Object obj:list)&#123;</span><br><span class="line">            System.out.println(obj);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//3.普通for循环</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;list.size();i++)&#123;</span><br><span class="line">            System.out.println(list.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="七、内部类">七、内部类</h2>
+<ul>
+<li>与内部类相对的外部类只有public和默认访问权限，前者可以被任何位置访问，后者只能被同一个包内的其他类访问。而内部类因为在外部类中，所以有public private protected等修饰</li>
+</ul>
+<h3 id="1-非静态内部类">1.非静态内部类</h3>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">	<span class="comment">//非静态内部类</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">        ....</span><br><span class="line">    &#125;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//实例化内部类</span></span><br><span class="line">A a = <span class="keyword">new</span> A();</span><br><span class="line">A.B b = a.<span class="function">new <span class="title">B</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>
+<p>内部类编译后的格式是Outerclass$InnerClass.class</p>
+</li>
+<li>
+<p>非静态内部类可以访问外部类的private成员(<strong>内部类对象中有隐式引用指向外部类对象</strong>)，但外部类不能直接访问内部类的任何成员，只能通过创建内部类对象来访问其实例成员</p>
+</li>
+<li>
+<p>在非静态内部类中，外部类成员变量与非静态内部类成员变量和局部变量重名时(如都为lbh)，访问局部变量直接使用lbh，非静态内部类成员变量使用this.lbh，外部类使用A.this.lbh(A为外部类名称)</p>
+</li>
+<li>
+<p>根据<strong>静态成员不能访问非静态成员</strong>的规则，外部类的静态成员(静态初始化块、静态方法)不能直接使用非静态内部类。同时非静态内部类里不能定义静态方法、成员等</p>
+</li>
+<li>
+<p>非静态内部类的子类可以是外部类，但也有对外部类对象的隐式引用</p>
+</li>
+</ul>
+<h3 id="2-静态内部类">2.静态内部类</h3>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">	<span class="comment">//静态内部类</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">        ....</span><br><span class="line">    &#125;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>静态内部类可以包含静态和非静态的成员，根据<strong>静态成员不能访问非静态成员</strong>的规则，静态内部类不能访问外部类的实例成员，只能访问外部类的类成员。外部类不能直接访问静态内部类的成员，但可以通过B.name访问静态内部类的类成员，通过静态内部类的对象访问实例成员</li>
+</ul>
+<h3 id="3-内部类使用">3.内部类使用</h3>
+<ul>
+<li>
+<h4 id="在外部类内部使用">在外部类内部使用</h4>
+</li>
+</ul>
+<p>​		和普通实例化一样</p>
+<ul>
+<li>
+<h4 id="在外部类外部使用">在外部类外部使用</h4>
+</li>
+</ul>
+<h5 id="（1）非静态内部类">（1）非静态内部类</h5>
+<p><strong><code> OuterClass.InnerClass varname = new OuterClass.new InnerClass();</code></strong> 非静态内部类的构造器必须由外部类来调用</p>
+<h5 id="（2）静态内部类">（2）静态内部类</h5>
+<p><code>OuterClass.InnerClass varname = new OuterClass.InnerClass();</code></p>
+<h3 id="4-局部内部类">4.局部内部类</h3>
+<ul>
+<li>方法中定义，与普通类使用一样</li>
+</ul>
+<h3 id="5-匿名内部类">5.匿名内部类</h3>
+<ul>
+<li>
+<p>使用局部内部类时，只想<strong>创建这个类的一个对象</strong>时使用匿名内部类</p>
+</li>
+<li>
+<p>从上面定义可以看出，<strong>匿名内部类必须继承一个父类，或实现一个接口，但最多只能继承一个父类，或实现一个接口</strong>。 关于匿名内部类还有如下两条规则。1、匿名内部类不能是抽象类，因为系统在创建匿名内部类时，会立即创建匿名内部类的对象。因 此不允许将匿名内部类定义成抽象类。2、 匿名内部类不能定义构造器。由于匿名内部类没有类名，所以无法定义构造器，但匿名内部类 可以定义初始化块，可以通过实例初始化块来完成构造器需要完成的事情。</p>
+</li>
+<li>
+<h5 id="匿名内部类语法">匿名内部类语法</h5>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> SuperType(construction parameters)&#123;</span><br><span class="line">    inner <span class="class"><span class="keyword">class</span> <span class="title">methods</span> <span class="title">and</span> <span class="title">data</span></span></span><br><span class="line"><span class="class">&#125;</span></span><br><span class="line"><span class="class">//可以实现接口(<span class="title">Comparator</span>)和扩展超类</span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>
+<h5 id="双括号初始化">双括号初始化</h5>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;()&#123;</span><br><span class="line">    &#123;</span><br><span class="line">        add(<span class="number">1</span>);</span><br><span class="line">        add(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;()&#123;</span><br><span class="line">    &#123;</span><br><span class="line">        put(<span class="string">&quot;a&quot;</span>,<span class="number">114514</span>);</span><br><span class="line">        put(<span class="string">&quot;lbh&quot;</span>,<span class="number">66666</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<p><strong>注意</strong>：（以map为例）双括号初始化其实是利用匿名内部类实例化了一个HashMap的子类，子类中有初始化块，并向上转型为HashMap，引用传给map</p>
+<h2 id="八、类与对象">八、类与对象</h2>
+<ul>
+<li>
+<p>如果需要在子类方法中调用父类被覆盖的实例方法，则可使用 super 限定来调用父类被覆盖的实例方法。</p>
+</li>
+<li>
+<p><strong>构造器不能用void声明</strong>，因为这是Java语法规定。实际上构造器返回的是类的对象。</p>
+</li>
+</ul>
+<h3 id="构造器">构造器</h3>
+<ul>
+<li>如果程序员没有为 Java 类提供任何构造器，则系统会为这个类提供一个无参数的构造器，这个构造器的执行体为空，不做任何事情。无论如何，Java类至少包含一个构造器。</li>
+<li>当构造器B完全包含构造器A时，可以在构造器B中使用this(a,b,c)调用A构造器简化程序</li>
+</ul>
+<h4 id="子类调用父类构造器">子类调用父类构造器</h4>
+<p>不管是否使用super 调用来执行父类构造器的初始化代码，子类构造器总会调用父类构造器一次。子类构造器调用父类构造器分如下几种情况。</p>
+<p>* 子类构造器执行体的第一行使用 super 显式调用父类构造器，系统将根据 super调用里传入的实 参列表调用父类对应的构造器。</p>
+<ul>
+<li>
+<p>子类构造器执行体的第一行代码使用 this 显式调用本类中重载的构造器，系统将根据 this 调用里 传入的实参列表调用本类中的另一个构造器。执行本类中另一个构造器时即会调用父类构造器。&gt;</p>
+</li>
+<li>
+<p>子类构造器执行体中既没有 super 调用，也没有 this 调用，系统将会在执行子类构造器之前，隐 式调用父类无参数的构造器。</p>
+</li>
+</ul>
+<p>不管上面哪种情况，当调用子类构造器来初始化子类对象时，父类构造器总会在子类构造器之前执行∶不仅如此，执行父类构造器时，系统会再次上溯执行其父类构造器…·依此类推，创建任何 Java 对象，最先执行的总是 java.lang.Obiect 类的构造器。</p>
+<h3 id="方法重写">方法重写</h3>
+<p>方法的重写要遵循&quot;两同两小一大&quot;规则</p>
+<p>&quot;两同&quot;即方法名相同、形参列表相同;</p>
+<p>&quot;两小&quot;指的是子类方法返回值类型应比父类方法返回值类型更小或相等，子类方法声明抛出的异常类应比父类方法声明抛出的异常类更小或相等;</p>
+<p>&quot;一大&quot;指的是子类方法的访问权限应比父类方法的访问权限更大或相等。</p>
+<p>尤其需要指出的是，覆盖方法和被覆盖方法要么都是类方法，要么都是实例方法，不能一个是类方法，一个是实例方法</p>
+<h3 id="单例类-Singleton">单例类(Singleton)</h3>
+<p>只能创建一个对象</p>
+<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E9%A2%84%E4%B9%A0%5C3.png" alt="3"></p>
+<h3 id="final类">final类</h3>
+<p>final修饰的类不能有子类</p>
+<h3 id="不可变类">不可变类</h3>
+<p>不可变（immutable）类的意思是创建该类的实例后，该实例的实例变量是不可改变的。Java 提供的8个包装类和 java.lang.String类都是不可变类，当创建它们的实例后，其实例的实例变量不可改变。</p>
+<h2 id="九、接口">九、接口</h2>
+<ul>
+<li>接口不是类，而是对希望符合这个接口的类的一组需求</li>
+<li>接口是个双刃剑，好处是面向抽象而不是面向具体编程，缺陷是，当需要修改接口时候，需要修改全部实现该接口的类</li>
+<li>接口中的方法都为public</li>
+<li>接口里的成员变量只能且默认是public static final修饰</li>
+<li>默认方法—为接口方法提供一个默认实现，如<code> defalut int compareTo(T other)&#123;return 0;&#125;</code></li>
+<li>一个类实现的接口和继承的类中方法冲突时，只考虑超类方法；接口方法冲突时必须覆盖这个方法</li>
+<li>从某个角度来看，接口可被当成一个特殊的类，因此一个 Java 源文件里最多只能有一个 public 接口，如果一个Java 源文件里定义了一个public 接口，则该源文件的主文件名必须与该接口名相同。</li>
+</ul>
+<h2 id="十、lambda表达式">十、lambda表达式</h2>
+<h3 id="1-语法">1.语法</h3>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(Type o1, Type o2)-&gt;&#123;.......&#125;</span><br><span class="line">()-&gt;&#123;.......&#125;</span><br><span class="line">(Type o)-&gt;&#123;......&#125;</span><br><span class="line"><span class="comment">//如果可以推导出一个lambda表达式的参数类型，则可以忽略其类型</span></span><br><span class="line">(o)-&gt;&#123;......&#125;</span><br><span class="line">(o1,o2)-&gt;&#123;.........&#125;</span><br><span class="line"><span class="comment">//只有一行可以省略&#123;&#125;</span></span><br><span class="line">(o1,o2)-&gt;o1[<span class="number">1</span>]-o2[<span class="number">1</span>]</span><br></pre></td></tr></table></figure></div>
+<h3 id="2、函数式接口">2、函数式接口</h3>
+<h2 id="2"><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E9%A2%84%E4%B9%A0%5C2.png" alt="2"></h2>
+<h4 id="函数式接口举例">函数式接口举例</h4>
+<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJava%E9%A2%84%E4%B9%A0%5C1.png" alt="1"></p>
+<p><strong>lambda表达式的目标类型必须是函数式接口（Object也不行），但同样的 Lambda 表达式的目标类型完全可能是变化的——唯一的要求是，Lambda 表达式实现的匿名方法与目标类型（函数式接口）中唯一的抽象方法有相同的形参列表。 </strong></p>
+<h3 id="3、方法引用">3、方法引用</h3>
+<table>
+<thead>
+<tr>
+<th>情况</th>
+<th>解释</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object::instanceMethod</td>
+<td>等价于向方法传递参数的lambda表达式</td>
+<td>System.out::println等价于x-&gt;System.out.println(x)</td>
+</tr>
+<tr>
+<td>Class::instanceMethod</td>
+<td>第一个参数成为方法的隐式参数</td>
+<td>String::compareTo等价于x.compareTo(y)</td>
+</tr>
+<tr>
+<td>Class::staticMethon</td>
+<td>所有参数都传递到静态方法中</td>
+<td>Math::pow等价于Math.pow(x,y)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-构造器引用">4.构造器引用</h3>
+<ul>
+<li>int[]::new等价于x-&gt;new iny[x]</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/02/10/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%84%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          JAVA多线程预习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/02/07/2021%E7%A7%8B%E8%AE%A1%E7%BB%84%E7%90%86%E8%AE%BA%E5%A4%8D%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2021秋计组理论复习</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2023 sdjasj
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

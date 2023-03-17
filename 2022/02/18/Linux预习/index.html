@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux预习 | sdjasj的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="零碎知识点  “Shell”——也可称为&quot;壳&quot;，充当的是人与内核（硬件）的翻译官，用户将一些命令&quot;告诉&quot;Shell，它就会调用相应的程序服务执行工作 若一个命令太长一行放不下，可在行尾输入&quot;\&quot;并按回车，可转到下一行输入 .开头的隐藏文件，用 ls -a才能查看 定义别名、shell变量赋值时“&#x3D;”两端不能有空格">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux预习">
+<meta property="og:url" content="https://sdjasj.github.io/2022/02/18/Linux%E9%A2%84%E4%B9%A0/index.html">
+<meta property="og:site_name" content="sdjasj的博客">
+<meta property="og:description" content="零碎知识点  “Shell”——也可称为&quot;壳&quot;，充当的是人与内核（硬件）的翻译官，用户将一些命令&quot;告诉&quot;Shell，它就会调用相应的程序服务执行工作 若一个命令太长一行放不下，可在行尾输入&quot;\&quot;并按回车，可转到下一行输入 .开头的隐藏文件，用 ls -a才能查看 定义别名、shell变量赋值时“&#x3D;”两端不能有空格">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-02-18T12:03:55.000Z">
+<meta property="article:modified_time" content="2022-03-16T13:57:02.180Z">
+<meta property="article:author" content="sdjasj">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Shell">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="sdjasj的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("tPeUS2UzXfG7W4YNN37RXM0b-gzGzoHsz", "hQg7JGn4SbUxhmbEiIgh0U3u");</script>
+
+<script src="/js/Counter.js"></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/ycy.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">sdjasj</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sdjasj" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="https://mail.qq.com/" title="mail">mail</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=399367218&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a> <a href="/tags/Shell/" style="font-size: 12.5px;">Shell</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/gcc/" style="font-size: 10px;">gcc</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%95%B0%E8%AE%BA/" style="font-size: 10px;">数论</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" style="font-size: 10px;">计算机组成</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://mail.google.com/">MyGmail is sdjasjBUAA@gmail.com</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://banana889.github.io/">Banana889</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">学习算法中~~~</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/ycy.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sdjasj" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="https://mail.qq.com/" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Linux预习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/02/18/Linux%E9%A2%84%E4%B9%A0/" class="article-date">
+  	<time datetime="2022-02-18T12:03:55.000Z" itemprop="datePublished">2022-02-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux预习
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/" rel="tag">Shell</a></li></ul>
+	</div>
+
+        
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2022/02/18/Linux%E9%A2%84%E4%B9%A0/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="Linux预习">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="零碎知识点">零碎知识点</h2>
+<ul>
+<li>“Shell”——也可称为&quot;壳&quot;，充当的是人与内核（硬件）的翻译官，用户将一些命令&quot;告诉&quot;Shell，它就会调用相应的程序服务执行工作</li>
+<li>若一个命令太长一行放不下，可在行尾输入&quot;\&quot;并按回车，可转到下一行输入</li>
+<li>.开头的隐藏文件，用 ls -a才能查看</li>
+<li>定义别名、shell变量赋值时“=”两端不能有空格</li>
+</ul>
+<span id="more"></span>
+<h2 id="Linux常用命令">Linux常用命令</h2>
+<h3 id="概述">概述</h3>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">who <span class="comment">#命令列出所有正在使用系统的用户、所用终端名和注册到系统的时间</span></span><br><span class="line"><span class="built_in">echo</span></span><br><span class="line"></span><br><span class="line">date </span><br><span class="line"></span><br><span class="line">cal [月份] [年份] <span class="comment">#显示日历，默认本月日历</span></span><br><span class="line"></span><br><span class="line">clear</span><br><span class="line"></span><br><span class="line">passwd <span class="comment">#改密码</span></span><br><span class="line"></span><br><span class="line">ls</span><br><span class="line"></span><br><span class="line">cat -bns file</span><br><span class="line"><span class="comment">#cat m1 显示m1内容</span></span><br><span class="line"><span class="comment">#cat m1 m2 显示m1 m2内容</span></span><br><span class="line"><span class="comment">#cat m1 m2 &gt; m3 将m1 m2内容合并后放入m3</span></span><br><span class="line"></span><br><span class="line">more -dcs -num file</span><br><span class="line"></span><br><span class="line">less</span><br><span class="line"></span><br><span class="line">head -num -cnqv file <span class="comment">#显示文件开头若干行，默认10</span></span><br><span class="line"></span><br><span class="line">tail -cfnqv file <span class="comment">#显示file末尾若干行，默认10</span></span><br><span class="line"></span><br><span class="line">touch -acmt file <span class="comment">#修改file时间标签为当前时间，文件不存在则创建</span></span><br><span class="line"></span><br><span class="line">grep [-abcEFGhHilLnqrsvVwxy][-A&lt;显示行数&gt;][-B&lt;显示列数&gt;][-C&lt;显示列数&gt;][-d&lt;进行动作&gt;][-e&lt;范本样式&gt;][-f&lt;范本文件&gt;][--<span class="built_in">help</span>][范本样式][文件或目录...]</span><br><span class="line"><span class="comment">#grep 指令用于查找内容包含指定的范本样式的文件，如果发现某文件的内容符合所指定的范本样式，预设 grep 指令会把含有范本样式的那一列显示出来。若不指定任何文件名称，或是所给予的文件名为 -，则 grep 指令会从标准输入设备读取数据。</span></span><br><span class="line"></span><br><span class="line">sort [-bcdfimMnr][-o&lt;输出文件&gt;][-t&lt;分隔字符&gt;][+&lt;起始栏位&gt;-&lt;结束栏位&gt;][--<span class="built_in">help</span>][--verison][文件][-k field1[,field2]]</span><br><span class="line"><span class="comment">#sort 可针对文本文件的内容，以行为单位来排序。</span></span><br><span class="line"></span><br><span class="line">uniq [-cdu][-f&lt;栏位&gt;][-s&lt;字符位置&gt;][-w&lt;字符位置&gt;][--<span class="built_in">help</span>][--version][输入文件][输出文件]</span><br><span class="line"><span class="comment">#Linux uniq 命令用于检查及删除文本文件中重复出现的行列，一般与 sort 命令结合使用。</span></span><br><span class="line"><span class="comment">#uniq 可检查文本文件中重复出现的行列。</span></span><br><span class="line"></span><br><span class="line">cp</span><br><span class="line"></span><br><span class="line">rm</span><br><span class="line"></span><br><span class="line">mv</span><br><span class="line"></span><br><span class="line">wc [-clw][--<span class="built_in">help</span>][--version][文件...]</span><br><span class="line"><span class="comment">#利用wc指令我们可以计算文件的Byte数、字数、或是列数，若不指定文件名称、或是所给予的文件名为&quot;-&quot;，则wc指令会从标准输入设备读取数据。</span></span><br><span class="line"><span class="comment">#$ wc testfile           # testfile文件的统计信息  </span></span><br><span class="line"><span class="comment">#3 92 598 testfile       # testfile文件的行数为3、单词数92、字节数598 </span></span><br><span class="line"></span><br><span class="line"><span class="built_in">pwd</span> <span class="comment">#当前目录绝对路径名</span></span><br><span class="line"></span><br><span class="line">mkdir</span><br><span class="line"></span><br><span class="line">rmdir</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span></span><br><span class="line"></span><br><span class="line">ls <span class="comment">#列出目录内容</span></span><br></pre></td></tr></table></figure></div>
+<h4 id="详细可查阅"><a class="link" target="_blank" rel="noopener" href="https://www.linuxcool.com/">详细可查阅 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h4>
+<h3 id="命令详细">命令详细</h3>
+<h3 id="1-wc">1.wc</h3>
+<p>wc命令统计指定文件中的字节数、字数、行数，并将统计结果显示输出。利用wc指令我们可以计算文件的Byte数、字数或是列数，若不指定文件名称，或是所给予的文件名为“-”，则wc指令会从标准输入设备读取数据。wc同时也给出所指定文件的总统计数。</p>
+<p>**语法格式：**wc [参数] [文件]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-w</th>
+<th>统计字数，或–words：只显示字数。一个字被定义为由空白、跳格或换行字符分隔的字符串</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>统计字节数，或–bytes或–chars：只显示Bytes数</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>统计行数，或–lines：只显示列数</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>统计字符数</td>
+</tr>
+<tr>
+<td>-L</td>
+<td>打印最长行的长度</td>
+</tr>
+<tr>
+<td>–help</td>
+<td>显示帮助信息</td>
+</tr>
+<tr>
+<td>–version</td>
+<td>显示版本信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-rm">2.rm</h3>
+<p>rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。 rm也是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -rf）。所以，我们在执行rm之前最好先确认一下在哪个目录，到底要删除什么东西，操作时保持高度清醒的头脑。</p>
+<p>**语法格式：**rm [参数] [文件]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-f</th>
+<th>忽略不存在的文件，不会出现警告信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-i</td>
+<td>删除前会询问用户是否操作</td>
+</tr>
+<tr>
+<td>-r/R</td>
+<td>递归删除</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示指令的详细执行过程</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-cp">3.cp</h3>
+<p>cp命令可以理解为英文单词copy的缩写，其功能为复制文件或目录。</p>
+<p>cp命令可以将多个文件复制到一个具体的文件名或一个已经存在的目录下，也可以同时复制多个文件到一个指定的目录中。</p>
+<p>**语法格式：**cp [参数] [文件]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-f</th>
+<th>若目标文件已存在，则会直接覆盖原文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-i</td>
+<td>若目标文件已存在，则会询问是否覆盖</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>保留源文件或目录的所有属性</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>递归复制文件和目录</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>当复制符号连接时，把目标文件或目录也建立为符号连接，并指向与源文件或目录连接的原始文件或目录</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>对源文件建立硬连接，而非复制文件</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>对源文件建立符号连接，而非复制文件</td>
+</tr>
+<tr>
+<td>-b</td>
+<td>覆盖已存在的文件目标前将目标文件备份</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>详细显示cp命令执行的操作过程</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>等价于“dpr”选项</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-diff命令-–-比较文件的差异">4.diff命令 – 比较文件的差异</h3>
+<p>diff以逐行的方式，比较文本文件的异同处。如果指定要比较目录，则diff会比较目录中相同文件名的文件，但不会比较其中子目录 。</p>
+<p>**语法格式：**diff [参数] [目录]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-a</th>
+<th>diff预设只会逐行比较文本文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-i</td>
+<td>忽略大小写</td>
+</tr>
+<tr>
+<td>-b</td>
+<td>不检查空格字符的不同</td>
+</tr>
+<tr>
+<td>-W</td>
+<td>在使用-y参数时，指定栏宽</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>不比较选项中所指定的文件或目录</td>
+</tr>
+<tr>
+<td>-X</td>
+<td>您可以将文件或目录类型存成文本文件，然后在=&lt;文件&gt;中指定此文本文件</td>
+</tr>
+<tr>
+<td>-y</td>
+<td>以并列的方式显示文件的异同之处</td>
+</tr>
+<tr>
+<td>–help</td>
+<td>查看帮助信息</td>
+</tr>
+<tr>
+<td>–left-column</td>
+<td>在使用-y参数时，若两个文件某一行内容相同，则仅在左侧的栏位显示该行内容</td>
+</tr>
+<tr>
+<td>–suppress-common-lines</td>
+<td>在使用-y参数时，仅显示不同之处</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-df命令-–-显示磁盘空间使用情况">5.df命令 – 显示磁盘空间使用情况</h3>
+<p>df命令的英文全称即“Disk Free”，顾名思义功能是用于显示系统上可使用的磁盘空间。默认显示单位为KB，建议使用“df -h”的参数组合，根据磁盘容量自动变换合适的单位，更利于阅读。</p>
+<p>日常普遍用该命令可以查看磁盘被占用了多少空间、还剩多少空间等信息。</p>
+<p><strong>语法格式：</strong> df [参数] [指定文件]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-a</th>
+<th>显示所有系统文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-B &lt;块大小&gt;</td>
+<td>指定显示时的块大小</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>以容易阅读的方式显示</td>
+</tr>
+<tr>
+<td>-H</td>
+<td>以1000字节为换算单位来显示</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>显示索引字节信息</td>
+</tr>
+<tr>
+<td>-k</td>
+<td>指定块大小为1KB</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>只显示本地文件系统</td>
+</tr>
+<tr>
+<td>-t &lt;文件系统类型&gt;</td>
+<td>只显示指定类型的文件系统</td>
+</tr>
+<tr>
+<td>-T</td>
+<td>输出时显示文件系统类型</td>
+</tr>
+<tr>
+<td>– -sync</td>
+<td>在取得磁盘使用信息前，先执行sync命令</td>
+</tr>
+</tbody>
+</table>
+<h3 id="6-du命令-–-查看空间">6.du命令 – 查看空间</h3>
+<p>du命令的英文全称是“Disk Usage”，即用于查看磁盘占用空间的意思。但是与df命令不同的是du命令是对文件和目录磁盘使用的空间的查看，而不是某个分区。</p>
+<p>**语法格式：**du [参数] [文件]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-a</th>
+<th>显示目录中所有文件大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-k</td>
+<td>以KB为单位显示文件大小</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>以MB为单位显示文件大小</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>以GB为单位显示文件大小</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>以易读方式显示文件大小</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>仅显示总计</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>du查看当前目录及递归查看子目录大小,  du -a在du基础上查看了文件大小</p>
+</blockquote>
+<h3 id="7-less命令-–-分页显示工具">7.less命令 – 分页显示工具</h3>
+<p>浏览文字档案的内容，用less命令显示文件时，PageUp键向上翻页，PageDown键向下翻页，要退出less程序，应按Q键。</p>
+<p>less的作用与more十分相似，不同点为less命令允许用户向前或向后浏览文件，而more命令只能向前浏览 。</p>
+<p>**语法格式：**less [参数] [文件]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-b</th>
+<th>置缓冲区的大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-e</td>
+<td>当文件显示结束后，自动离开</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>强迫打开特殊文件，例如外围设备代号、目录和二进制文件</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>只标志最后搜索的关键词</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>忽略搜索时的大小写</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>显示类似more命令的百分比</td>
+</tr>
+<tr>
+<td>-N</td>
+<td>显示每行的行号</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>将less 输出的内容在指定文件中保存起来</td>
+</tr>
+<tr>
+<td>-Q</td>
+<td>不使用警告音</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>显示连续空行为一行</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>在单行显示较长的内容，而不换行显示</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>将TAB字符显示为指定个数的空格字符</td>
+</tr>
+</tbody>
+</table>
+<h3 id="8-cmp命令-–-比较两个文件是否有差异">8.cmp命令 – 比较两个文件是否有差异</h3>
+<p>cmp命令有用于比较两个任意类型的文件，若两个文件相同则默认不输出任何信息，若两个文件不同，则会输出第一个不同之处的字符和列数编号，结果输出到标准输出。</p>
+<p>若不指定任何文件名称或是所给予的文件名为”-“，则cmp命令会从标准输入设备读取数据。</p>
+<p>**语法格式：**cmp [参数] [文件] [文件]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>–help</th>
+<th>显示帮助</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-v/–version</td>
+<td>显示版本信息</td>
+</tr>
+<tr>
+<td>-s/–quit/–silent</td>
+<td>不显示错误信息</td>
+</tr>
+<tr>
+<td>-l/–verbose</td>
+<td>标示出所有不一样的地方</td>
+</tr>
+<tr>
+<td>-i/–ignore-initial</td>
+<td>指定一个数目</td>
+</tr>
+<tr>
+<td>-c/–print-chars</td>
+<td>除了标明差异处的十进制字码之外，一并显示该字符所对应字符</td>
+</tr>
+</tbody>
+</table>
+<h3 id="9-cut命令-–-连接文件并打印到标准输出设备上">9.cut命令 – 连接文件并打印到标准输出设备上</h3>
+<p>cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。</p>
+<p>如果不指定 File 参数，cut 命令将读取标准输入。<strong>必须指定 -b、-c 或 -f 标志之一</strong>。</p>
+<p>**语法格式：**cut [参数] [文件]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-b</th>
+<th>以字节为单位进行分割 ,仅显示行中指定直接范围的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>以字符为单位进行分割 , 仅显示行中指定范围的字符</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>自定义分隔符，默认为制表符”TAB”</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>显示指定字段的内容 , 与-d一起使用</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>取消分割多字节字符</td>
+</tr>
+<tr>
+<td>–complement</td>
+<td>补足被选择的字节、字符或字段</td>
+</tr>
+<tr>
+<td>–out-delimiter</td>
+<td>指定输出内容是的字段分割符</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#截取每一行字符@之前的内容</span></span><br><span class="line">cut -f1 -d@ temp.txt</span><br></pre></td></tr></table></figure></div>
+<h3 id="10-ln命令-–-为文件创建链接">10.ln命令 – 为文件创建链接</h3>
+<p>ln命令是linux系统中一个非常重要命令，英文全称是“link”，即链接的意思，它的功能是为某一个文件在另外一个位置建立一个同步的链接。 一种是hard link，又称为硬链接；另一种是symbolic link，又称为符号链接。</p>
+<p>通俗一点理解，可以把硬链接当成源文件的副本，他和源文件一样的大小，但是事实上却不占任何空间。符号链接可以理解为类似windows一样的快捷方式。</p>
+<p>符号链接 ：</p>
+<ul>
+<li>\1. 符号链接以路径的形式存在，类似于Windows操作系统中的快捷方式。</li>
+<li>\2. 符号链接可以跨文件系统 ，硬链接不可以。</li>
+<li>\3. 符号链接可以对一个不存在的文件名进行链接，硬链接不可以。</li>
+<li>\4. 符号链接可以对目录进行链接，硬链接不可以。</li>
+</ul>
+<p>硬链接：</p>
+<ul>
+<li>1.硬链接以文件副本的形式存在，但不占用实际空间。</li>
+<li>\2. 硬链接不允许给目录创建硬链接。</li>
+<li>3.硬链接只有在同一个文件系统中才能创建。</li>
+</ul>
+<p><strong>语法格式：</strong> ln [参数] [源文件或目录] [目标文件或目录]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-b</th>
+<th>为每个已存在的目标文件创建备份文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d</td>
+<td>此选项允许“root”用户建立目录的硬链接</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>强制创建链接，即使目标文件已经存在</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>把指向目录的符号链接视为一个普通文件</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>交互模式，若目标文件已经存在，则提示用户确认进行覆盖</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>对源文件建立符号链接，而非硬链接</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>详细信息模式，输出指令的详细执行过程</td>
+</tr>
+</tbody>
+</table>
+<h3 id="11-stat命令-–-显示文件状态信息">11.stat命令 – 显示文件状态信息</h3>
+<p>stat命令用来显示文件或文件系统的详细信息</p>
+<p>**语法格式：**stat [参数]</p>
+<p><strong>常用参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>-L</th>
+<th>支持符号链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f</td>
+<td>显示文件系统的信息</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>以简洁的方式输出</td>
+</tr>
+<tr>
+<td>–help</td>
+<td>显示命令帮助信息</td>
+</tr>
+<tr>
+<td>–version</td>
+<td>显示命令版本信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>例子</strong>:</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$stat</span> temp1</span><br><span class="line">  File: temp1</span><br><span class="line">  Size: 31        	Blocks: 8          IO Block: 4096   r</span><br><span class="line">egular file</span><br><span class="line">Device: fd01h/64769d	Inode: 3947315     Links: 1</span><br><span class="line">Access: (0777/-rwxrwxrwx)  Uid: (65534/  nobody)   Gid: </span><br><span class="line">(65534/  nobody)</span><br><span class="line">Access: 2022-02-17 01:36:29.776692191 +0000</span><br><span class="line">Modify: 2021-08-05 06:30:30.695361618 +0000</span><br><span class="line">Change: 2022-02-18 09:10:21.980805785 +0000</span><br><span class="line"></span><br><span class="line"><span class="variable">$stat</span> -f temp1</span><br><span class="line">  File: <span class="string">&quot;temp1&quot;</span></span><br><span class="line">    ID: dfc1c994e62bc927 Namelen: 255     Type: ext2/ext</span><br><span class="line">3</span><br><span class="line">Block size: 4096      </span><br><span class="line">Blocks: Total: 20609447   Free: 10633624   Available: 97</span><br><span class="line">38300</span><br><span class="line">Inodes: Total: 5242880    Free: 3787340</span><br></pre></td></tr></table></figure></div>
+<h3 id="12-ls命令-–-显示指定工作目录下的内容及属性信息">12.ls命令 – 显示指定工作目录下的内容及属性信息</h3>
+<p>ls 命令是Linux下最常用的指令之一。ls命令为英文单词 list 的缩写，正如英文单词 list 的意思，其功能是列出指定目录下的内容及其相关属性信息。</p>
+<p>默认状态下，ls命令会列出当前目录的内容。而带上参数后，我们可以用ls做更多的事情。作为最基础同时又是使用频率很高的命令，我们很有必要搞清楚ls命令的用法，那么接下来一起看看吧！</p>
+<p><strong>语法格式:</strong> ls [选项] [文件]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-a</th>
+<th>显示所有文件及目录 (包括以“.”开头的隐藏文件)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-l</td>
+<td>使用长格式列出文件及目录信息</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>将文件以相反次序显示(默认依英文字母次序)</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>根据最后的修改时间排序</td>
+</tr>
+<tr>
+<td>-A</td>
+<td>同 -a ，但不列出 “.” (当前目录) 及 “…” (父目录)</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>根据文件大小排序</td>
+</tr>
+<tr>
+<td>-R</td>
+<td>递归列出所有子目录</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-awk命令-–-文本和数据进行处理的编程语言">13.awk命令 – 文本和数据进行处理的编程语言</h3>
+<p>awk命令是一种编程语言，用于在linux/unix下对文本和数据进行处理。</p>
+<p>而且它支持用户自定义函数和动态正则表达式等先进功能，是linux/unix下的一个强大编程工具。</p>
+<p>awk认为文件都是结构化的，也就是说都是由单 词和各种空白字符组成的，这里的“空白字符”包括 空格、Tab，以及连续的空格和Tab等。每个非空白 的部分叫做“域”，从左到右依次是第一个域、第二 个域，等等。$1,$2分别用于表示域，$0则表示全部域。</p>
+<p>**语法格式：**awk [参数] [文件]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-F</th>
+<th>指定输入时用到的字段分隔符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-v</td>
+<td>自定义变量</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>从脚本中读取awk命令</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>对val值设置内在限制</td>
+</tr>
+</tbody>
+</table>
+<p>例子:</p>
+<ul>
+<li><code>awk '&#123; print $2,$3 &#125;' file </code>打印file每行第二个和第三个字段</li>
+<li><code>awk -F, '&#123; print $2,$3 &#125;' file </code>，以逗号分隔字段，打印file每行第二个和第三个字段</li>
+</ul>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#可以使用substr()函数对指定域截取字符串</span><br><span class="line">cat Awd.txt | awk &#x27;&#123;print substr($1,6)&#125;&#x27; #将输出Awk.txt文件第一个域的第六个字 符到最后一个字符的内容</span><br></pre></td></tr></table></figure></div>
+<h3 id="14-comm命令-–-比较两个已排过序的文件">14.comm命令 – 比较两个已排过序的文件</h3>
+<p>comm命令会一列列地比较两个已排序文件的差异，并将其结果显示出来，如果没有指定任何参数，则会把结果分成3行显示：第1行仅是在第1个文件中出现过的列，第2行是仅在第2个文件中出现过的列，第3行则是在第1与第2个文件里都出现过的列。若给予的文件名称为”-“，则comm指令会从标准输入设备读取数据。</p>
+<p><strong>语法格式：</strong>[参数] [文件1][文件2]</p>
+<table>
+<thead>
+<tr>
+<th>-1</th>
+<th>不显示只在第1个文件里出现过的列</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-2</td>
+<td>不显示只在第2个文件里出现过的列</td>
+</tr>
+<tr>
+<td>-3</td>
+<td>不显示只在第1和第2个文件里出现过的列</td>
+</tr>
+<tr>
+<td>–help</td>
+<td>在线帮助</td>
+</tr>
+<tr>
+<td>–version</td>
+<td>显示版本信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="15-grep命令-–-强大的文本搜索工具">15.grep命令 – 强大的文本搜索工具</h3>
+<p>grep是“global search regular expression and print out the line”的简称，意思是全面搜索正则表达式，并将其打印出来。这个命令可以结合正则表达式使用，它也是linux使用最为广泛的命令。</p>
+<p>grep命令的选项用于对搜索过程的补充，而其命令的模式十分灵活，可以是变量、字符串、正则表达式。需要注意的是：一当模式中包含了空格，务必要用双引号将其引起来。</p>
+<p>linux系统支持三种形式的grep命令，大儿子就是grep，标准，模仿的代表。二儿子兴趣爱好多-egrep，简称扩展grep命令，其实和grep -E等价，支持基本和扩展的正则表达式。小儿子跑的最快-fgrep，简称快速grep命令，其实和grep -F等价，不支持正则表达式，按照字符串表面意思进行匹配。</p>
+<p>简单来说，grep命令可以从文件中查找包含pattern部分字符串的行，并将该文件的路径和该行输出至屏幕</p>
+<p><strong>语法格式：</strong> grep [选项]… PATTERN [FILE]…</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-i</th>
+<th>搜索时，忽略大小写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>只输出匹配行的数量</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>只列出符合匹配的文件名，不列出具体的匹配行</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>列出所有的匹配行，显示行号</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>查询多文件时不显示文件名</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>不显示不存在、没有匹配文本的错误信息</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示不包含匹配文本的所有行</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>匹配整词</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>匹配整行</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>递归搜索</td>
+</tr>
+<tr>
+<td>-q</td>
+<td>禁止输出任何结果，已退出状态表示搜索是否成功</td>
+</tr>
+<tr>
+<td>-b</td>
+<td>打印匹配行距文件头部的偏移量，以字节为单位</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>与-b结合使用，打印匹配的词据文件头部的偏移量，以字节为单位</td>
+</tr>
+<tr>
+<td>-A&lt;显示行数&gt;</td>
+<td>除了显示符合范本样式的那一列之外，并显示该行之后的内容。</td>
+</tr>
+<tr>
+<td>-B&lt;显示行数&gt;</td>
+<td>除了显示符合范本样式的那一列之外，并显示该行之前的内容。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>从文件内容查找匹配指定字符串的行：</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep &quot;被查找的字符串&quot; 文件名</span><br></pre></td></tr></table></figure></div>
+<p>例子：在当前目录里第一级文件夹中寻找包含指定字符串的 .in 文件</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;thermcontact&quot; /.in</span><br></pre></td></tr></table></figure></div>
+<p>从文件内容查找与正则表达式匹配的行：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep –e &quot;正则表达式&quot; 文件名</span><br></pre></td></tr></table></figure></div>
+<p>查找时不区分大小写：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep –i &quot;被查找的字符串&quot; 文件名</span><br></pre></td></tr></table></figure></div>
+<p>查找匹配的行数：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep -c &quot;被查找的字符串&quot; 文件名</span><br></pre></td></tr></table></figure></div>
+<p>从文件内容查找不匹配指定字符串的行：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep –v &quot;被查找的字符串&quot; 文件名</span><br></pre></td></tr></table></figure></div>
+<h3 id="16-find命令-–-查找和搜索文件">16.find命令 – 查找和搜索文件</h3>
+<p>find命令可以根据给定的路径和表达式查找的文件或目录。find参数选项很多，并且支持正则，功能强大。和管道结合使用可以实现复杂的功能，是系统管理者和普通用户必须掌握的命令。</p>
+<p><strong>find如不加任何参数，表示查找当前路径下的所有文件和目录</strong>，如果服务器负载比较高尽量不要在高峰期使用find命令，find命令模糊搜索还是比较消耗系统资源的。</p>
+<p><strong>语法格式</strong>：find [路径] [参数]  [查找和搜索范围]</p>
+<p><strong>常用参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>-name</th>
+<th>按名称查找 “*.c”</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-size</td>
+<td>按大小查找  (0   +1M大于1M)</td>
+</tr>
+<tr>
+<td>-user</td>
+<td>按属性查找</td>
+</tr>
+<tr>
+<td>-type</td>
+<td>按类型查找 (d: 目录   f: 一般文件   l: 符号连结)</td>
+</tr>
+<tr>
+<td>-iname</td>
+<td>忽略大小写</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>使用find命令并加上-name选项可以在当前目录下递归地查找符合参数所示文件名的文件，并将文件的路径输出至屏幕上。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find</span><br><span class="line">用法：find -name 文件名 </span><br></pre></td></tr></table></figure></div>
+</li>
+</ul>
+<p>例子</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">&quot;*.c&quot;</span> <span class="comment">#将当前目录及其子目录下所有文件后缀为 .c 的文件列出来:</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="17-let命令-–-执行一个或多个表达式">17.let命令 – 执行一个或多个表达式</h3>
+<p>let命令是bash中用于计算的工具，用于执行一个或多个表达式，变量计算中不需要加上 $ 来表示变量。如果表达式中包含了空格或其他特殊字符，则必须引起来。</p>
+<p><strong>语法格式：</strong> let [参数]</p>
+<p>例子:</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> <span class="string">&quot;j=6+2&quot;</span> <span class="comment">#等价于((j=6+2))</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$j</span></span><br><span class="line">6 <span class="comment">#输出</span></span><br></pre></td></tr></table></figure></div>
+<p>let使用C语言算术表达式语法</p>
+<h3 id="18-fold命令-–-限制文件列宽">18.fold命令 – 限制文件列宽</h3>
+<p>fold命令会从指定的文件里读取内容，将超过限定列宽的列加入增列字符后（就是换行），输出到标准输出设备。若不指定任何文件名称，或是所给予的文件名为”-“，则fold指令会从标准输入设备读取数据。</p>
+<p>**语法格式：**fold [参数] [文件]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-b</th>
+<th>以Byte为单位计算列宽，而非采用行数编号为单位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-s</td>
+<td>以空格字符作为换列点</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>设置每列的最大行数</td>
+</tr>
+<tr>
+<td>–help</td>
+<td>在线帮助</td>
+</tr>
+<tr>
+<td>–version</td>
+<td>显示版本信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="19-sed命令-–-处理编辑文本文件">19.sed命令 – 处理编辑文本文件</h3>
+<p>Linux sed 命令是利用脚本来处理文本文件。sed 可依照脚本的指令来处理、编辑文本文件。sed 主要用来自动编辑一个或多个文件、简化对文件的反复操作、编写转换程序等。</p>
+<p><strong>sed表达式通常用单引号来引用。不过也可以使用双引号</strong>。shell会在调用sed前先扩展双引号中的内容。如果想在sed表达式中使用变量，双引号就能派上用场了</p>
+<p>**语法格式：**sed [参数] [文本文件]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-e或–expression=&lt;script&gt;</th>
+<th>以选项中指定的script来处理输入的文本文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f&lt;script文件&gt;或–file=&lt;script文件&gt;</td>
+<td>以选项中指定的script文件来处理输入的文本文件</td>
+</tr>
+<tr>
+<td>-h或–help</td>
+<td>显示帮助</td>
+</tr>
+<tr>
+<td>-n或–quiet或–silent</td>
+<td>仅显示script处理后的结果</td>
+</tr>
+<tr>
+<td>-V或–version</td>
+<td>显示版本信息</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>sed使用命令行参数</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">&quot;s/&quot;</span><span class="variable">$2</span><span class="string">&quot;/&quot;</span><span class="variable">$3</span><span class="string">&quot;/g&quot;</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="comment">#$1,$2,$3是命令行参数</span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>-e</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -e <span class="string">&#x27;s/this/That/g&#x27;</span> - e <span class="string">&#x27;s/line/LINE/g&#x27;</span> Sed.txt <span class="comment">#使用-e 参数和分号连接多编辑命令 #两个编辑命令前都要使用-e 参数，如果有更多的编辑需求，以此类推即可</span></span><br></pre></td></tr></table></figure></div>
+<p><strong>&lt;script&gt;中动作说明</strong></p>
+<ul>
+<li>a ：新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)～</li>
+<li>c ：取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！</li>
+<li>d ：删除，因为是删除啊，所以 d 后面通常不接任何东东；</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">&#x27;/Empty/d&#x27;</span> Sed.txt <span class="comment">#删除所有包含Empty 的行</span></span><br><span class="line">sed <span class="string">&#x27;/^$/d&#x27;</span> Sed.txt <span class="comment">#删除空行</span></span><br><span class="line">sed <span class="string">&#x27;5!d&#x27;</span> Sed.txt <span class="comment">#删除除指定范围以外的行（只保留第5 行）</span></span><br><span class="line">sed <span class="string">&#x27;1,$d&#x27;</span> Sed.txt <span class="comment">#删除指定范围的行（第一行到最后行）</span></span><br><span class="line"><span class="comment">#如果想直接修改文件，使用-i</span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>i ：插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；</li>
+<li>p ：打印，亦即将某个选择的数据印出。通常 p 会与参数 sed -n 一起运行～</li>
+<li>s ：取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g 就是啦</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sed -n &#x27;s/the/THE/p&#x27; Sed.txt #使用p 命令，则只打印实际处理过的行，简化了输出（使用-n 参数）</span></span><br><span class="line"><span class="comment">#####this is line 2, THE Second line, Empty line followed</span></span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### /#g标记可以使sed替换第N次出现的匹配：</span></span><br><span class="line">$ <span class="built_in">echo</span> thisthisthisthis | sed <span class="string">&#x27;s/this/THIS/2g&#x27;</span> </span><br><span class="line">thisTHISTHISTHIS </span><br><span class="line">$ <span class="built_in">echo</span> thisthisthisthis | sed <span class="string">&#x27;s/this/THIS/3g&#x27;</span> </span><br><span class="line">thisthisTHISTHIS </span><br><span class="line">$ <span class="built_in">echo</span> thisthisthisthis | sed <span class="string">&#x27;s/this/THIS/4g&#x27;</span> </span><br><span class="line">thisthisthisTHIS</span><br></pre></td></tr></table></figure></div>
+<h4 id="sed例子"><a class="link" target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-sed.html">sed例子 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h4>
+<h3 id="20-nl命令-添加行号">20.nl命令-添加行号</h3>
+<p>nl命令是一个很好用的编号过滤工具。该命令可以读取 File 参数（缺省情况下标准输入），计算输入中的行号，将计算过的行号写入标准输出。</p>
+<p>**语法格式：**nl [参数] [文件]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-b</th>
+<th>指定行号指定的方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-n</td>
+<td>列出行号表示的方式</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>行号栏位的占用的位数</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>在逻辑定界符处不重新开始计算。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="21-expr命令-–-命令行计数器">21.expr命令 – 命令行计数器</h3>
+<p>expr命令的英文全称是“expression”，即是表达式的意思，作用是一个命令行的计数器，常用于在UNIX/LINUX系统中求表达式变量的值，一般用于整数值，也可用于字符串。</p>
+<p>**语法格式：**expr [表达式]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>空格</th>
+<th>隔开每个项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\（反斜杠）</td>
+<td>放在 shell 特定的字符前面</td>
+</tr>
+<tr>
+<td>“”(引号)</td>
+<td>对包含空格和其他特殊字符的字符串要用引号括起来</td>
+</tr>
+</tbody>
+</table>
+<p><strong>参考实例</strong></p>
+<ul>
+<li><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/chengjian-physique/p/8878341.html">正则表达式匹配 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>:</li>
+</ul>
+<p><strong>“string : REGEX&quot;字符串匹配示例。要输出匹配到的字符串结果，需要使用”(“和”)&quot;，否则返回的将是匹配到的字符串数量。</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@xuexi ~]# expr abcde : &#x27;ab\(.*\)&#x27;</span><br><span class="line">cde</span><br><span class="line"></span><br><span class="line">[root@xuexi ~]# expr abcde : &#x27;ab\(.\)&#x27;</span><br><span class="line">c</span><br><span class="line"></span><br><span class="line">[root@xuexi ~]# expr abcde : &#x27;ab.*&#x27;  </span><br><span class="line">5</span><br><span class="line"></span><br><span class="line">[root@xuexi ~]# expr abcde : &#x27;ab.&#x27;   </span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">[root@xuexi ~]# expr abcde : &#x27;.*cd*&#x27;</span><br><span class="line">4</span><br></pre></td></tr></table></figure></div>
+<h5 id="注意，由于REGEX中隐含了-，所以使得匹配时都是从string首字符开始的。">注意，由于REGEX中隐含了&quot;^&quot;，所以使得匹配时都是从string首字符开始的。</h5>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@xuexi ~]# expr abcde : &#x27;cd.*&#x27;  </span><br><span class="line">0</span><br></pre></td></tr></table></figure></div>
+<p>之所以为0，是因为真正的正则表达式是&quot;^cd.*&quot;，而abcde不是c开头而是a开头的，所以无法匹配到任何结果。因此，任何字符串匹配时，都应该从首字符开始。</p>
+<p>字符串匹配时，会先将两端参数转换为字符格式。</p>
+<ul>
+<li>
+<h5 id="计算字串长度：">计算字串长度：</h5>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# expr length “this is a test”  </span><br><span class="line">14 </span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>
+<h5 id="抓取字串（substr-string-pos-len）：">抓取字串（<strong>substr string pos len</strong>）：</h5>
+</li>
+</ul>
+<p>该表达式是从string中取出从pos位置开始长度为len的子字符串。如果pos或len为非正整数时，将返回空字符串。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# expr substr “this is a test” 3 5 </span><br><span class="line">is is</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>
+<h5 id="抓取第一个字符数字串出现的位置（index-string-chars）：">抓取第一个字符数字串出现的位置（<strong>index string chars</strong>）：</h5>
+</li>
+</ul>
+<p>该表达式是从string中搜索chars中某个字符的位置，这个字符是string中最靠前的字符</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# expr index &quot;sarasara&quot; a </span><br><span class="line">2</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>
+<h5 id="整数运算：">整数运算：</h5>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# expr 14 % 9</span><br><span class="line">5  </span><br><span class="line">[root@linuxcool ~]# expr 10 + 10</span><br><span class="line">20</span><br><span class="line">[root@linuxcool ~]# expr 1000 + 900</span><br><span class="line">1900</span><br><span class="line">[root@linuxcool ~]# expr 30 / 3 / 2</span><br><span class="line">5</span><br><span class="line">[root@linuxcool ~]# expr 30 * 3  </span><br><span class="line">expr: Syntax error  </span><br><span class="line">[root@linuxcool ~]# expr 30 /* 3 </span><br><span class="line">90</span><br></pre></td></tr></table></figure></div>
+<p>注意：使用乘号时，必须用反斜线屏蔽其特定含义。因为shell可能会误解显示星号的意义</p>
+<ul>
+<li>
+<h5 id="使用expr进行四则运算：">使用expr进行四则运算：</h5>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# expr \( 10 + 10 \) \* 2 + 100 </span><br><span class="line">140</span><br></pre></td></tr></table></figure></div>
+<h3 id="22-sort命令-–-排序文件并输出">22.sort命令 – 排序文件并输出</h3>
+<p>sort命令是在Linux里非常有用，它将文件进行排序，并将排序结果标准输出。sort命令既可以从特定的文件，也可以从stdin中获取输入。</p>
+<p>sort将文件/文本的每一行作为一个单位，相互比较，比较原则是从首字符向后，依次按ASCII码值进行比较，最后将他们按升序输出</p>
+<p>**语法格式：**sort [参数] [文件]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-b</th>
+<th>忽略每行前面开始出的空格字符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>检查文件是否已经按照顺序排序</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>排序时，处理英文字母、数字及空格字符外，忽略其他的字符</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>排序时，将小写字母视为大写字母</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>排序时，除了040至176之间的ASCII字符外，忽略其他的字符</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>将几个排序号的文件进行合并</td>
+</tr>
+<tr>
+<td>-M</td>
+<td>将前面3个字母依照月份的缩写进行排序</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>依照数值的大小排序</td>
+</tr>
+<tr>
+<td>-o &lt;输出文件&gt;</td>
+<td>将排序后的结果存入制定的文件</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>以相反的顺序来排序</td>
+</tr>
+<tr>
+<td>-t &lt;分隔字符&gt;</td>
+<td>指定排序时所用的栏位分隔字符</td>
+</tr>
+<tr>
+<td>-k</td>
+<td>指定需要排序的栏位 -k 2 根据第二列拍排     -k 2, 4根据第二到四列排</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>忽略相同行</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-uniq命令-–-去除文件中的重复行">23.uniq命令 – 去除文件中的重复行</h3>
+<p>uniq命令全称是“unique”，中文释义是“独特的，唯一的”。该命令的作用是用来去除文本文件中连续的重复行，中间不能夹杂其他文本行。去除了重复的，保留的都是唯一的，也就是独特的，唯一的了。</p>
+<p>我们应当注意的是，它和sort的区别，sort只要有重复行，它就去除，而uniq重复行必须要连续，也可以用它忽略文件中的重复行。</p>
+<p>**语法格式：**uniq [参数] [文件]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-c</th>
+<th>打印每行在文本中重复出现的次数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d</td>
+<td>只显示有重复的纪录，每个重复纪录只出现一次</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>只显示没有重复的纪录</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-tr命令-–-字符转换">24.tr命令 – 字符转换</h3>
+<p>tr的英文全称是“ transform ”，即转换的意思。该命令的作用是一种可将字符进行替换、压缩、删除，他可以将一组字符转换成另一组字符。tr他只能从标准输入中读取数据，因此，tr要么将输入文件重定向到标准输入，要么从管道读入数据。</p>
+<p>注意：tr类似于sed命令，但是比sed简单，所以tr能实现的功能，sed都能实现。</p>
+<p>**语法格式：**tr [参数] [字符串1] [字符串2]</p>
+<table>
+<thead>
+<tr>
+<th>-c</th>
+<th>选定字符串1中字符集的补集，即反选字符串1的补集</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d</td>
+<td>删除字符串1中出现的所有字符</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>删除所有重复出现的字符序列，只保留一个</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cat Words.txt| tr -s <span class="string">&#x27; &#x27;</span> <span class="string">&#x27;\n&#x27;</span></span><br><span class="line"></span><br><span class="line">the</span><br><span class="line">day</span><br><span class="line">is</span><br><span class="line">sunny</span><br><span class="line">the</span><br><span class="line">the</span><br><span class="line">the</span><br><span class="line">sunny</span><br><span class="line">is</span><br><span class="line">is</span><br></pre></td></tr></table></figure></div>
+<h3 id="25-打印命令">25.打印命令</h3>
+<ul>
+<li>指定打印前几行：<strong>$ head -n 4 file</strong>  该命令会打印出文件的前4行。</li>
+<li>打印最后5行：<strong>$ tail -n 5 file</strong></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/02/19/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          前缀和与差分
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/02/18/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java正则表达式学习</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2023 sdjasj
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
