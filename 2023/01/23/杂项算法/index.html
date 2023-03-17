@@ -100,7 +100,7 @@
                                         
                                             <i class="fa-regular fa-house"></i>
                                         
-                                        首頁
+                                        HOME
                                     
                                 </a>
                                 <!-- Submenu -->
@@ -116,7 +116,7 @@
                                         
                                             <i class="fa-regular fa-archive"></i>
                                         
-                                        歸檔
+                                        ARCHIVES
                                     
                                 </a>
                                 <!-- Submenu -->
@@ -154,7 +154,7 @@
                                 
                                     <i class="fa-regular fa-house"></i>
                                 
-                                首頁
+                                HOME
                             
                         </a>
                     </li>
@@ -169,7 +169,7 @@
                                 
                                     <i class="fa-regular fa-archive"></i>
                                 
-                                歸檔
+                                ARCHIVES
                             
                         </a>
                     </li>
@@ -235,12 +235,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-file-word"></i>&nbsp;<span>586 字數</span>
+            <i class="fa-regular fa-file-word"></i>&nbsp;<span>1.1k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 分鐘</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>5 Mins</span>
         </span>
     
     
@@ -256,29 +256,30 @@
             
 
             <div class="article-content markdown-body">
-                <h3 id="找树的直径">找树的直径</h3>
-<p>定义:树中距离最远的两点</p>
+                <h3 id="找树的直径"><a href="#找树的直径" class="headerlink" title="找树的直径"></a>找树的直径</h3><p>定义:树中距离最远的两点</p>
 <p>1.任取一点作为起点，找到距离该点最远的一个点u</p>
 <p>2.再找到距离u最远的一点v</p>
 <p>u和v之间的路径就是一条直径</p>
 <span id="more"></span>
-<h2 id="单调栈">单调栈</h2>
-<p>核心思想:遇到一个数，如果该数性质比栈顶元素更优，则将栈顶元素出栈，直到该数比栈顶元素性质不优为止，将该数入栈</p>
+<h2 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h2><p>核心思想:遇到一个数，如果该数性质比栈顶元素更优，则将栈顶元素出栈，直到该数比栈顶元素性质不优为止，将该数入栈</p>
 <div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">常见模型：找出每个数左边离它最近的比它大/小的数</span><br><span class="line"><span class="keyword">int</span> tt = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (tt &amp;&amp; <span class="built_in">check</span>(stk[tt], i)) tt -- ;</span><br><span class="line">    stk[ ++ tt] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h2 id="单调队列">单调队列</h2>
-<p>核心思想:首先判断队头是否滑出窗口，遇到一个数，如果该数比队尾元素更优，则队尾元素出队，直到该数比队尾元素不优为止，将该数入队</p>
+<h2 id="单调队列"><a href="#单调队列" class="headerlink" title="单调队列"></a>单调队列</h2><p>核心思想:首先判断队头是否滑出窗口，遇到一个数，如果该数比队尾元素更优，则队尾元素出队，直到该数比队尾元素不优为止，将该数入队</p>
 <div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">常见模型：找出滑动窗口中的最大值/最小值</span><br><span class="line"><span class="keyword">int</span> hh = <span class="number">0</span>, tt = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (hh &lt;= tt &amp;&amp; <span class="built_in">check_out</span>(q[hh])) hh ++ ;  <span class="comment">// 判断队头是否滑出窗口</span></span><br><span class="line">    <span class="keyword">while</span> (hh &lt;= tt &amp;&amp; <span class="built_in">check</span>(q[tt], i)) tt -- ;</span><br><span class="line">    q[ ++ tt] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h2 id="龟速乘">龟速乘</h2>
-<p>把a*b转化为a+a+a+…+a(b个a相加)，利用快速幂的思想，计算出a,2*a,4*a,…2<sup>k</sup>*a，根据b的二进制位(比如9 = 0b10001),a*9 = 2<sup>0</sup>a+2<sup>4</sup>a,可以省去高精度乘法</p>
-<h2 id="枚举子集">枚举子集</h2>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;(<span class="number">1</span>&lt;&lt;n);i++)</span><br><span class="line">&#123;</span><br><span class="line">    f[i]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> s=i;s;s=(s<span class="number">-1</span>)&amp;i) <span class="comment">//i是集合二进制表示,s是i的子集</span></span><br><span class="line">        <span class="keyword">if</span>(cover[s]==all)   </span><br><span class="line">            f[i] = <span class="built_in">max</span>(f[i],f[i^s]+<span class="number">1</span>);</span><br><span class="line">&#125;	</span><br></pre></td></tr></table></figure></div>
-<h2 id="取整">取整</h2>
-<p>a / b向上取整</p>
+<h2 id="龟速乘"><a href="#龟速乘" class="headerlink" title="龟速乘"></a>龟速乘</h2><p>把a*b转化为a+a+a+….+a(b个a相加)，利用快速幂的思想，计算出a,2*a,4*a,……2<sup>k</sup>*a，根据b的二进制位(比如9 = 0b10001),a*9 = 2<sup>0</sup>a+2<sup>4</sup>a,可以省去高精度乘法</p>
+<h2 id="枚举子集"><a href="#枚举子集" class="headerlink" title="枚举子集"></a>枚举子集</h2><div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;(<span class="number">1</span>&lt;&lt;n);i++)</span><br><span class="line">&#123;</span><br><span class="line">    f[i]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> s=i;s;s=(s<span class="number">-1</span>)&amp;i) <span class="comment">//i是集合二进制表示,s是i的子集</span></span><br><span class="line">        <span class="keyword">if</span>(cover[s]==all)   </span><br><span class="line">            f[i] = <span class="built_in">max</span>(f[i],f[i^s]+<span class="number">1</span>);</span><br><span class="line">&#125;	</span><br></pre></td></tr></table></figure></div>
+<h2 id="取整"><a href="#取整" class="headerlink" title="取整"></a>取整</h2><p>a / b向上取整</p>
 <div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> c = (a + b - <span class="number">1</span>) / b;</span><br></pre></td></tr></table></figure></div>
-<h2 id="字符串哈希">字符串哈希</h2>
-<p><strong>核心思想</strong>：将字符串看成P进制数，P的经验值是131或13331，取这两个值的冲突概率低<br>
-<strong>小技巧</strong>：取模的数用2^64，这样直接用unsigned long long存储，溢出的结果就是取模的结果</p>
+<h2 id="字符串哈希"><a href="#字符串哈希" class="headerlink" title="字符串哈希"></a>字符串哈希</h2><p><strong>核心思想</strong>：将字符串看成P进制数，P的经验值是131或13331，取这两个值的冲突概率低<br><strong>小技巧</strong>：取模的数用2^64，这样直接用unsigned long long存储，溢出的结果就是取模的结果</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">typedef unsigned long long ULL;</span><br><span class="line">ULL h[N], p[N]; // h[k]存储字符串前k个字母的哈希值, p[k]存储 P^k mod 2^64</span><br><span class="line"></span><br><span class="line">// 初始化</span><br><span class="line">p[0] = 1;</span><br><span class="line">for (int i = 1; i &lt;= n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    h[i] = h[i - 1] * P + str[i];</span><br><span class="line">    p[i] = p[i - 1] * P;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 计算子串 str[l ~ r] 的哈希值</span><br><span class="line">ULL get(int l, int r)</span><br><span class="line">&#123;</span><br><span class="line">    return h[r] - h[l - 1] * p[r - l + 1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="康托展开"><a href="#康托展开" class="headerlink" title="康托展开"></a>康托展开</h2><p>康托展开可以用来求一个$1\sim n$ 的任意排列的排名</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">7</span>, MOD = <span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">int</span> t[N];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">LL f[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; -x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = x; i &lt;= n; i += <span class="built_in">lowbit</span>(i)) &#123;</span><br><span class="line">        t[i]++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = x; i; i -= <span class="built_in">lowbit</span>(i)) &#123;</span><br><span class="line">        res += t[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    f[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        f[i] = f[i - <span class="number">1</span>] * i % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    LL ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> a;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a);</span><br><span class="line">        <span class="built_in">add</span>(a);</span><br><span class="line">        <span class="keyword">int</span> tt = a - <span class="built_in">query</span>(a);</span><br><span class="line">        ans += f[n - i - <span class="number">1</span>] * tt;</span><br><span class="line">        ans %= MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans + <span class="number">1</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>逆康托定理，求n的全排列中排名第k的排列</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">getPermutation</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        string ans = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">int</span> f[<span class="number">11</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> jc[<span class="number">11</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        jc[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;=n; i++) &#123;</span><br><span class="line">            jc[i] = jc[i - <span class="number">1</span>] * i;</span><br><span class="line">        &#125;</span><br><span class="line">        k -= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> t = k / jc[n - i];</span><br><span class="line">            <span class="keyword">int</span> cnt = <span class="number">0</span>, num = <span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (f[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                    cnt++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (cnt == t + <span class="number">1</span>) &#123;</span><br><span class="line">                    f[j] = <span class="number">1</span>;</span><br><span class="line">                    num = j;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ans += <span class="string">&#x27;0&#x27;</span> + num;</span><br><span class="line">            k -= t * jc[n - i]; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<h3 id="区间平均数"><a href="#区间平均数" class="headerlink" title="区间平均数"></a>区间平均数</h3><p>看到这种和区间平均数有关的题目可以考虑把每个数减去平均数M，一段区间的平均数大于M等价于减完数后区间的区间和大于零          </p>
+<h3 id="一个正整数n被拆分为k个正整数，k-gt-2，求这k个整数乘积最大是多少"><a href="#一个正整数n被拆分为k个正整数，k-gt-2，求这k个整数乘积最大是多少" class="headerlink" title="一个正整数n被拆分为k个正整数，k&gt;=2，求这k个整数乘积最大是多少"></a>一个正整数n被拆分为k个正整数，k&gt;=2，求这k个整数乘积最大是多少</h3><p>尽可能多分解3</p>
+<p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/integer-break/solutions/352875/zheng-shu-chai-fen-by-leetcode-solution/">https://leetcode.cn/problems/integer-break/solutions/352875/zheng-shu-chai-fen-by-leetcode-solution/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="如何比枚举n的约数更快求出n的所有约数"><a href="#如何比枚举n的约数更快求出n的所有约数" class="headerlink" title="如何比枚举n的约数更快求出n的所有约数"></a>如何比枚举n的约数更快求出n的所有约数</h3><p>如果直接枚举，那么时间复杂度是根号N。可以先求出2~n内的素数，然后枚举素数判断是否是n的约数，时间复杂度是$\frac{n}{\ln(n)}$，然后dfs将{素数,出现次数}还原为n的约数</p>
+<p><a class="link" target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/202/">https://www.acwing.com/problem/content/description/202/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 
             </div>
 
@@ -286,14 +287,14 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>文章標題：杂项算法</li>
-        <li>文章作者：sdjasj</li>
-        <li>撰寫時間：2023-01-23 21:47:02</li>
+        <li>Post title：杂项算法</li>
+        <li>Post author：sdjasj</li>
+        <li>Create time：2023-01-23 21:47:02</li>
         <li>
-            永久連結：https://redefine.ohevan.com/2023/01/23/杂项算法/
+            Post link：https://redefine.ohevan.com/2023/01/23/杂项算法/
         </li>
         <li>
-            版權宣告：這個網站所有文章均使用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 授權。
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
         </li>
     </ul>
 </div>
@@ -314,6 +315,21 @@
             
                 <div class="article-nav">
                     
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/02/01/%E7%BA%BF%E6%AE%B5%E6%A0%91/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">线段树</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
                     
                         <div class="article-next">
                             <a class="next"
@@ -322,7 +338,7 @@
                             >
                                 <span class="title flex-center">
                                     <span class="post-nav-title-item">树状数组</span>
-                                    <span class="post-nav-item">下一篇</span>
+                                    <span class="post-nav-item">Next posts</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
                                     <i class="fa-solid fa-chevron-right"></i>
@@ -338,7 +354,7 @@
                     <div class="comments-container">
     <div id="comment-anchor"></div>
     <div class="comment-area-title">
-        <i class="fa-solid fa-comments">&nbsp;留言</i>
+        <i class="fa-solid fa-comments">&nbsp;Comments</i>
     </div>
     
 
@@ -384,9 +400,9 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <div class="toc-title">此頁目錄</div>
+        <div class="toc-title">On this page</div>
         <div class="page-title">杂项算法</div>
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84"><span class="nav-text">找树的直径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="nav-text">单调栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="nav-text">单调队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BE%9F%E9%80%9F%E4%B9%98"><span class="nav-text">龟速乘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE%E5%AD%90%E9%9B%86"><span class="nav-text">枚举子集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96%E6%95%B4"><span class="nav-text">取整</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C"><span class="nav-text">字符串哈希</span></a>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84"><span class="nav-text">找树的直径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="nav-text">单调栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="nav-text">单调队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BE%9F%E9%80%9F%E4%B9%98"><span class="nav-text">龟速乘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE%E5%AD%90%E9%9B%86"><span class="nav-text">枚举子集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96%E6%95%B4"><span class="nav-text">取整</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C"><span class="nav-text">字符串哈希</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%B7%E6%89%98%E5%B1%95%E5%BC%80"><span class="nav-text">康托展开</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%BA%E9%97%B4%E5%B9%B3%E5%9D%87%E6%95%B0"><span class="nav-text">区间平均数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E6%AD%A3%E6%95%B4%E6%95%B0n%E8%A2%AB%E6%8B%86%E5%88%86%E4%B8%BAk%E4%B8%AA%E6%AD%A3%E6%95%B4%E6%95%B0%EF%BC%8Ck-gt-2%EF%BC%8C%E6%B1%82%E8%BF%99k%E4%B8%AA%E6%95%B4%E6%95%B0%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E6%98%AF%E5%A4%9A%E5%B0%91"><span class="nav-text">一个正整数n被拆分为k个正整数，k&gt;&#x3D;2，求这k个整数乘积最大是多少</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%AF%94%E6%9E%9A%E4%B8%BEn%E7%9A%84%E7%BA%A6%E6%95%B0%E6%9B%B4%E5%BF%AB%E6%B1%82%E5%87%BAn%E7%9A%84%E6%89%80%E6%9C%89%E7%BA%A6%E6%95%B0"><span class="nav-text">如何比枚举n的约数更快求出n的所有约数</span></a></li></ol>
 
     </div>
 </div>
@@ -413,25 +429,25 @@
               <span>2022</span>
               -
             
-            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">sdjasj. 版權所有.</a>
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">sdjasj. All Rights Reserved.</a>
         </div>
         
             <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
-                        讀者&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
                     </span>
                 
                 
                     <span id="busuanzi_container_site_pv">
-                        閱覽&nbsp;<span id="busuanzi_value_site_pv"></span>
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
                     </span>
                 
             </div>
         
         <div class="theme-info info-item">
-            <a target="_blank" href="https://hexo.io">Hexo</a> 框架&nbsp;|&nbsp;主題&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v1.0.0</a>
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v1.0.0</a>
         </div>
         
         
@@ -453,7 +469,7 @@
         </div>
         
             <div>
-                博客已運行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小時 <span class="odometer" id="runtime_minutes"></span> 分鐘 <span class="odometer" id="runtime_seconds"></span> 秒
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
             </div>
         
         
@@ -547,7 +563,7 @@
                 <input autocomplete="off"
                        autocorrect="off"
                        autocapitalize="off"
-                       placeholder="搜尋..."
+                       placeholder="Search..."
                        spellcheck="false"
                        type="search"
                        class="search-input"
