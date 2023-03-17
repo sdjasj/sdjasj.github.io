@@ -54,11 +54,24 @@
   top: 0;
 }
 .highlight-container[data-rel] {
-  background: var(--second-background-color);
+  background: var(--third-background-color);
   border-radius: $redefine-border-radius-large;
-  box-shadow: var(--redefine-box-shadow);
-  padding-top: 20px;
+  box-shadow: var(--redefine-box-shadow-flat);
+  padding-top: 40px;
   margin-top: 10px;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+.highlight-container[data-rel] figcaption {
+  font-weight: bold;
+  font-size: 16px;
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.highlight-container[data-rel] figcaption a {
+  margin-left: 10px;
 }
 .highlight-container[data-rel]::before {
   position: absolute;

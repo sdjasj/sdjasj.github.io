@@ -81,6 +81,44 @@ REDEFINE.initUtils = () => {
 
         // menu shrink
         REDEFINE.utils.menuShrink.menuShrink();
+
+        // auto hide tools
+        var y = window.pageYOffset;
+        var height = document.body.scrollHeight;
+        var windowHeight = window.innerHeight;
+        var toolList = document.getElementsByClassName('right-bottom-side-tools');
+        
+        for (var i = 0; i < toolList.length; i++) {
+          var tools = toolList[i];
+          if (y <= 0) {
+            if (location.pathname !== '/') {
+              //console.log(location.pathname)
+            } else {
+              tools.classList.add('hide');
+            }
+          } else if (y + windowHeight >= height - 20) {
+            tools.classList.add('hide');
+          } else {
+            tools.classList.remove('hide');
+          }
+        }
+
+        /*aplayer auto hide*/
+        
+        var aplayer = document.getElementById('aplayer');
+        if (aplayer == null) {} else {
+          if (y <= 0) {
+              if (location.pathname !== '/') {
+                //console.log(location.pathname)
+              } else {
+                aplayer.classList.add('hide');
+              }
+          } else if (y + windowHeight >= height - 20) {
+            aplayer.classList.add('hide');
+          } else {
+            aplayer.classList.remove('hide');
+          }
+        }
       });
     },
 
@@ -271,6 +309,7 @@ REDEFINE.initUtils = () => {
     setHowLongAgoLanguage(p1, p2) {
       return p2.replace(/%s/g, p1);
     },
+    
 
     getHowLongAgo(timestamp) {
       const l = REDEFINE.language_ago;
@@ -304,7 +343,18 @@ REDEFINE.initUtils = () => {
       const post = document.querySelectorAll(
         ".home-article-meta-info .home-article-date"
       );
-      post &&
+      const df = REDEFINE.theme_config.home_article.date_format;
+      if (df === "relative") {
+        post &&
+          post.forEach((v) => {
+            const nowDate = Date.now();
+            const postDate = new Date(v.dataset.date.split(" GMT")[0]).getTime();
+            v.innerHTML = this.getHowLongAgo(
+              Math.floor((nowDate - postDate) / 1000)
+            );
+          });
+      } else if (df === "auto") {
+        post &&
         post.forEach((v) => {
           const nowDate = Date.now();
           const postDate = new Date(v.dataset.date.split(" GMT")[0]).getTime();
@@ -317,6 +367,7 @@ REDEFINE.initUtils = () => {
             );
           }
         });
+      }
     },
 
     // loading progress bar start
