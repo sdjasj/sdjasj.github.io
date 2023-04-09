@@ -254,7 +254,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>461 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>457 字</span>
         </span>
     
     
@@ -275,7 +275,11 @@
 <p>高效地存储和查找字符串集合的数据结构，存储的字母或者数字种类不能太多</p>
 <span id="more"></span>
 <p>存储ABD AC ABE可以表示为</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph TD;</span><br><span class="line">    A--&gt;B;</span><br><span class="line">    A--&gt;C;</span><br><span class="line">    B--&gt;D;</span><br><span class="line">    B--&gt;E;</span><br></pre></td></tr></table></figure></div>
+<pre class="mermaid">graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    B-->E;</pre>
 <p>在单词结尾打标记，如上面的D E C，以便知道树根到当前节点是不是一个单词</p>
 <h3 id="模板">模板</h3>
 <h4 id="Trie字符串统计">Trie字符串统计</h4>

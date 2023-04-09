@@ -18,24 +18,24 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="线程概述线程和进程区别 一个任务通常就是一个程序，每个运行中的程序就是一个进程。当一个程序运行时，内部可能包含了多个顺序执行流，每个顺序执行流就是一个线程 归纳起来可以这样说∶操作系统可以同时执行多个任务，每个任务就是进程;进程可以同时执行多个任务，每个任务就是线程。">
+        <meta name="description" content="线程概述 线程和进程区别  一个任务通常就是一个程序，每个运行中的程序就是一个进程。当一个程序运行时，内部可能包含了多个顺序执行流，每个顺序执行流就是一个线程 归纳起来可以这样说∶操作系统可以同时执行多个任务，每个任务就是进程;进程可以同时执行多个任务，每个任务就是线程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA多线程预习">
 <meta property="og:url" content="https://sdjasj.github.io/2022/02/10/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%84%E4%B9%A0/index.html">
 <meta property="og:site_name" content="sdjasj的博客">
-<meta property="og:description" content="线程概述线程和进程区别 一个任务通常就是一个程序，每个运行中的程序就是一个进程。当一个程序运行时，内部可能包含了多个顺序执行流，每个顺序执行流就是一个线程 归纳起来可以这样说∶操作系统可以同时执行多个任务，每个任务就是进程;进程可以同时执行多个任务，每个任务就是线程。">
+<meta property="og:description" content="线程概述 线程和进程区别  一个任务通常就是一个程序，每个运行中的程序就是一个进程。当一个程序运行时，内部可能包含了多个顺序执行流，每个顺序执行流就是一个线程 归纳起来可以这样说∶操作系统可以同时执行多个任务，每个任务就是进程;进程可以同时执行多个任务，每个任务就是线程。">
 <meta property="og:locale">
-<meta property="og:image" content="e:/待更新博客/新建文件夹/JAVA多线程预习/image-20220209151412300.png">
-<meta property="og:image" content="e:/待更新博客/新建文件夹/JAVA多线程预习/image-20220209155349216.png">
-<meta property="og:image" content="e:/待更新博客/新建文件夹/JAVA多线程预习/image-20220210061627598.png">
-<meta property="og:image" content="e:/待更新博客/新建文件夹/JAVA多线程预习/image-20220210061939323.png">
+<meta property="og:image" content="e:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%84%E4%B9%A0%5Cimage-20220209151412300.png">
+<meta property="og:image" content="e:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%84%E4%B9%A0%5Cimage-20220209155349216.png">
+<meta property="og:image" content="e:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%84%E4%B9%A0%5Cimage-20220210061627598.png">
+<meta property="og:image" content="e:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%84%E4%B9%A0%5Cimage-20220210061939323.png">
 <meta property="article:published_time" content="2022-02-10T02:38:03.000Z">
 <meta property="article:modified_time" content="2023-03-05T07:24:35.042Z">
 <meta property="article:author" content="sdjasj">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="多线程">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="e:/待更新博客/新建文件夹/JAVA多线程预习/image-20220209151412300.png">
+<meta name="twitter:image" content="e:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%84%E4%B9%A0%5Cimage-20220209151412300.png">
     
     <!--- Icon Part-->
     <link rel="icon" type="image/png" href="/images/avatar_1628993426.png" sizes="192x192">
@@ -281,89 +281,133 @@
             
 
             <div class="article-content markdown-body">
-                <h2 id="线程概述"><a href="#线程概述" class="headerlink" title="线程概述"></a>线程概述</h2><h3 id="线程和进程区别"><a href="#线程和进程区别" class="headerlink" title="线程和进程区别"></a>线程和进程区别</h3><ul>
+                <h2 id="线程概述">线程概述</h2>
+<h3 id="线程和进程区别">线程和进程区别</h3>
+<ul>
 <li>一个任务通常就是一个程序，每个运行中的程序就是一个进程。当一个程序运行时，内部可能包含了多个顺序执行流，每个顺序执行流就是一个线程</li>
 <li>归纳起来可以这样说∶操作系统可以同时执行多个任务，每个任务就是进程;进程可以同时执行多个任务，每个任务就是线程。</li>
 </ul>
 <span id="more"></span>
-<h3 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h3><blockquote>
+<h3 id="并发和并行">并发和并行</h3>
+<blockquote>
 <p>并发性（concurrency）和并行性（parallel）是两个概念，并行指在同一时刻，有多条指令在多个处理器上同时执行;并发指在同一时刻只能有一条指令执行，但多个进程指令被快速轮换执行，使得在宏观上具有多个进程同时执行的效果。</p>
 </blockquote>
-<h2 id="线程的创建和启动"><a href="#线程的创建和启动" class="headerlink" title="线程的创建和启动"></a>线程的创建和启动</h2><h3 id="三种创建线程的方法："><a href="#三种创建线程的方法：" class="headerlink" title="三种创建线程的方法："></a>三种创建线程的方法：</h3><ul>
-<li><h4 id="通过实现-Runnable-接口；"><a href="#通过实现-Runnable-接口；" class="headerlink" title="通过实现 Runnable 接口；"></a>通过实现 Runnable 接口；</h4></li>
+<h2 id="线程的创建和启动">线程的创建和启动</h2>
+<h3 id="三种创建线程的方法：">三种创建线程的方法：</h3>
+<ul>
+<li>
+<h4 id="通过实现-Runnable-接口；">通过实现 Runnable 接口；</h4>
+</li>
 </ul>
-<h5 id="实现-Runnable-接口来创建并启动多线程的步骤如下"><a href="#实现-Runnable-接口来创建并启动多线程的步骤如下" class="headerlink" title="实现 Runnable 接口来创建并启动多线程的步骤如下"></a>实现 Runnable 接口来创建并启动多线程的步骤如下</h5><p> 1.定义Runnable 接口的实现类，并重写该接口的 run方法，该run方法的方法体同样是该线程的线程执行体。</p>
+<h5 id="实现-Runnable-接口来创建并启动多线程的步骤如下">实现 Runnable 接口来创建并启动多线程的步骤如下</h5>
+<p>1.定义Runnable 接口的实现类，并重写该接口的 run方法，该run方法的方法体同样是该线程的线程执行体。</p>
 <p>2.创建 Runnable 实现类的实例，并以此实例作为Thread 的 target 来创建 Thread 对象，该 Thread 对象才是真正的线程对象。</p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SecThread sc = <span class="keyword">new</span> SecThread() <span class="comment">//SecThread类实现Runnable接口</span></span><br><span class="line"><span class="keyword">new</span> Thread(sc).start() <span class="comment">//以sc建立新线程</span></span><br><span class="line"><span class="keyword">new</span> Thread(sc,<span class="string">&#x27;lbh666&#x27;</span>) <span class="comment">//创建线程时指定名字</span></span><br></pre></td></tr></table></figure></div>
-<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><p>1.采用Runnable 接口的方式创建的多个线程可以共享线程类的实例变量。这是因为在这种方式下，程序所创建的 Runnable 对象只是线程的 target，而多个线程可以共享同一个target，所以多个线程可以共享同一个线程类的实例变量</p>
+<h4 id="注意：">注意：</h4>
+<p>1.采用Runnable 接口的方式创建的多个线程可以共享线程类的实例变量。这是因为在这种方式下，程序所创建的 Runnable 对象只是线程的 target，而多个线程可以共享同一个target，所以多个线程可以共享同一个线程类的实例变量</p>
 <p>2.可用lambda表达式创建Runnable对象，因为Runnable是一个函数式接口</p>
 <p>3.执行start()方法的顺序不代表线程启动的顺序</p>
 <ul>
-<li><h4 id="通过继承-Thread-类本身"><a href="#通过继承-Thread-类本身" class="headerlink" title="通过继承 Thread 类本身"></a>通过继承 Thread 类本身</h4></li>
+<li>
+<h4 id="通过继承-Thread-类本身">通过继承 Thread 类本身</h4>
+</li>
 </ul>
-<p><img lazyload src="/images/loading.svg" data-src="E:\待更新博客\新建文件夹\JAVA多线程预习\image-20220209151412300.png" alt="image-20220209151412300"></p>
-<h4 id="注意：-1"><a href="#注意：-1" class="headerlink" title="注意："></a>注意：</h4><p><strong>使用继承Thread类的方法来创建线程类时，多个线程之间无法共享线程类的实例变量。</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%84%E4%B9%A0%5Cimage-20220209151412300.png" alt="image-20220209151412300"></p>
+<h4 id="注意：-2">注意：</h4>
+<p><strong>使用继承Thread类的方法来创建线程类时，多个线程之间无法共享线程类的实例变量。</strong></p>
 <ul>
-<li><h4 id="通过-Callable-和-Future-创建线程。"><a href="#通过-Callable-和-Future-创建线程。" class="headerlink" title="通过 Callable 和 Future 创建线程。"></a>通过 Callable 和 Future 创建线程。</h4></li>
+<li>
+<h4 id="通过-Callable-和-Future-创建线程。">通过 Callable 和 Future 创建线程。</h4>
+</li>
 </ul>
-<h5 id="创建过程"><a href="#创建过程" class="headerlink" title="创建过程"></a>创建过程</h5><p>1.创建Callable 接口的实现类，并实现 call方法，该call方法将作为线程执行体，且该 call方法有返回值，再创建 Callable 实现类的实例。从Java 8开始，可以直接使用Lambda表达式创建Callable 对象。</p>
-<p> 2.使用FutureTask类来包装Callable 对象，该 FutureTask 对象封装了该Callable 对象的 call（方法的返回值。 </p>
+<h5 id="创建过程">创建过程</h5>
+<p>1.创建Callable 接口的实现类，并实现 call方法，该call方法将作为线程执行体，且该 call方法有返回值，再创建 Callable 实现类的实例。从Java 8开始，可以直接使用Lambda表达式创建Callable 对象。</p>
+<p>2.使用FutureTask类来包装Callable 对象，该 FutureTask 对象封装了该Callable 对象的 call（方法的返回值。</p>
 <p>3.使用 FutureTask 对象作为 Thread 对象的 target 创建并启动新线程。</p>
 <p>4.调用 FutureTask 对象的 get方法来获得子线程执行结束后的返回值。</p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建FutureTask对象，callable对象使用lambda表达式</span></span><br><span class="line">FutureTask&lt;Integer&gt; task = <span class="keyword">new</span> FutureTask&lt;Integer&gt;((Callable&lt;Integer&gt;) ()-&gt;&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++)&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;lbh666&quot;</span>+<span class="string">&quot; curnum:&quot;</span> + i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">666</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建新线程</span></span><br><span class="line"><span class="keyword">new</span> Thread(task,<span class="string">&quot;lbh6666666&quot;</span>)</span><br></pre></td></tr></table></figure></div>
 <ul>
-<li><h3 id="三种方法区别"><a href="#三种方法区别" class="headerlink" title="三种方法区别"></a>三种方法区别</h3></li>
+<li>
+<h3 id="三种方法区别">三种方法区别</h3>
+</li>
 </ul>
 <blockquote>
 <p>通过继承Thread 类或实现 Runnable、Callable 接口都可以实现多线程，不过实现 Runnable 接口与实现Callable 接口的方式基本相同，只是Callable 接口里定义的方法有返回值，可以声明抛出异常而已。因此可以将实现 Runnable 接口和实现Callable 接口归为一种方式。这种方式与继承 Thread 方式之间的主要差别如下。</p>
-<p> ##### 采用实现Runnable、Callable 接口的方式创建多线程的优缺点∶ </p>
+<p>##### 采用实现Runnable、Callable 接口的方式创建多线程的优缺点∶</p>
 <blockquote>
-<p>优势：线程类只是实现了Runnable 接口或Callable 接口，还可以继承其他类。 在这种方式下，多个线程可以共享同一个 target 对象，所以非常适合多个相同线程来处理同一 份资源的情况，从而可以将 CPU、代码和数据分开，形成清晰的模型，较好地体现了面向对象的思想。 </p>
+<p>优势：线程类只是实现了Runnable 接口或Callable 接口，还可以继承其他类。 在这种方式下，多个线程可以共享同一个 target 对象，所以非常适合多个相同线程来处理同一 份资源的情况，从而可以将 CPU、代码和数据分开，形成清晰的模型，较好地体现了面向对象的思想。</p>
+</blockquote>
+<blockquote>
 <p>劣势：编程稍稍复杂，如果需要访问当前线程，则必须使用Thread.currentThread方法</p>
 </blockquote>
-<h5 id="采用继承-Thread类的方式创建多线程的优缺点∶"><a href="#采用继承-Thread类的方式创建多线程的优缺点∶" class="headerlink" title="采用继承 Thread类的方式创建多线程的优缺点∶ "></a>采用继承 Thread类的方式创建多线程的优缺点∶ </h5><blockquote>
-<p> 劣势：因为线程类已经继承了Thread类，所以不能再继承其他父类。 </p>
-<p> 优势：编写简单，如果需要访问当前线程，则无须使用Thread.currentThread方法，直接使用 this即可获得当前线程。 </p>
+<h5 id="采用继承-Thread类的方式创建多线程的优缺点∶">采用继承 Thread类的方式创建多线程的优缺点∶</h5>
+<blockquote>
+<p>劣势：因为线程类已经继承了Thread类，所以不能再继承其他父类。</p>
+</blockquote>
+<blockquote>
+<p>优势：编写简单，如果需要访问当前线程，则无须使用Thread.currentThread方法，直接使用 this即可获得当前线程。</p>
 </blockquote>
 </blockquote>
 <p><strong>鉴于上面分析，因此一般推荐采用实现 Runnable 接口、Callable 接口的方式来创建多线程。</strong></p>
-<h2 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h2><p><img lazyload src="/images/loading.svg" data-src="E:\待更新博客\新建文件夹\JAVA多线程预习\image-20220209155349216.png" alt="image-20220209155349216"></p>
-<h3 id="线程死亡"><a href="#线程死亡" class="headerlink" title="线程死亡"></a>线程死亡</h3><p>线程结束后就处于死亡状态，有三种结束方式</p>
+<h2 id="线程的生命周期">线程的生命周期</h2>
+<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%84%E4%B9%A0%5Cimage-20220209155349216.png" alt="image-20220209155349216"></p>
+<h3 id="线程死亡">线程死亡</h3>
+<p>线程结束后就处于死亡状态，有三种结束方式</p>
 <ul>
 <li>run()或者call()方法执行完毕，线程正常结束</li>
 <li>线程抛出一个未捕获的异常或error</li>
 <li>使用线程的stop()方法结束线程(容易导致死锁，不推荐)</li>
 </ul>
 <p><strong>已经死亡的线程不能再start</strong></p>
-<h2 id="控制线程"><a href="#控制线程" class="headerlink" title="控制线程"></a>控制线程</h2><h4 id="几个概念"><a href="#几个概念" class="headerlink" title="几个概念"></a>几个概念</h4><ul>
-<li><h5 id="join线程"><a href="#join线程" class="headerlink" title="join线程"></a>join线程</h5></li>
+<h2 id="控制线程">控制线程</h2>
+<h4 id="几个概念">几个概念</h4>
+<ul>
+<li>
+<h5 id="join线程">join线程</h5>
+</li>
 </ul>
 <p>某个程序执行流调用其他线程的join()方法后，调用线程将会被阻塞，直到被join()方法加入的join()线程执行完毕</p>
 <p>通常在主程序中将大问题分割为小问题，每个小问题用join()执行完毕，主线程再继续执行下去</p>
 <ul>
-<li><h5 id="后台线程-SetDaemon"><a href="#后台线程-SetDaemon" class="headerlink" title="后台线程 SetDaemon"></a>后台线程 SetDaemon</h5></li>
-<li><h5 id="线程睡眠-Thread-sleep"><a href="#线程睡眠-Thread-sleep" class="headerlink" title="线程睡眠 Thread.sleep"></a>线程睡眠 Thread.sleep</h5></li>
+<li>
+<h5 id="后台线程-SetDaemon">后台线程 SetDaemon</h5>
+</li>
+<li>
+<h5 id="线程睡眠-Thread-sleep">线程睡眠 Thread.sleep</h5>
+</li>
 </ul>
 <p>当前线程变为阻塞，过了阻塞时间才会转入就绪状态，不关心其他线程的优先级</p>
 <ul>
-<li><h5 id="线程让步-yield"><a href="#线程让步-yield" class="headerlink" title="线程让步 yield"></a>线程让步 yield</h5></li>
+<li>
+<h5 id="线程让步-yield">线程让步 yield</h5>
+</li>
 </ul>
 <p>当前线程变为<strong>就绪</strong>而不是阻塞，只给优先级相同或较高的线程执行机会</p>
-<h4 id="线程优先级"><a href="#线程优先级" class="headerlink" title="线程优先级"></a>线程优先级</h4><p><code>a.SetPriority()</code>改变a线程的优先级，优先级高的线程执行机会更大，线程的默认优先级与创建它的父线程优先级相同</p>
-<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><h3 id="同步代码块"><a href="#同步代码块" class="headerlink" title="同步代码块"></a>同步代码块</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> (obj)&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">//同步代码块</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//obj是同步监视器，线程开始执行同步代码块时必须先获得同步监视器的锁定</span></span><br></pre></td></tr></table></figure></div>
+<h4 id="线程优先级">线程优先级</h4>
+<p><code>a.SetPriority()</code>改变a线程的优先级，优先级高的线程执行机会更大，线程的默认优先级与创建它的父线程优先级相同</p>
+<h2 id="线程同步">线程同步</h2>
+<h3 id="同步代码块">同步代码块</h3>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> (obj)&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">//同步代码块</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//obj是同步监视器，线程开始执行同步代码块时必须先获得同步监视器的锁定</span></span><br></pre></td></tr></table></figure></div>
 <p>任何线程在进入同步代码块时，首先对obj加锁，在加锁期间其他线程无法获得锁，无法进入同步代码块，当该线程执行完该同步代码块后，释放锁。</p>
-<h3 id="同步方法"><a href="#同步方法" class="headerlink" title="同步方法"></a>同步方法</h3><ul>
+<h3 id="同步方法">同步方法</h3>
+<ul>
 <li>synchronized关键字修饰的方法，同步监视器是this(对象)，保证了任意时刻只有一个线程能获得该对象的锁</li>
 <li>synchronized关键字不能修饰构造器、成员变量等</li>
 <li>线程安全会降低程序运行效率，只对会改变竞争资源的方法进行同步</li>
 </ul>
-<h3 id="同步锁（Lock）"><a href="#同步锁（Lock）" class="headerlink" title="同步锁（Lock）"></a>同步锁（Lock）</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Lock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//需要保证线程安全的方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> lbh&#123;</span><br><span class="line">        lock.lock();<span class="comment">//加锁</span></span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            ...<span class="comment">//保证线程安全的代码</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">finally</span>&#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><ul>
+<h3 id="同步锁（Lock）">同步锁（Lock）</h3>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Lock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//需要保证线程安全的方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> lbh&#123;</span><br><span class="line">        lock.lock();<span class="comment">//加锁</span></span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            ...<span class="comment">//保证线程安全的代码</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">finally</span>&#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="死锁">死锁</h3>
+<ul>
 <li><strong>定义</strong>：集合中的每一个进程都在等待只能由本集合中的其他进程才能引发的事件，那么该组进程是死锁的</li>
 <li><strong>例子</strong>：进程A锁住了记录1并等待记录2，而进程B锁住了记录2并等待记录1，这样两个进程就发生了死锁现象</li>
 </ul>
-<h2 id="线程通信"><a href="#线程通信" class="headerlink" title="线程通信"></a>线程通信</h2><h3 id="1-传统线程通信"><a href="#1-传统线程通信" class="headerlink" title="1.传统线程通信"></a>1.传统线程通信</h3><ul>
-<li><h4 id="三种方法"><a href="#三种方法" class="headerlink" title="三种方法"></a>三种方法</h4></li>
+<h2 id="线程通信">线程通信</h2>
+<h3 id="1-传统线程通信">1.传统线程通信</h3>
+<ul>
+<li>
+<h4 id="三种方法">三种方法</h4>
+</li>
 </ul>
 <ol>
 <li>wait()∶导致当前线程等待，<strong>释放当前线程的锁</strong>，直到其他线程调用该同步监视器的 notify()方法或 notifyAll()方法来唤醒该线程</li>
@@ -371,15 +415,22 @@
 <li>notifyAll()∶ 唤醒在此同步监视器上等待的所有线程。只有当前线程放弃对该同步监视器的锁定后，才可以执行被唤醒的线程。</li>
 </ol>
 <ul>
-<li><h4 id="调用手段（同步监视器对象调用）"><a href="#调用手段（同步监视器对象调用）" class="headerlink" title="调用手段（同步监视器对象调用）"></a>调用手段（同步监视器对象调用）</h4></li>
+<li>
+<h4 id="调用手段（同步监视器对象调用）">调用手段（同步监视器对象调用）</h4>
+</li>
 </ul>
 <ol>
 <li>对于synchronized修饰的同步方法，可以在方法中直接调用(this就是同步监视器)</li>
 <li>对于synchronized修饰的同步代码块，用同步监视器对象即synchronized括号后的对象调用</li>
 </ol>
-<h3 id="2-Condition控制线程通信"><a href="#2-Condition控制线程通信" class="headerlink" title="2.Condition控制线程通信"></a>2.Condition控制线程通信</h3><ul>
-<li><h5 id="使用情况：使用Lock来保证同步时"><a href="#使用情况：使用Lock来保证同步时" class="headerlink" title="使用情况：使用Lock来保证同步时"></a>使用情况：<strong>使用Lock来保证同步时</strong></h5></li>
-<li><h5 id="三种方法-1"><a href="#三种方法-1" class="headerlink" title="三种方法"></a>三种方法</h5></li>
+<h3 id="2-Condition控制线程通信">2.Condition控制线程通信</h3>
+<ul>
+<li>
+<h5 id="使用情况：使用Lock来保证同步时">使用情况：<strong>使用Lock来保证同步时</strong></h5>
+</li>
+<li>
+<h5 id="三种方法-2">三种方法</h5>
+</li>
 </ul>
 <ol>
 <li>await()</li>
@@ -387,42 +438,51 @@
 <li>signalAll()</li>
 </ol>
 <ul>
-<li><h5 id="类似于Lock对象充当同步监视器，Condition对象来暂停、唤醒线程"><a href="#类似于Lock对象充当同步监视器，Condition对象来暂停、唤醒线程" class="headerlink" title="类似于Lock对象充当同步监视器，Condition对象来暂停、唤醒线程"></a>类似于Lock对象充当同步监视器，Condition对象来暂停、唤醒线程</h5></li>
-<li><p>举例</p>
+<li>
+<h5 id="类似于Lock对象充当同步监视器，Condition对象来暂停、唤醒线程">类似于Lock对象充当同步监视器，Condition对象来暂停、唤醒线程</h5>
+</li>
+<li>
+<p>举例</p>
 </li>
 </ul>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Lock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Condition cond = <span class="keyword">new</span> lock.newCondition();</span><br><span class="line">    <span class="comment">//需要保证线程安全的方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> lbh&#123;</span><br><span class="line">        lock.lock();<span class="comment">//加锁</span></span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            cond.await()</span><br><span class="line">            ...<span class="comment">//保证线程安全的代码</span></span><br><span class="line">            cond.signal();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">finally</span>&#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h3 id="3-BlockingQueue阻塞队列控制线程通信"><a href="#3-BlockingQueue阻塞队列控制线程通信" class="headerlink" title="3.BlockingQueue阻塞队列控制线程通信"></a>3.BlockingQueue阻塞队列控制线程通信</h3><ul>
+<h3 id="3-BlockingQueue阻塞队列控制线程通信">3.BlockingQueue阻塞队列控制线程通信</h3>
+<ul>
 <li><strong>方法</strong></li>
 </ul>
-<p><img lazyload src="/images/loading.svg" data-src="E:\待更新博客\新建文件夹\JAVA多线程预习\image-20220210061627598.png" alt="image-20220210061627598"></p>
+<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%84%E4%B9%A0%5Cimage-20220210061627598.png" alt="image-20220210061627598"></p>
 <ul>
 <li><strong>实现类</strong></li>
 </ul>
-<p><img lazyload src="/images/loading.svg" data-src="E:\待更新博客\新建文件夹\JAVA多线程预习\image-20220210061939323.png" alt="image-20220210061939323"></p>
-<h2 id="线程组"><a href="#线程组" class="headerlink" title="线程组"></a>线程组</h2><ul>
+<p><img lazyload src="/images/loading.svg" data-src="E:%5C%E5%BE%85%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5CJAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%84%E4%B9%A0%5Cimage-20220210061939323.png" alt="image-20220210061939323"></p>
+<h2 id="线程组">线程组</h2>
+<ul>
 <li>线程在创建时可以指定线程组<code>Thread(ThreadGroup group, Runnable target, String name)</code>，没有指定线程组则属于默认线程组，线程的线程组一旦确定不可更改</li>
 <li>线程组可对一组的线程进行操作</li>
 </ul>
-<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>复用一组线程把，很多小任务让一组线程来执行，而不是一个任务对应一个新线程，这种能接收大量小任务并进行分发处理的就是线程池</p>
+<h2 id="线程池">线程池</h2>
+<p>复用一组线程把，很多小任务让一组线程来执行，而不是一个任务对应一个新线程，这种能接收大量小任务并进行分发处理的就是线程池</p>
 <p>简单地说，线程池内部维护了若干个线程，没有任务的时候，这些线程都处于等待状态。如果有新任务，就分配一个空闲线程执行。如果所有线程都处于忙碌状态，新任务要么放入队列等待，要么增加一个新线程进行处理</p>
 <p>Java标准库提供了<code>ExecutorService</code>接口表示线程池，它的典型用法如下：</p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建固定大小的线程池:</span></span><br><span class="line">ExecutorService executor = Executors.newFixedThreadPool(<span class="number">3</span>);</span><br><span class="line"><span class="comment">// 提交任务:</span></span><br><span class="line">executor.submit(task1);</span><br><span class="line">executor.submit(task2);</span><br><span class="line">executor.submit(task3);</span><br><span class="line">executor.submit(task4);</span><br><span class="line">executor.submit(task5);</span><br></pre></td></tr></table></figure></div>
-<h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><p><strong>每个线程都有自己独立的调用栈，局部变量保存在线程各自的调用栈里，不会共享，不存在并发安全问题</strong></p>
-<h2 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h2><p>即一个操作或者多个操作，要么全部执行并且执行的过程不会被任何因素打断，要么就都不执行</p>
+<h2 id="线程安全">线程安全</h2>
+<p><strong>每个线程都有自己独立的调用栈，局部变量保存在线程各自的调用栈里，不会共享，不存在并发安全问题</strong></p>
+<h2 id="原子性">原子性</h2>
+<p>即一个操作或者多个操作，要么全部执行并且执行的过程不会被任何因素打断，要么就都不执行</p>
 <p><strong>JVM规范定义了几种原子操作</strong>：</p>
 <ul>
 <li>基本类型（<code>long</code>和<code>double</code>除外）赋值，例如：<code>int n = m</code>；</li>
 <li>引用类型赋值，例如：<code>List&lt;String&gt; list = anotherList</code>。（但是，如果是多行赋值语句，就必须保证是同步操作）</li>
 </ul>
-<h2 id="Volatile"><a href="#Volatile" class="headerlink" title="Volatile"></a>Volatile</h2><p><strong>volatile关键字的两层语义</strong></p>
+<h2 id="Volatile">Volatile</h2>
+<p><strong>volatile关键字的两层语义</strong></p>
 <p>一旦一个共享变量（类的成员变量、类的静态成员变量）被volatile修饰之后，那么就具备了两层语义：</p>
 <p>1.保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。</p>
 <p>2.禁止进行指令重排序。</p>
 <p>3.volatile不保证原子性(i++会有问题)</p>
 <p>4.volatile解决可见性问题，不解决原子性问题</p>
-<h2 id="ReadWriteLock"><a href="#ReadWriteLock" class="headerlink" title="ReadWriteLock"></a>ReadWriteLock</h2><p>适用于<strong>允许多个线程同时读，但只要有一个线程在写，其他线程就必须等待</strong>的情况</p>
-<div class="table-container">
+<h2 id="ReadWriteLock">ReadWriteLock</h2>
+<p>适用于<strong>允许多个线程同时读，但只要有一个线程在写，其他线程就必须等待</strong>的情况</p>
 <table>
 <thead>
 <tr>
@@ -444,7 +504,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>使用<code>ReadWriteLock</code>可以提高读取效率：</p>
 <ul>
 <li><code>ReadWriteLock</code>只允许一个线程写入；</li>
