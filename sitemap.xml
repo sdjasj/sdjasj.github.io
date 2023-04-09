@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://sdjasj.github.io/tags/index.html</loc>
+    
+    <lastmod>2023-04-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://sdjasj.github.io/2022/02/21/%E7%AE%97%E6%B3%95%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
+    
+    <lastmod>2023-04-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://sdjasj.github.io/links/index.html</loc>
     
     <lastmod>2023-04-09</lastmod>
@@ -23,15 +41,6 @@
     <loc>https://sdjasj.github.io/2022/02/19/%E6%A0%91%E4%B8%8E%E5%9B%BE%E7%AE%97%E6%B3%95/</loc>
     
     <lastmod>2023-03-31</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://sdjasj.github.io/2022/02/21/%E7%AE%97%E6%B3%95%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
-    
-    <lastmod>2023-03-17</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
