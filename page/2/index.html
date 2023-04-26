@@ -239,7 +239,7 @@ mjx-container[display="true"] + br {
                                         
                                             <i class="fa-regular fa-house"></i>
                                         
-                                        首頁
+                                        首页
                                     
                                 </a>
                                 <!-- Submenu -->
@@ -255,7 +255,7 @@ mjx-container[display="true"] + br {
                                         
                                             <i class="fa-solid fa-link"></i>
                                         
-                                        友情鏈接
+                                        友情链接
                                     
                                 </a>
                                 <!-- Submenu -->
@@ -271,7 +271,7 @@ mjx-container[display="true"] + br {
                                         
                                             <i class="fa-solid fa-tags"></i>
                                         
-                                        標籤
+                                        标签
                                     
                                 </a>
                                 <!-- Submenu -->
@@ -309,7 +309,7 @@ mjx-container[display="true"] + br {
                                 
                                     <i class="fa-regular fa-house"></i>
                                 
-                                首頁
+                                首页
                             
                         </a>
                     </li>
@@ -324,7 +324,7 @@ mjx-container[display="true"] + br {
                                 
                                     <i class="fa-solid fa-link"></i>
                                 
-                                友情鏈接
+                                友情链接
                             
                         </a>
                     </li>
@@ -339,7 +339,7 @@ mjx-container[display="true"] + br {
                                 
                                     <i class="fa-solid fa-tags"></i>
                                 
-                                標籤
+                                标签
                             
                         </a>
                     </li>
@@ -417,11 +417,11 @@ mjx-container[display="true"] + br {
             <div class="statistics">
                 <a class="item" href="/tags">
                     <div class="number">15</div>
-                    <div class="label">標籤</div>
+                    <div class="label">标签</div>
                 </a>
                 <a class="item" href="/categories">
                     <div class="number">0</div>
-                    <div class="label">分類</div>
+                    <div class="label">分类</div>
                 </a>
                 <a class="item" href="/archives">
                     <div class="number">25</div>
@@ -488,7 +488,7 @@ mjx-container[display="true"] + br {
         
     </div>
 
-    <a href="/2022/02/26/Java%E6%B3%9B%E5%9E%8B/">繼續閱讀...<span class="seo-reader-text">Java泛型</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/26/Java%E6%B3%9B%E5%9E%8B/">阅读全文<span class="seo-reader-text">Java泛型</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -543,7 +543,7 @@ mjx-container[display="true"] + br {
         
     </div>
 
-    <a href="/2022/02/21/%E7%AE%97%E6%B3%95%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">繼續閱讀...<span class="seo-reader-text">算法数学基础知识</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/21/%E7%AE%97%E6%B3%95%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">阅读全文<span class="seo-reader-text">算法数学基础知识</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -616,7 +616,7 @@ mjx-container[display="true"] + br {
         
     </div>
 
-    <a href="/2022/02/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">繼續閱讀...<span class="seo-reader-text">动态规划</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">阅读全文<span class="seo-reader-text">动态规划</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -672,7 +672,7 @@ mjx-container[display="true"] + br {
         
     </div>
 
-    <a href="/2022/02/19/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/">繼續閱讀...<span class="seo-reader-text">二分算法</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/19/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/">阅读全文<span class="seo-reader-text">二分算法</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -691,11 +691,8 @@ mjx-container[display="true"] + br {
 
                 <div class="home-article-content markdown-body">
                     
-                        <h1>树与图</h1>
-<p>考的是怎么从题目条件抽象出图(建图)</p>
-<h2 id="树与图存储">树与图存储</h2>
-<h4 id="邻接表（前向星）">邻接表（前向星）</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 对于每个点k，开一个单链表，存储k所有可以走到的点。h[k]存储这个单链表的头结点，e[k]存储箭头指向的点,we[k]存储该边权值</span><br><span class="line">int h[N], e[N], ne[N],we[N] idx;</span><br><span class="line"></span><br><span class="line">// 添加一条边a-&gt;b z为权值</span><br><span class="line">void add(int a, int b, int z)</span><br><span class="line">&#123;</span><br><span class="line">    we[idx] = z, e[idx] = b, ne[idx] = h[a], h[a] = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 初始化</span><br><span class="line">idx = 0;</span><br><span class="line">memset(h, -1, sizeof h);</span><br></pre></td></tr></table></figure>
+                        <p>考的是怎么从题目条件抽象出图(建图)</p>
+<h1 id="树与图存储"><a href="#树与图存储" class="headerlink" title="树与图存储"></a>树与图存储</h1><h2 id="邻接表（前向星）"><a href="#邻接表（前向星）" class="headerlink" title="邻接表（前向星）"></a>邻接表（前向星）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 对于每个点k，开一个单链表，存储k所有可以走到的点。h[k]存储这个单链表的头结点，e[k]存储箭头指向的点,we[k]存储该边权值</span><br><span class="line">int h[N], e[N], ne[N],we[N] idx;</span><br><span class="line"></span><br><span class="line">// 添加一条边a-&gt;b z为权值</span><br><span class="line">void add(int a, int b, int z)</span><br><span class="line">&#123;</span><br><span class="line">    we[idx] = z, e[idx] = b, ne[idx] = h[a], h[a] = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 初始化</span><br><span class="line">idx = 0;</span><br><span class="line">memset(h, -1, sizeof h);</span><br></pre></td></tr></table></figure>
 <p>对于每个顶点，添加与其相连的边时按照头插法添加,</p>
                     
                 </div>
@@ -730,7 +727,7 @@ mjx-container[display="true"] + br {
         
     </div>
 
-    <a href="/2022/02/19/%E6%A0%91%E4%B8%8E%E5%9B%BE%E7%AE%97%E6%B3%95/">繼續閱讀...<span class="seo-reader-text">树与图算法</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/19/%E6%A0%91%E4%B8%8E%E5%9B%BE%E7%AE%97%E6%B3%95/">阅读全文<span class="seo-reader-text">树与图算法</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -782,7 +779,7 @@ mjx-container[display="true"] + br {
         
     </div>
 
-    <a href="/2022/02/19/%E5%8F%8C%E6%8C%87%E9%92%88%E4%B8%8E%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">繼續閱讀...<span class="seo-reader-text">双指针与滑动窗口</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/19/%E5%8F%8C%E6%8C%87%E9%92%88%E4%B8%8E%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">阅读全文<span class="seo-reader-text">双指针与滑动窗口</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -834,7 +831,7 @@ mjx-container[display="true"] + br {
         
     </div>
 
-    <a href="/2022/02/19/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/">繼續閱讀...<span class="seo-reader-text">前缀和与差分</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/19/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/">阅读全文<span class="seo-reader-text">前缀和与差分</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -893,7 +890,7 @@ mjx-container[display="true"] + br {
         
     </div>
 
-    <a href="/2022/02/18/Linux%E9%A2%84%E4%B9%A0/">繼續閱讀...<span class="seo-reader-text">Linux预习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/18/Linux%E9%A2%84%E4%B9%A0/">阅读全文<span class="seo-reader-text">Linux预习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -947,7 +944,7 @@ mjx-container[display="true"] + br {
         
     </div>
 
-    <a href="/2022/02/18/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0/">繼續閱讀...<span class="seo-reader-text">Java正则表达式学习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/18/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0/">阅读全文<span class="seo-reader-text">Java正则表达式学习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -999,7 +996,7 @@ mjx-container[display="true"] + br {
         
     </div>
 
-    <a href="/2022/02/14/Git%E5%AD%A6%E4%B9%A0/">繼續閱讀...<span class="seo-reader-text">Git学习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/02/14/Git%E5%AD%A6%E4%B9%A0/">阅读全文<span class="seo-reader-text">Git学习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -1038,20 +1035,20 @@ mjx-container[display="true"] + br {
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
-                        讀者&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
                     </span>
                 
                 
                     <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
-                        閱覽&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
                     </span>
                 
             </div>
         
         <div class="theme-info info-item">
-            <span class="powered-by-container"><?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 框架</span>
+            <span class="powered-by-container">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 驱动</span>
                 <br>
-            <span class="theme-version-container">主題&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.1.1</a>
+            <span class="theme-version-container">主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.1.1</a>
         </div>
         
         
@@ -1060,7 +1057,7 @@ mjx-container[display="true"] + br {
                 2022/8/17 11:45:14
             </div>
             <div>
-                博客已運行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小時 <span class="odometer" id="runtime_minutes"></span> 分鐘 <span class="odometer" id="runtime_seconds"></span> 秒
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
             </div>
         
         
@@ -1151,7 +1148,7 @@ mjx-container[display="true"] + br {
                 <input autocomplete="off"
                        autocorrect="off"
                        autocapitalize="off"
-                       placeholder="搜尋..."
+                       placeholder="搜索..."
                        spellcheck="false"
                        type="search"
                        class="search-input"
