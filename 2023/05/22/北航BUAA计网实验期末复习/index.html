@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="sdjasj">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://sdjasj.github.io/2023/05/22/北航buaa计网实验期末复习/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="考试前记得undo vlan 1 的 IP！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！ 考试前记得undo vlan 1 的 IP！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！ 考试前记得undo vlan 1 的 IP！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！ 否则你配置BGP时会有问题出现，根本无法连接成功，一直是connect或者idle状态，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="北航BUAA计网实验期末复习">
+<meta property="og:url" content="https://sdjasj.github.io/2023/05/22/%E5%8C%97%E8%88%AABUAA%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="sdjasj的博客">
+<meta property="og:description" content="考试前记得undo vlan 1 的 IP！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！ 考试前记得undo vlan 1 的 IP！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！ 考试前记得undo vlan 1 的 IP！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！ 否则你配置BGP时会有问题出现，根本无法连接成功，一直是connect或者idle状态，">
+<meta property="og:locale">
+<meta property="og:image" content="https://sdjasj.github.io/2023/05/22/%E5%8C%97%E8%88%AABUAA%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20230518094811872.png">
+<meta property="article:published_time" content="2023-05-22T07:35:32.000Z">
+<meta property="article:modified_time" content="2023-05-22T07:40:23.906Z">
+<meta property="article:author" content="sdjasj">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sdjasj.github.io/2023/05/22/%E5%8C%97%E8%88%AABUAA%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20230518094811872.png">
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/avatar_1628993426.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar_1628993426.png">
+    <meta name="theme-color" content="#005080">
+    <link rel="shortcut icon" href="/images/avatar_1628993426.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            北航BUAA计网实验期末复习 -
+        
+        sdjasj的博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/assets/fonts.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+    <!--- Inject Part-->
+    
+    <script id="hexo-configurations">
+    let Global = window.Global || {};
+    Global.hexo_config = {"hostname":"sdjasj.github.io","root":"/","language":"zh-Hans","path":"search.xml"};
+    Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center"},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[""]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":true,"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#005080","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true,"open_graph":true},"home_banner":{"enable":true,"image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"sdjasj的博客","subtitle":{"text":["人生可没有暂停"],"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":"enable","version":"9.3.0"}},"version":"2.1.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Friends":{"icon":"fa-solid fa-link","path":"/links/"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","announcement":"人生可没有暂停","links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}}};
+    Global.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="sdjasj的博客" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="main-content-container">
+
+        <div class="main-content-header">
+            <header class="navbar-container">
+    
+    <div class="navbar-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                sdjasj的博客
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        首页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/links/"  >
+                                    
+                                        
+                                            <i class="fa-solid fa-link"></i>
+                                        
+                                        友情链接
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/tags/"  >
+                                    
+                                        
+                                            <i class="fa-solid fa-tags"></i>
+                                        
+                                        标签
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer">
+        <ul class="drawer-navbar-list">
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                首页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/links/"  >
+                             
+                                
+                                    <i class="fa-solid fa-link"></i>
+                                
+                                友情链接
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/tags/"  >
+                             
+                                
+                                    <i class="fa-solid fa-tags"></i>
+                                
+                                标签
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+            
+                <div class="article-title">
+                    <h1 class="article-title-regular">北航BUAA计网实验期末复习</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/%5Blab.magiconch.com%5D%5BOne-Last-Image%5D-1665884138372.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">sdjasj</span>
+                            
+                                <span class="author-label"></span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-05-22 15:35:32</span>
+        <span class="mobile">2023-05-22 15:35</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2023-05-22 15:40:23</span>
+            <span class="mobile">2023-05-22 15:40</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.5k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>10 分钟</span>
+        </span>
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1>考试前记得undo vlan 1 的 IP！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！</h1>
+<h1>考试前记得undo vlan 1 的 IP！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！</h1>
+<h1>考试前记得undo vlan 1 的 IP！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！</h1>
+<h1>否则你配置BGP时会有问题出现，根本无法连接成功，一直是connect或者idle状态，因为vlan 1的IP会默认成为router id！！！一着不慎满盘皆输！！！而且常见问题解答、书上根本没有这个问题出现！！！平常做实验也没有碰到！！！只有老师在考前在群里发布的群公告有，但是平常没碰到的东西看到了也不理解，更不用说注意了，唉</h1>
+<h3 id="路由表和转发表">路由表和转发表</h3>
+<p>路由表是根据直连路由、静态路由、IGP、BGP等得到的，表项中的下一跳可能与当前路由器不是直连(BGP)</p>
+<p>转发表根据路由表的下一跳进行迭代，下一跳都是直连</p>
+<p><a class="link" target="_blank" rel="noopener" href="https://www.sohu.com/a/342616410_99906077">https://www.sohu.com/a/342616410_99906077 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>因此可以以路由表中BGP路由的下一跳配置为目的网段配置静态路由指定相连路由器为下一跳使两个AS间连通</p>
+<h3 id="数据链路层">数据链路层</h3>
+<p>链路聚合</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">link-aggregation e0/0/0 to e0/0/1</span><br><span class="line">undo link-aggregation e0/0/0 to e0/0/1</span><br></pre></td></tr></table></figure></div>
+<p>ppp协议配置（串口配置pap和chap前要先设置ppp）</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int S1/0</span><br><span class="line">link-protocol ppp</span><br><span class="line">shutdown # 重启接口使配置生效</span><br><span class="line">undo shutdown</span><br></pre></td></tr></table></figure></div>
+<p>查看pap验证过程</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">debugging ppp pap all</span><br><span class="line">terminal debugging</span><br></pre></td></tr></table></figure></div>
+<p>查看CHAP验证过程</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">debugging ppp chap all</span><br><span class="line">terminal debugging</span><br></pre></td></tr></table></figure></div>
+<h3 id="静态路由">静态路由</h3>
+<p>优先级 preference 越小优先级越高</p>
+<h3 id="地址转换NAT">地址转换NAT</h3>
+<p>v7版本</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[R1]acl basic 2001</span><br><span class="line">[R1-acl-2001]rule permit source 10.0.0.0  0.0.0.255</span><br><span class="line">[R1-acl-2001]rule deny source any</span><br><span class="line">#这个访问控制列表定义了允许IP源地址为10.0.0.0/24的外出数据包</span><br><span class="line">[R1]nat address-group 1</span><br><span class="line">[R1-address-group-1] address 192.168.5.105 192.168.5.109</span><br><span class="line">#这条命令定义了一个包含5个公网地址（5～9）的地址池，地址池名称为1   </span><br><span class="line">[R1] interface e0/1</span><br><span class="line">[R1-Ethernet0/1]nat outbound 2001 address-group 1             </span><br><span class="line">#在出接口E0/1启用地址转换</span><br><span class="line">[R1]ip route-static 0.0.0.0 0.0.0.0 192.168.5.1</span><br><span class="line">#在路由表添加默认路由，转发到网关192.168.5.1</span><br></pre></td></tr></table></figure></div>
+<h3 id="VLAN">VLAN</h3>
+<p>Access口收发数据帧都不含vlan标签</p>
+<h3 id="ospf">ospf</h3>
+<p>ABR是属于至少两个区域的路由器，ASBR是将其他路由协议（比如静态路由、直连路由）引入ospf中的路由器（可以是ABR）</p>
+<h4 id="ospf常用相关命令">ospf常用相关命令</h4>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">reset ospf all process   重启ospf进程</span><br><span class="line">display ospf peer 显示邻居信息</span><br><span class="line">display ospf routing 显示ospf路由表</span><br></pre></td></tr></table></figure></div>
+<h4 id="查看ospf链路状态数据库">查看ospf链路状态数据库</h4>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">display ospf lsdb # 所有LSA</span><br><span class="line">display ospf router # 第一类LSA</span><br><span class="line">display ospf lsdb network # 第二类LSA</span><br><span class="line">display ospf summary # 第三类LSA</span><br><span class="line">display ospf asbr # 第四类LSA</span><br><span class="line">display ospf ase # 第五类LSA</span><br></pre></td></tr></table></figure></div>
+<h4 id="启动ospf进程">启动ospf进程</h4>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">router id 1.1.1.1</span><br><span class="line">ospf </span><br><span class="line">area 0</span><br><span class="line">network ip wildmask //引入ospf网段 注意是反掩码</span><br><span class="line">reset ospf all process 重启ospf进程</span><br><span class="line">display ospf xxx</span><br></pre></td></tr></table></figure></div>
+<h4 id="查看ospf邻居状态机">查看ospf邻居状态机</h4>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">debugging ospf event</span><br><span class="line">terminal debugging</span><br><span class="line"></span><br><span class="line">然后断线重连</span><br></pre></td></tr></table></figure></div>
+<h4 id="报文">报文</h4>
+<p>1.DD报文中的I表示这是第一个DD报文，M=1表示这不是最后一个DD报文</p>
+<p><strong>2.为什么要确认主从关系？</strong></p>
+<p>OSPF基于IP报文，IP无法提供可靠传输服务，确认主从关系为OSPF提供了确认和重传机制，提供了可靠传输服务</p>
+<p>3.MS=1表示自己是Master</p>
+<p>4.DR和BDR解决全连接网络中的N^2连接问题</p>
+<h4 id="LSDB数量">LSDB数量</h4>
+<p>一个区域对应一个LSDB，路由器上有几个区域就有几个LSDB</p>
+<h4 id="LSA种类和作用">LSA种类和作用</h4>
+<table>
+<thead>
+<tr>
+<th>第一类（Router LSA）</th>
+<th>描述本路由器运行ospf接口的连接情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>第二类（Network LSA）</strong></td>
+<td><strong>DR描述本网段所有已经和他建立了邻接关系的路由器，DRother和BDR只描述到DR的连接</strong></td>
+</tr>
+<tr>
+<td><strong>第三类（Network Summary LSA）</strong></td>
+<td><strong>ABR将本区域的每一条ospf路由封装成第三类LSA发送到相邻区域，描述了本区域的ospf路由</strong></td>
+</tr>
+<tr>
+<td><strong>第四类（ASBR Summary LSA）</strong></td>
+<td><strong>描述本区域到达ASBR的路由</strong></td>
+</tr>
+<tr>
+<td><strong>第五类（AS External LSA）</strong></td>
+<td><strong>描述到自治系统外部路由的信息</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="BGP">BGP</h3>
+<p><strong>注意：export路由策略或进行其他配置时，如果无法在bgp视图下输入命令，可以尝试输入address-family ipv4再进行配置</strong></p>
+<p>基本配置</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[S1]bgp 300   //启动bgp</span><br><span class="line">[S1-bgp-default]peer 1.1.1.1 as-number 100 //指定bgp对等体</span><br><span class="line">[S1-bgp-default]peer 3.1.1.2 as-number 300</span><br><span class="line">[S1-bgp-default]address-family ipv4 unicast //v7版本</span><br><span class="line">[S1-bgp-default-ipv4]peer 1.1.1.1 enable</span><br><span class="line">[S1-bgp-default-ipv4]peer 3.1.1.2 enable</span><br><span class="line">[S1-bgp-default-ipv4]peer 3.1.1.2 next-hop-local //在传递给路由器3.1.1.2外部网络时，将该网络的下一跳值设为学习到该网络的本地接口地址</span><br><span class="line">[S1-bgp-default-ipv4]network 5.5.5.5 255.255.255.255</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<p>取消bgp配置</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">undo bgp</span><br></pre></td></tr></table></figure></div>
+<p>bgp的路由聚合</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[r1]bgp 100</span><br><span class="line">[r1-bgp-default] address-family ipv4 unicast  </span><br><span class="line">[r1-bgp-default-ipv4]aggregate 192.168.0.0 255.255.240.0</span><br><span class="line">[r1-bgp-default-ipv4] aggregate 192.168.0.0 255.255.240.0 detail-suppressed //只通告聚合路由</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<p>查看bgp状态转移图</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">debugging bgp event</span><br><span class="line">terminal debugging</span><br><span class="line">reset bgp all</span><br><span class="line"></span><br><span class="line">undo terminal debugging</span><br></pre></td></tr></table></figure></div>
+<h4 id="BGP的下一跳">BGP的下一跳</h4>
+<p>BGP在向IBGP通告从其他EBGP得到的路由时，不改变路由的下一跳属性</p>
+<p>BGP在向EBGP对等体通告路由时，下一跳属性是本地BGP与对端连接的端口地址</p>
+<h4 id="BGP路由通告">BGP路由通告</h4>
+<p>BGP speaker从IBGP获得的路由不向它的IBGP通告</p>
+<p>BGP speaker从IBGP获得的路由是否向它的EBGP对等体通告要根据IGP和BGP同步情况来决定（默认不同步，即会通告）</p>
+<p>BGP speaker从EBGP获得的路由会向它所有BGP对等体通告，包括EBGP和IBGP</p>
+<h4 id="BGP状态转换分析实验的操作步骤建议">BGP状态转换分析实验的操作步骤建议</h4>
+<p>BGP状态转换分析实验中3.4节的步骤2和步骤3的操作建议：</p>
+<p>步骤2：在连线组网软件上断开R1和S1之间的连接。</p>
+<p>步骤3：先undo R1的E0接口的ip地址，再重新连接R1和S1之间的连线。</p>
+<p>步骤4：再重新配置R1的E0接口的ip地址</p>
+<h4 id="路由属性">路由属性</h4>
+<p>1.MED发布给外部路由器在有多条路径进入本AS时选择路径，MED小的优先级高</p>
+<p>2.Local-preference在本地AS使用，只在IBGP之间传递，有多条出口时选择一条出口，Local-preference大的优先级高</p>
+<h4 id="路由策略">路由策略</h4>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">4.路由策略（P251）</span><br><span class="line">[s1]route-policy deny6 permit node 10    //deny6是路由策略的名字，数字10是节点序号</span><br><span class="line">[s1-route-policy-deny6-10]if-match ip address acl 2001</span><br><span class="line">[s1-route-policy-deny6-10]apply cost  888</span><br><span class="line"></span><br><span class="line">[s1]Bgp 300</span><br><span class="line">[S1-bgp-default] address-family ipv4 unicast</span><br><span class="line">[R1-bgp-default-ipv4]peer 1.1.1.1 route-policy deny6 export</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<p>其中acl 2001定义了一系列允许通过的路由，<code>if-match ip address acl 2001</code>匹配了acl中允许通过的路由</p>
+<h5 id="基于ACL的路由过滤">基于ACL的路由过滤</h5>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在S2上配置路由策略，阻止AS100的5.0.0.0/8网段的路由传给自治系统200。</span><br><span class="line">acl number 2000</span><br><span class="line">rule 0 deny source 5.0.0.0 0.255.255.255</span><br><span class="line">rule 1 permit source 0.0.0.0 255.255.255.255</span><br><span class="line"></span><br><span class="line">peer 2.1.1.2 filter-policy 2000 export                  //配置基于ACL的路由过滤</span><br></pre></td></tr></table></figure></div>
+<h5 id="基于AS-PATH-bgp路径-的路由过滤">基于AS-PATH(bgp路径)的路由过滤</h5>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">设置S1不通告来自AS200的路由，而只通告AS300内部产生的路由。</span><br><span class="line">ip as-path-acl 1 deny \b200$                        //设置拒绝来自AS200的路由</span><br><span class="line">ip as-path-acl 1 permit ^$                          //设置允许本AS的路由</span><br><span class="line"></span><br><span class="line">peer 1.1.1.1 as-path-acl 1 export                  //配置基于AS-Path的路由过滤</span><br><span class="line">注： \b是AS号码之间的分割符。^$匹配本地路由；\b200$匹配从AS200始发的路由。</span><br></pre></td></tr></table></figure></div>
+<h5 id="基于route-policy的路由过滤，并设置路由属性">基于route policy的路由过滤，并设置路由属性</h5>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[s1]Route-policy deny6 permit node 10    </span><br><span class="line">[s1-route-policy-deny6-10]if-match ip address acl 2001</span><br><span class="line">[s1-route-policy-deny6-10]apply cost  888</span><br><span class="line"></span><br><span class="line">[s1]Bgp 300</span><br><span class="line">[S1-bgp-default] address-family ipv4 unicast</span><br><span class="line">[R1-bgp-default-ipv4]peer 1.1.1.1 route-policy deny6 export</span><br></pre></td></tr></table></figure></div>
+<h4 id="BGP同步问题">BGP同步问题</h4>
+<p>默认不同步，运行有ebgp和ibgp的路由器将从其他ebgp获得的路由传递给本AS的ibgp对等体时路由下一跳为其他ebgp发送该bgp报文的接口。如果ibgp全连接可以配置peer ibgp-as-number next-hop-local，否则需要配置静态路由（非全连接ibgp配置了peer ibgp-as-number next-hop-local也要配置静态路由）</p>
+<p>注意如果as内部没有运行igp，则需要配置静态路由时ibgp之间能够连通。在ibgp能相互连通之上（ibgp拥有其他as的ebgp路由），还需要配置静态路由使得ibgp和其他as的ebgp之间能够连通</p>
+<h3 id="传输层实验-设置接口转发速率">传输层实验-设置接口转发速率</h3>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qos lr outbound cir xxx</span><br></pre></td></tr></table></figure></div>
+<p><strong>为什么接收窗口一开始从0慢慢变大？</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="image-20230518094811872.png" alt="image-20230518094811872"></p>
+<p>接收方在逐渐分配缓冲区用于接收数据</p>
+<p><strong>窗口探查报文发送的时间规律？</strong></p>
+<p>当前报文和上一个探查报文间隔为上一个报文和上上个报文的2倍（指数退避）</p>
+<h3 id="网络层实验">网络层实验</h3>
+<p>tracert中ICMP报文的种类和作用，以及组成部分</p>
+<p>Echo(8)、reply(0)、超时差错报文(11)</p>
+<h3 id="应用层">应用层</h3>
+<p>FTP 协议工作的过程？</p>
+<h3 id="琐碎">琐碎</h3>
+<p>1.用display current-configuration命令，可以查看当前设备的全部配置。</p>
+<p>当我们只想查看部分设备配置时，这个命令会显示显示很多我们不想看到的配置。</p>
+<p>进入某个视图（如接口、ospf等），用display this命令就可以查看该视图下所有的配置</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display this</span><br></pre></td></tr></table></figure></div>
+<p>2.（1）&lt;Ctrl+G&gt;对应命令display current-configuration（显示当前配置）</p>
+<p>（2）&lt;Ctrl+L&gt;对应命令display ip routing-table（显示IPv4 路由表信息）</p>
+<p>（3）&lt;Ctrl+O&gt;对应命令undo debugging all（关闭设备支持的所有功能项的调试开关）</p>
+<p>（4）&lt;Ctrl+Z&gt; 对应命令return（退回到用户视图）</p>
+<p>3.ospf中ABR路由器会根据收到的来自外部区域的Type 1和Type 2 LSA生成新的Type 3 LSA并广播到本地区域中。为什么能收到来自外部区域的Type 1和Type 2 LSA？因为他是区域边界路由器，能收到两个区域的1 2类LSA</p>
+<p>4.OSPF 的DR/BDR是在同一个<strong>网段</strong>中进行选举，并非在一个区域内全部路由器进行选举，所以一个区域可能有多个DR</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 北航BUAA计网实验期末复习</li>
+        <li><strong>作者:</strong> sdjasj</li>
+        <li><strong>创建于:</strong> 2023-05-22 15:35:32</li>
+        
+            <li>
+                <strong>更新于:</strong> 2023-05-22 15:40:23
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://redefine.ohevan.com/2023/05/22/北航BUAA计网实验期末复习/
+        </li>
+        <li>
+            <strong>版权声明:</strong> 本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 进行许可。
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">#计算机网络</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/02/01/%E7%BA%BF%E6%AE%B5%E6%A0%91/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">线段树</span>
+                                    <span class="post-nav-item">下一篇</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+                <div class="comment-container">
+                    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fa-solid fa-comments"></i>&nbsp;评论
+    </div>
+    
+
+        
+            
+ 
+    <div id="waline"></div>
+    <script type="module"  data-pjax>
+        import { init } from 'https://evan.beee.top/js/waline.mjs';
+
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://redefine-comment-2qw1cedk0-sdjasj.vercel.app/',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+            });
+        }
+
+        if ('true') {
+            const loadWalineTimeout = setTimeout(() => {
+                loadWaline();
+                clearTimeout(loadWalineTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadWaline);
+        }
+        
+    </script>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">北航BUAA计网实验期末复习</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">考试前记得undo vlan 1 的 IP！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">考试前记得undo vlan 1 的 IP！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">考试前记得undo vlan 1 的 IP！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">否则你配置BGP时会有问题出现，根本无法连接成功，一直是connect或者idle状态，因为vlan 1的IP会默认成为router id！！！一着不慎满盘皆输！！！而且常见问题解答、书上根本没有这个问题出现！！！平常做实验也没有碰到！！！只有老师在考前在群里发布的群公告有，但是平常没碰到的东西看到了也不理解，更不用说注意了，唉</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E8%A1%A8%E5%92%8C%E8%BD%AC%E5%8F%91%E8%A1%A8"><span class="nav-text">路由表和转发表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-text">数据链路层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1"><span class="nav-text">静态路由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2NAT"><span class="nav-text">地址转换NAT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VLAN"><span class="nav-text">VLAN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ospf"><span class="nav-text">ospf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BGP"><span class="nav-text">BGP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E5%AE%9E%E9%AA%8C-%E8%AE%BE%E7%BD%AE%E6%8E%A5%E5%8F%A3%E8%BD%AC%E5%8F%91%E9%80%9F%E7%8E%87"><span class="nav-text">传输层实验-设置接口转发速率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%E5%AE%9E%E9%AA%8C"><span class="nav-text">网络层实验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-text">应用层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%90%E7%A2%8E"><span class="nav-text">琐碎</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+            
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">sdjasj</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 驱动</span>
+                <br>
+            <span class="theme-version-container">主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.1.1</a>
+        </div>
+        
+        
+        
+            <div id="start_div" style="display:none">
+                2022/8/17 11:45:14
+            </div>
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/layouts/navbarShrink.js"></script>
+
+<script src="/js/tools/scrollTopBottom.js"></script>
+
+<script src="/js/tools/lightDarkSwitch.js"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/layouts/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js"></script>
+
+
+
+
+    
+<script src="/js/libs/mermaid.min.js"></script>
+
+    
+<script src="/js/plugins/mermaid.js"></script>
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/tools/tocToggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/layouts/toc.js"></script>
+
+<script src="/js/plugins/tabs.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            Global.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            Global.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            Global.refresh();
+        });
+    });
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

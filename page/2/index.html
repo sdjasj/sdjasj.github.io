@@ -416,7 +416,7 @@ mjx-container[display="true"] + br {
             </div>
             <div class="statistics">
                 <a class="item" href="/tags">
-                    <div class="number">15</div>
+                    <div class="number">16</div>
                     <div class="label">标签</div>
                 </a>
                 <a class="item" href="/categories">
@@ -424,7 +424,7 @@ mjx-container[display="true"] + br {
                     <div class="label">分类</div>
                 </a>
                 <a class="item" href="/archives">
-                    <div class="number">25</div>
+                    <div class="number">26</div>
                     <div class="label">文章</div>
                 </a>
             </div>
@@ -440,6 +440,72 @@ mjx-container[display="true"] + br {
                 
                     <div class="home-content-container fade-in-down-animation">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/02/27/Vim%E5%AD%A6%E4%B9%A0/">
+                        Vim学习
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h2 id="Vim模式">Vim模式</h2>
+<p>Vim 具有 6 种基本模式和 5 种派生模式，先学三种</p>
+<ul>
+<li>普通模式(Normal mode)</li>
+</ul>
+<p>在普通模式中，用的编辑器命令，比如移动光标，删除文本等等。这也是 Vim 启动后的默认模式。这正好和许多新用户期待的操作方式相反（大多数编辑器默认模式为插入模式）。</p>
+<ul>
+<li>插入模式(Insert mode)</li>
+</ul>
+<p>在这个模式中，大多数按键都会向文本缓冲中插入文本。大多数新用户希望文本编辑器编辑过程中一直保持这个模式。</p>
+<blockquote>
+<p>在插入模式中，可以按 <code>ESC</code> 键回到普通模式。</p>
+</blockquote>
+<ul>
+<li>命令行模式(Command line mode)</li>
+</ul>
+<blockquote>
+<p>在命令行模式中可以输入会被解释成并执行的文本。例如执行命令（<code>:</code>键），搜索（<code>/</code>和<code>?</code>键）或者过滤命令（<code>!</code>键）。在命令执行之后，Vim 返回到命令行模式之前的模式，通常是普通模式。</p>
+</blockquote>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Feb 27 2022 10:12:20 GMT+0800">
+                
+                    2022-02-27
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Vim/">Vim</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2022/02/27/Vim%E5%AD%A6%E4%B9%A0/">阅读全文<span class="seo-reader-text">Vim学习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
         
             <li class="home-article-item">
 
@@ -692,7 +758,9 @@ mjx-container[display="true"] + br {
                 <div class="home-article-content markdown-body">
                     
                         <p>考的是怎么从题目条件抽象出图(建图)</p>
-<h1 id="树与图存储"><a href="#树与图存储" class="headerlink" title="树与图存储"></a>树与图存储</h1><h2 id="邻接表（前向星）"><a href="#邻接表（前向星）" class="headerlink" title="邻接表（前向星）"></a>邻接表（前向星）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 对于每个点k，开一个单链表，存储k所有可以走到的点。h[k]存储这个单链表的头结点，e[k]存储箭头指向的点,we[k]存储该边权值</span><br><span class="line">int h[N], e[N], ne[N],we[N] idx;</span><br><span class="line"></span><br><span class="line">// 添加一条边a-&gt;b z为权值</span><br><span class="line">void add(int a, int b, int z)</span><br><span class="line">&#123;</span><br><span class="line">    we[idx] = z, e[idx] = b, ne[idx] = h[a], h[a] = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 初始化</span><br><span class="line">idx = 0;</span><br><span class="line">memset(h, -1, sizeof h);</span><br></pre></td></tr></table></figure>
+<h1>树与图存储</h1>
+<h2 id="邻接表（前向星）">邻接表（前向星）</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 对于每个点k，开一个单链表，存储k所有可以走到的点。h[k]存储这个单链表的头结点，e[k]存储箭头指向的点,we[k]存储该边权值</span><br><span class="line">int h[N], e[N], ne[N],we[N] idx;</span><br><span class="line"></span><br><span class="line">// 添加一条边a-&gt;b z为权值</span><br><span class="line">void add(int a, int b, int z)</span><br><span class="line">&#123;</span><br><span class="line">    we[idx] = z, e[idx] = b, ne[idx] = h[a], h[a] = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 初始化</span><br><span class="line">idx = 0;</span><br><span class="line">memset(h, -1, sizeof h);</span><br></pre></td></tr></table></figure>
 <p>对于每个顶点，添加与其相连的边时按照头插法添加,</p>
                     
                 </div>
@@ -945,58 +1013,6 @@ mjx-container[display="true"] + br {
     </div>
 
     <a href="/2022/02/18/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0/">阅读全文<span class="seo-reader-text">Java正则表达式学习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/02/14/Git%E5%AD%A6%E4%B9%A0/">
-                        Git学习
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        <h2 id="简单使用">简单使用</h2>
-<h3 id="初始化用户名">初始化用户名</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">&quot;Your Name&quot;</span></span><br><span class="line">$ git config --global user.email <span class="string">&quot;email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
-<h3 id="创建仓库">创建仓库</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Feb 14 2022 15:27:19 GMT+0800">
-                
-                    2022-02-14
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Git/">Git</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2022/02/14/Git%E5%AD%A6%E4%B9%A0/">阅读全文<span class="seo-reader-text">Git学习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
